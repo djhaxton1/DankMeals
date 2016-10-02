@@ -1,12 +1,12 @@
 <?php
 /**
  * Class: Database
- * Purpose : An Interface with the MySQL Database used by 
+ * Purpose : An Interface with the MySQL Database used by
  */
 class database {
 	/* Private Data Members */
 	private $conn;
-	
+
 	/**
 	 * Instaintates an new connection to the database
 	 */
@@ -36,19 +36,20 @@ class database {
 		} else {
 			echo "0 results";
 		}
+		return $this->conn;
 	}
-	
-	
+
+
 	/**
 	 * Closes the Connection to the database.
 	 */
-	function __destruct() {
+	/*function __destruct() {
 		echo "Closing Connection to Database...";
 		$this->conn->close();
 		echo "Done\n";
-	}
+	}*/
 }
 
-$db = new database();
-$db = null;
+//$db = new database();
+//$db = null;
 ?>

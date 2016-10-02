@@ -1,7 +1,9 @@
 <?php
 /**
  * Class: Database
- * Purpose : An Interface with the MySQL Database used by 
+ * Purpose : An Interface with the MySQL Database
+ * The class is to be instantatied when data is to 
+ * be input and destructed when the information has been input
  */
 class database {
 	/* Private Data Members */
@@ -24,20 +26,39 @@ class database {
 		} else {
 			echo ("Connected Successfully\n");
 		}
-		$cmd = "show databases";
-		$result = mysqli_query($this->conn, $cmd);
-		if ($result->num_rows > 0) {
-			// output data of each row
-			$i = 1;
-			while($row = $result->fetch_assoc()) {
-				echo "Database $i: " . $row["Database"] . "\n" ;
-				$i = $i + 1;
-			}
-		} else {
-			echo "0 results";
-		}
 	}
 	
+	/**
+	 * Send a command to the SQL server and return the result
+	 * Input : $cmd SQL Command as a string         (i.e "SELECT * FROM recipes;")
+	 * Output: result of query
+	 */
+	function sendCommand($cmd) {
+		$result = mysqli_query($this->conn, $cmd);
+		return $result;
+	}
+	
+	/**
+	 * Send a command to the SQL server and returns and the parsed return value
+	 * Input : $cmd SQL Command as a string         (i.e "SELECT * FROM recipes;")
+	 *         $array List of requested information (i.e ["recipes", "id", "parent_id"])
+	 * Output: an array of the result of query intersect with the requested data
+	 */
+	function sendCommandParse($cmd, $array) {
+		$result = mysqli_query($this->conn, $cmd);
+		$size = count($array);
+		$return = array();
+		
+		/* store the data requested in an array */
+		while($row = $result->fetch_assoc()) {
+				$s = 0;
+				while($s < $size) {
+					array_push($return, $row[$array[$s]]);
+					$s = $s + 1;
+				}
+		}
+		return $return;
+	}
 	
 	/**
 	 * Closes the Connection to the database.
@@ -49,6 +70,13 @@ class database {
 	}
 }
 
+//TODO: Demonstration Purposes, remove when index.html is updated
 $db = new database();
+$return = $db->sendCommandParse("SELECT * FROM ingredients WHERE rec_id = 2;", array("id", "name"));
+$i = 0;
+while($i < count($return)) {
+	echo $return[$i] . "\n";
+	$i = $i + 1;
+}
 $db = null;
 ?>

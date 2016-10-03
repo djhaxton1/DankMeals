@@ -47,17 +47,17 @@ class database {
 	function sendCommandParse($cmd, $array) {
 		$result = mysqli_query($this->conn, $cmd);
 		$size = count($array);
-		$return = array();
+		$r = array(null);
 		
 		/* store the data requested in an array */
 		while($row = $result->fetch_assoc()) {
-				$s = 0;
-				while($s < $size) {
-					array_push($return, $row[$array[$s]]);
-					$s = $s + 1;
+				$m = 0;
+				while($m < $size) {
+					array_push($r, $row[$array[$m]]);
+					$m = $m + 1;
 				}
 		}
-		return $return;
+		return $r;
 	}
 	
 	/**
@@ -69,14 +69,3 @@ class database {
 		echo "Done\n";
 	}
 }
-
-//TODO: Demonstration Purposes, remove when index.html is updated
-$db = new database();
-$return = $db->sendCommandParse("SELECT * FROM ingredients WHERE rec_id = 2;", array("id", "name"));
-$i = 0;
-while($i < count($return)) {
-	echo $return[$i] . "\n";
-	$i = $i + 1;
-}
-$db = null;
-?>

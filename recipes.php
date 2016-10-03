@@ -1,15 +1,15 @@
 <?php
-  include 'database/database.php';
+  include './database/database.php';
 
-  $getConnect = new database();
-  $conn = $getConnect->__construct();
-  $result = mysqli_query($conn, "select * from tspdb.recipes;");
+  $db = new database();
+  $result = $db->sendCommandParse("SELECT * FROM recipes;", array("id", "title"));
   $returnString = '<table>';
-  while ($row = $result->fetch_assoc()) {
-
-   $returnString .= "<tr><td>".$row['id']."</td><td>".$row['title']."</td></tr>";
+  
+  for($j = 0; $j < count($result); $j++) {
+    $returnString .= "<tr><td>".$result[$j]."</td><td>".$result[$j+1]."</td></tr>";
   }
+  
   $returnString .= "</table>";
   echo $returnString;
-  $conn->close();
- ?>
+  $db = null;
+?>

@@ -14,8 +14,6 @@
     <script data-silex-static="" type="text/javascript" src="//editor.silex.me/static/2.6/pageable.js"></script>
     <script data-silex-static="" type="text/javascript" src="//editor.silex.me/static/2.6/front-end.js"></script>
 
-    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script>
-
     <style type="text/css" class="silex-style"></style>
     <script type="text/javascript" class="silex-script"></script>
     <style class="silex-inline-styles" type="text/css">
@@ -89,7 +87,7 @@
             <div data-silex-type="html" class="editable-style silex-id-1475691136300-2 html-element" data-silex-id="silex-id-1475691136300-2">
                 <div class="silex-element-content">
                     <ul id="ingredients"></ul>
-                    <ol id="instructions"></ol>
+                    <ol id="instuctions"></ol>
                 </div>
             </div>
         </div>
@@ -104,38 +102,11 @@
         </div>
     </div>
 
-<script>
 
-    //retrieve and fill recipe title
-    $.ajax({
-        url: "getRecipe.php",
-        type: "post",
-        data: {"function": "getTitle()", "argument": "3"},
-        success: function (response){
-            document.getElementById("title").innerHTML = response;
-        }
-    })
 
-    //retrieve and fill recipe ingredients
-    $.ajax({
-        url: "getRecipe.php",
-        type: "post",
-        data: {"function": "getIngredients()", "argument": "3"},
-        success: function (response){
-            document.getElementById("ingredients").innerHTML = response;
-        }
-    })
 
-    //retrieve and fill recipe instructions
-    $.ajax({
-        url: "getRecipe.php",
-        type: "post",
-        data: {"function": "getInstructions()", "argument": "3"},
-        success: function (response){
-            document.getElementById("instructions").innerHTML = response;
-        }
-    })
-</script>
+
+
 
 </body>
 

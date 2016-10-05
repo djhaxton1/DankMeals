@@ -2,7 +2,8 @@
 <html>
     <head>
         <title>Dank Meals</title>
-        <link rel="stylesheet" href="https://github.com/WizardlyWerks/DankMeals/tree/master/bootstrap/css/bootstrap.css">
+        <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     </head>
     <body>
         <p>This file is working.</p>
@@ -14,5 +15,19 @@
                 </ul>
             </div>
         </div>
+        <div id="recipe_table"></div>
+        <script>
+       $.ajax({
+         url: "recipes.php",
+         type: "post",
+         data:  null,
+         success: function (response) {
+           $("#recipe_table").append(response);
+         },
+         error: function(jqXHR, textStatus, errorThrown) {
+           console.log(textStatus, errorThrown);
+         }
+       });
+       </script>
     </body>
 </html>

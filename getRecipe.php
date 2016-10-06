@@ -17,7 +17,7 @@ switch ($_POST["function"]){
     case "getIngredients()":
         echo getIngredients($id);
         break;
-    case "getInstructions":
+    case "getInstructions()":
         echo getInstructions($id);
         break;
     default:

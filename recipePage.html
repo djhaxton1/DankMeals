@@ -2,6 +2,11 @@
 <html>
 
 <head>
+    <script>
+        window.onload = function () {
+                    load();
+                }
+                </script>
     <meta charset="UTF-8">
     <!-- generator meta tag -->
     <!-- leave this for stats and Silex version check -->
@@ -105,36 +110,47 @@
     </div>
 
 <script>
-
-    //retrieve and fill recipe title
-    $.ajax({
-        url: "getRecipe.php",
-        type: "post",
-        data: {"function": "getTitle()", "argument": "3"},
-        success: function (response){
-            document.getElementById("title").innerHTML = response;
+    function load(){
+        var GET = {};
+        var urlVars = window.location.search.substring(1).split("&");
+        for (var i = 0; i < urlVars.length; i++){
+            if (urlVars[i] === ""){
+                continue;
+            }
+            var param = urlVars[i].split("=");
+            GET[decodeURIComponent(param[0])] = decodeURIComponent(param[1] || "");
         }
-    })
 
-    //retrieve and fill recipe ingredients
-    $.ajax({
-        url: "getRecipe.php",
-        type: "post",
-        data: {"function": "getIngredients()", "argument": "3"},
-        success: function (response){
-            document.getElementById("ingredients").innerHTML = response;
-        }
-    })
+        //retrieve and fill recipe title
+        $.ajax({
+            url: "getRecipe.php",
+            type: "post",
+            data: {"function": "getTitle()", "argument": GET.id},
+            success: function (response) {
+                document.getElementById("title").innerHTML = response;
+            }
+        })
 
-    //retrieve and fill recipe instructions
-    $.ajax({
-        url: "getRecipe.php",
-        type: "post",
-        data: {"function": "getInstructions()", "argument": "3"},
-        success: function (response){
-            document.getElementById("instructions").innerHTML = response;
-        }
-    })
+        //retrieve and fill recipe ingredients
+        $.ajax({
+            url: "getRecipe.php",
+            type: "post",
+            data: {"function": "getIngredients()", "argument": GET.id},
+            success: function (response) {
+                document.getElementById("ingredients").innerHTML = response;
+            }
+        })
+
+        //retrieve and fill recipe instructions
+        $.ajax({
+            url: "getRecipe.php",
+            type: "post",
+            data: {"function": "getInstructions()", "argument": GET.id},
+            success: function (response) {
+                document.getElementById("instructions").innerHTML = response;
+            }
+        })
+    }
 </script>
 
 </body>

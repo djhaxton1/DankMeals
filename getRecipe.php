@@ -7,14 +7,21 @@
  */
 require 'database\database.php';
 
-if ($_POST["function"] == "getTitle()"){
-    echo getTitle($_POST["argument"]);
-}elseif ($_POST["function"] == "getIngredients()"){
-    echo getIngredients($_POST["argument"]);
-}elseif ($_POST["function"] == "getInstructions()"){
-    echo getInstructions($_POST["argument"]);
-}else{
-    echo "Error: Function does not exist!";
+$id = $_POST["argument"];
+
+//determine which function has been called
+switch ($_POST["function"]){
+    case "getTitle()":
+        echo getTitle($id);
+        break;
+    case "getIngredients()":
+        echo getIngredients($id);
+        break;
+    case "getInstructions":
+        echo getInstructions($id);
+        break;
+    default:
+        echo "Error: no such function!";
 }
 
 

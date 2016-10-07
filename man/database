@@ -1,0 +1,49 @@
+.TH DATABASE 1 "7 September 2016" "1.0" "\fBDank Meals Programmer Manual\fR"
+.SH NAME
+database \- standard class containing functions for interfacing with the DankMeals database remotely.
+.SH SYNOPSIS
+.B include './database/database.php';
+.br
+.B $db
+= \fBnew\fR database();
+.br
+
+.SH DESCRIPTION
+The Database class centralizes all data transfer between the remote TSP(Team Software Project) Database. The database class contains \fBfour\fR method declarations for constructing a connection, sending commands, and closing the connection when the desired tasks are completed.
+
+.SH FUNCTIONS LIST
+.BR Function			Description                           
+.br
+\fBsendCommand\fR		send an SQL Command and return the resulting class.
+.br
+\fBsendCommandParse\fR	send an SQL Command and return an array of requested data.
+
+.SH EXAMPLE
+\fB$db\fR = \fBnew\fR database(); //creates a connection to the database
+.br
+\fB$result\fR = db\->\fBsendCommandParse\fR("SELECT * FROM recipes'", array("title"));
+.br
+for(\fB$i\fR = 0; \fB$i\fR < \fBcount\fR(\fB$result\fR) - 1; \fB$i\fR += 1) {
+.br
+\fBecho $result[$i]\fR
+.br
+}
+.br
+\fB$db\fR = null; //destruct the database connection
+
+.SH SEE ALSO
+sendCommand(1), sendCommandParse(1) 
+
+.SH BUGS
+At this time there is one known issue with the database class. It is technically not a bug, however the credentials are enterly visible to anyone who loads the php and views the source code, thus some safety measures should be take to mitigate this security risk.
+
+.SH AUTHOR
+\fBDustin Haxton\fR     (djhaxton@mtu.edu)
+.br
+\fBSarah Clements\fR    (srclemen@mtu.edu)
+.br
+\fBMichael LeCaptain\fR (mplecapt@mtu.edu)
+.br
+\fBMichael Miller\fR    (milmille@mtu.edu)
+.br
+\fBMichael Lay\fR       (mslay@mtu.edu)

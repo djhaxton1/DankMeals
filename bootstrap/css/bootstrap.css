@@ -1556,6 +1556,9 @@ kbd kbd {
   -webkit-box-shadow: none;
           box-shadow: none;
 }
+.nav-items {
+	color: #e67300;
+}
 pre {
   display: block;
   padding: 9.5px;
@@ -3056,6 +3059,10 @@ a.btn.disabled,
 fieldset[disabled] a.btn {
   pointer-events: none;
 }
+.btn-mybtn {
+  border-color: #e67300; 
+  background-color: #e67300";
+}
 .btn-default {
   color: #333;
   background-color: #fff;
@@ -3991,7 +3998,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   background-color: #eee;
 }
 .nav > li.disabled > a {
-  color: #777;
+  
 }
 .nav > li.disabled > a:hover,
 .nav > li.disabled > a:focus {
@@ -4275,8 +4282,10 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   float: left;
   height: 50px;
   padding: 15px 15px;
-  font-size: 18px;
+  font-size: 28px;
   line-height: 20px;
+  font-weight: bold;
+  color: #e67300;
 }
 .navbar-brand:hover,
 .navbar-brand:focus {
@@ -4496,12 +4505,9 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   background-color: #f8f8f8;
   border-color: #e7e7e7;
 }
-.navbar-default .navbar-brand {
-  color: #777;
-}
+
 .navbar-default .navbar-brand:hover,
 .navbar-default .navbar-brand:focus {
-  color: #5e5e5e;
   background-color: transparent;
 }
 .navbar-default .navbar-text {

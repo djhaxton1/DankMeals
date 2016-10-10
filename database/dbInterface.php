@@ -22,11 +22,13 @@ class dbInterface{
      *                  Data Currently Output:
      *                      array of recipe ids in $output["ids"]
      *                      array of recipe titles in $output["titles"]
+     *                      integer that is the number of recipe entries in $output["length"]
      */
     function getRecipeList(){
         $output = array();
         $output["ids"] = $this->getIDs();   //add ids to output array
         $output["titles"] = $this->getTitles(); //add titles to output array
+        $output["length"] = $this->getLength(); //add the number of recipe entries
         return $output;
     }
 
@@ -39,8 +41,8 @@ class dbInterface{
         $result = $this->db->sendCommandParse($query, $relevant);   //retrieve id's
         $ids = array();     //array for output
         //create an array of the ids
-        for ($i = 0; $i < count($result) - 1; $i++){
-            $ids[$i] = $result[$i + 1];
+        for ($i = 1; $i < count($result); $i++){
+            $ids[$i] = $result[$i];
         }
         return $ids;
     }
@@ -54,12 +56,18 @@ class dbInterface{
         $result = $this->db->sendCommandParse($query,$relevant);    //retrieve titles
         $titles = array();    //array for output
         //create an array of the titles
-        for ($i = 0; $i < count($result) - 1; $i++){
-            $titles[$i] = $result[$i + 1];
+        for ($i = 1; $i < count($result); $i++){
+            $titles[$i] = $result[$i];
         }
         return $titles;
     }
 
+    private function getLength(){
+        $query = "SELECT COUNT(*) FROM recipes";
+        $relevant = array("COUNT(*)");
+        $result = $this->db->sendCommandParse($query, $relevant);
+        return $result[1];
+    }
     /**
      * @param $id   the id of the recipe requested
      * @return array    associative array containing all relevant data for a single recipe entry
@@ -117,7 +125,7 @@ class dbInterface{
         $output = array();  //array for output
         //create array of instructions
         for ($i = 1; $i < count($result); $i++){
-            $output[$i - 1] = $result[$i];
+            $output[$i] = $result[$i];
         }
         return $output;
     }

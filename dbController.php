@@ -2,9 +2,10 @@
 require 'database/dbInterface.php';
 
 $id = $_POST["argument"];   //recipe id that is passed to the page
-if (getttype($id) != "integer"){
+if (gettype($id) != "integer"){
     header("HTTP/1.1 400 Bad Request");
     echo "Invalid ID";
+    return;
 }
 $dbInterface = new dbInterface();   //the dbInterface object used to access database
 

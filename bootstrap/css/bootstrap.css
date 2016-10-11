@@ -11,13 +11,13 @@ html {
 }
 body {
   margin: 0;
+  padding-top: 70px;
 }
 article,
 aside,
 details,
 figcaption,
 figure,
-footer,
 header,
 hgroup,
 main,
@@ -26,6 +26,10 @@ nav,
 section,
 summary {
   display: block;
+}
+footer {
+  display: block;
+  margin: 50px 0;
 }
 audio,
 canvas,
@@ -187,6 +191,11 @@ td,
 th {
   padding: 0;
 }
+
+.portfolio-item {
+	margin-bottom: 25px;
+}
+
 /*! Source: https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css */
 @media print {
   *,

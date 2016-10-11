@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,8 +13,8 @@
     <title>Dank Meals</title>
 	
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<script src="https://apis.google.com/js/platform.js" async defer></src>
-	
+	<script src="https://apis.google.com/js/platform.js" async defer></script> <!-- Loads the Google interface -->
+
     <!-- Bootstrap Core CSS -->
     <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
 
@@ -41,23 +42,22 @@
 
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<form class="nav navbar-nav navbar-right" id="search" action="#" method="post">
+						<div id="label"><label for="search-terms" id="search-label">search</label></div>
+						<div id="input"><input type="text" name="search-terms" id="search-terms" placeholder="Enter search terms..."></div>
+					</form>
 					<ul class="nav navbar-nav navbar-right">
 						<li class="hidden">
 							<a href="#page-top"></a>
 						</li>
-						<li style="color: #e67300">
+						<li id="navbar-li">
 							<a href="index.html">Home</a>
 						</li>
-						<li style="color: #e67300">
+						<li id="navbar-li">
 							<a href="addRecipe.html">Add Recipe</a>
 						</li>
-						<li style="color: #e67300">
+						<li id="navbar-li">
 							<a href="contact.html">Contact Us</a>
-						</li>
-						<li style="color: #e67300">
-							<form>
-								<input type="text" name="search" placeholder="Search..">
-							</form>
 						</li>
 					</ul>
 				</div>
@@ -67,18 +67,9 @@
 		</nav>
 	</div>
 
+	
     <!-- Page Content -->
     <div class="container">
-
-        <!-- Page Header --*>
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">Page Heading
-                    <small>Secondary Text</small>
-                </h1>
-            </div>
-        </div>
-        <!-- /.row -->
 
         <!-- Projects Row -->
 		<div id="recipe_table">
@@ -161,6 +152,9 @@
     </script>
 	<!-- /.Population Script -->
 
+	<script src="bootstrap/js/classie.js"></script>
+	<script src="bootstrap/js/search.js"></script>	
+	
     <!-- jQuery -->
     <script src="bootstrap/js/jquery.js"></script>
 

@@ -168,6 +168,31 @@ input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
+
+/* Interactive Search Bar CSS */
+input[type=text] {
+width: 130px;
+-webkit-transition: width 0.4s ease-in-out;
+transition: width 0.4s ease-in-out;
+width: 130px;
+box-sizing: border-box;
+border: 2px solid #ccc;
+border-radius: 4px;
+font-size: 16px;
+background-color: white;
+background-image: url('searchicon.png');
+background-position: 10px 10px; 
+background-repeat: no-repeat;
+padding: 12px 20px 12px 40px;
+-webkit-transition: width 0.4s ease-in-out;
+transition: width 0.4s ease-in-out;
+}
+
+/* When the input field gets focus, change its width to 100% */
+input[type=text]:focus {
+width: 100%;
+}
+
 fieldset {
   padding: .35em .625em .75em;
   margin: 0 2px;
@@ -250,6 +275,7 @@ th {
   .navbar {
     display: none;
   }
+
   .btn > .caret,
   .dropup > .btn > .caret {
     border-top-color: #000 !important;

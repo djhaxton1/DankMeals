@@ -23,7 +23,6 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
 </head>
 
 <body>
@@ -54,6 +53,11 @@
 						</li>
 						<li style="color: #e67300">
 							<a href="contact.html">Contact Us</a>
+						</li>
+						<li style="color: #e67300">
+							<form>
+								<input type="text" name="search" placeholder="Search..">
+							</form>
 						</li>
 					</ul>
 				</div>
@@ -129,11 +133,26 @@
 	<!-- Population Script -->
 	<script>
        $.ajax({
-         url: "recipes.php",
+         url: "dbController.php",
          type: "post",
-         data:  null,
+         data:  {"function": "getRecipeList()"},
          success: function (response) {
-           $("#recipe_table").append(response);
+             var data = JSON.parse(response);
+             var out = "";
+             for (var i = 1; i < Number(data["length"]) + 1; i++){
+                if (i % 3 == 1){
+                    out += '<div class="row">';
+                 }
+                 out += '<div class="col-md-4 portfolio-item"><a href="recipePage.html?id=' + data["ids"][i] + '"><img class="img-responsive" src="http://placehold.it/700x400" alt=""></a><h3><a href="recipePage.html?id=' + data["ids"][i] + '">' + data["titles"][i] + '</a></h3></div>';
+                 if (i % 3 == 0){
+                     out += '</div>';
+                 }
+             }
+             if (data["length"] % 3 != 0){
+                 out += '</div>';
+             }
+             document.getElementById("recipe_table").innerHTML = out;
+             console.log(out);
          },
          error: function(jqXHR, textStatus, errorThrown) {
            console.log(textStatus, errorThrown);

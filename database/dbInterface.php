@@ -92,6 +92,7 @@ class dbInterface{
      *                      title string in $output["title"]
      *                      array of ingredient strings in $output["ingredients"]
      *                      array of instruction strings in $output["instructions"]
+     *                      string that contains the picture path in $output["picture"]
      */
     function getRecipe($id){
         //TODO validate id

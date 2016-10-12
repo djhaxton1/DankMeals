@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,13 +13,12 @@
     <title>Dank Meals</title>
 	
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="https://apis.google.com/js/platform.js" async defer></script> <!-- Loads the Google interface -->
 
-    <!-- Bootstrap CSS -->
-    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
-    <!-- Bootstrap CSS -->
-    <!--link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-	<!-- Custom CSS -->
-    <link href="bootstrap/css/3-col-portfolio.css" rel="stylesheet">
+    <!-- Bootstrap Core CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="bootstrap/css/meals.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -30,54 +30,28 @@
 
 <body>
 
-     <!-- Navigation -->
-		 <div class="container">
-		<nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
-			<div class="container">
-				<!-- Brand and toggle get grouped for better mobile display -->
-				<div class="navbar-header page-scroll">
-					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-						<span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
-					</button>
-					<a class="navbar-brand" href="#page-top">Dank Meals</a>
-				</div>
+    <!-- Navigation -->
+	<div id="navigation" class="container">
+		<script>
+			$.get("assets/nav.html", function(data) {
+				$("#navigation").replaceWith(data);
+			});
+		</script>	
+	</div>
 
-				<!-- Collect the nav links, forms, and other content for toggling -->
-				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-					<ul class="nav navbar-nav navbar-right">
-						<li class="hidden">
-							<a href="#page-top"></a>
-						</li>
-						<li style="color: #e67300">
-							<a href="index.html">Home</a>
-						</li>
-						<li style="color: #e67300">
-							<a href="addRecipe.html">Add Recipe</a>
-						</li>
-						<li style="color: #e67300">
-							<a href="contact.html">Contact Us</a>
-						</li>
-					</ul>
-				</div>
-				<!-- /.navbar-collapse -->
-			</div>
-			<!-- /.container-fluid -->
-		</nav>
-		</div>
+	<br>
 
     <!-- Page Content -->
-    <div class="container">
-
-        <!-- Page Header --*>
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">Page Heading
-                    <small>Secondary Text</small>
-                </h1>
-            </div>
-        </div>
-        <!-- /.row -->
-
+    <div id="content" class="container">
+		<!--<script>
+			$.ajax({
+				url: "dbController.php",
+				type: "post",
+				data: {"function": "getPageContent()"},
+				
+			});
+		</script>-->
+	
         <!-- Projects Row -->
 		<div id="recipe_table">
 			<!--<div class="row">
@@ -114,28 +88,42 @@
         <!-- /.row -->
 
         <hr>
-
-        <!-- Footer -->
-        <footer>
-            <div class="row">
-                <div class="col-lg-12">
-                    <p>Copyright &copy; Dank Meals 2016</p>
-                </div>
-            </div>
-            <!-- /.row -->
-        </footer>
-
+		
+		<!-- Footer -->
+		<div id="footer" class="container">
+			<script>
+				$.get("assets/foot.html", function(data) {
+					$("#footer").replaceWith(data);
+				});
+			</script>
+		</div>
+		
     </div>
     <!-- /.container -->
 	
 	<!-- Population Script -->
 	<script>
        $.ajax({
-         url: "recipes.php",
+         url: "dbController.php",
          type: "post",
-         data:  null,
+         data:  {"function": "getRecipeList()"},
          success: function (response) {
-           $("#recipe_table").append(response);
+             var data = JSON.parse(response);
+             var out = "";
+             for (var i = 1; i < Number(data["length"]) + 1; i++){
+                if (i % 3 == 1){
+                    out += '<div class="row">';
+                 }
+                 out += '<div class="col-md-4 portfolio-item"><a href="recipePage.html?id=' + data["ids"][i] + '"><img class="img-responsive" src="http://placehold.it/700x400" alt=""></a><h3><a href="recipePage.html?id=' + data["ids"][i] + '">' + data["titles"][i] + '</a></h3></div>';
+                 if (i % 3 == 0){
+                     out += '</div>';
+                 }
+             }
+             if (data["length"] % 3 != 0){
+                 out += '</div>';
+             }
+             document.getElementById("recipe_table").innerHTML = out;
+             console.log(out);
          },
          error: function(jqXHR, textStatus, errorThrown) {
            console.log(textStatus, errorThrown);
@@ -143,7 +131,7 @@
        });
     </script>
 	<!-- /.Population Script -->
-
+	
     <!-- jQuery -->
     <script src="bootstrap/js/jquery.js"></script>
 

@@ -112,15 +112,18 @@
              var out = "";
              for (var i = 1; i < Number(data["length"]) + 1; i++){
                 if (i % 3 == 1){
-                    out += '<div class="row">';
+                    out += "<div class='row'>";
                  }
-                 out += '<div class="col-md-4 portfolio-item"><a href="recipePage.html?id=' + data["ids"][i] + '"><img class="img-responsive" src="http://placehold.it/700x400" alt=""></a><h3><a href="recipePage.html?id=' + data["ids"][i] + '">' + data["titles"][i] + '</a></h3></div>';
+                 out += "<div class='col-md-4 portfolio-item'><a href='recipePage.html?id=" +
+                         data["ids"][i] + "'><img class='img-responsive' src='/pics"  +
+                         data["pictures"][i] + "' alt=''></a><h3><a href='recipePage.html?id=" +
+                         data["ids"][i] + "'>" + data["titles"][i] + "</a></h3></div>";
                  if (i % 3 == 0){
-                     out += '</div>';
+                     out += "</div>";
                  }
              }
              if (data["length"] % 3 != 0){
-                 out += '</div>';
+                 out += "</div>";
              }
              document.getElementById("recipe_table").innerHTML = out;
              console.log(out);

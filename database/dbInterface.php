@@ -23,12 +23,14 @@ class dbInterface{
      *                      array of recipe ids in $output["ids"]
      *                      array of recipe titles in $output["titles"]
      *                      integer that is the number of recipe entries in $output["length"]
+     *                      array of recipe pictures in $output["pictures"]
      */
     function getRecipeList(){
         $output = array();
         $output["ids"] = $this->getIDs();   //add ids to output array
         $output["titles"] = $this->getTitles(); //add titles to output array
         $output["length"] = $this->getLength(); //add the number of recipe entries
+        $output["pictures"] = $this->getPictures(); //add the recipe thumbnail pictures
         return $output;
     }
 
@@ -68,6 +70,21 @@ class dbInterface{
         $result = $this->db->sendCommandParse($query, $relevant);
         return $result[1];
     }
+
+    /**
+     * @return array    array of recipe thumbnail pictures
+     */
+    private function getPictures(){
+        $query = "SELECT * FROM recipes ORDER BY id";
+        $relevant = array("picture");
+        $result = $this->db->sendCommandParse($query, $relevant);
+        $pictures = array();    //array for output
+        //create an array of pictures
+        for ($i = 1; $i < count($result); $i++){
+            $pictures[$i] = $result[$i];
+        }
+        return $pictures;
+    }
     /**
      * @param $id   the id of the recipe requested
      * @return array    associative array containing all relevant data for a single recipe entry
@@ -75,6 +92,7 @@ class dbInterface{
      *                      title string in $output["title"]
      *                      array of ingredient strings in $output["ingredients"]
      *                      array of instruction strings in $output["instructions"]
+     *                      string that contains the picture path in $output["picture"]
      */
     function getRecipe($id){
         //TODO validate id
@@ -83,6 +101,7 @@ class dbInterface{
         $output["title"] = $this->getTitle($id);
         $output["ingredients"] = $this->getIngredients($id);
         $output["instructions"] = $this->getInstructions($id);
+        $output["picture"] = $this->getPicture($id);
         return $output;
     }
 
@@ -109,7 +128,7 @@ class dbInterface{
         $output = array(); //array for output
         //create array of ingredients
         for ($i = 1; $i < count($result); $i += 2){
-            $output[$i / 2] = $result[$i] . " " . $result[$i + 1];
+            $output[$i / 2 + 1] = $result[$i] . " " . $result[$i + 1];
         }
         return $output;
     }
@@ -130,6 +149,18 @@ class dbInterface{
         return $output;
     }
 
+    /**
+     * @param $id   the id of the requested recipe
+     * @return mixed    string containing the picture address
+     */
+    private function getPicture($id){
+        $query = "SELECT * FROM recipes WHERE id=" . $id;
+        $relevant = array("picture");
+        $result = $this->db->sendCommandParse($query, $relevant);
+        $output = $result[1];
+        return $output;
+    }
+
 
 
     function __destruct(){
@@ -138,3 +169,4 @@ class dbInterface{
         ob_end_clean();
     }
 }
+

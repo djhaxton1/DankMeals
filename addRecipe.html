@@ -4,6 +4,20 @@
         <title>Contact Us - Dank Meals</title>
         <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		
+		<!-- On Click Script for ingredients-->
+		<script>
+		function addIng(){
+			document.getElementById('ingredients').innerHTML += '<input type="text" class="form-control">';
+		}
+		</script>
+		
+		<!-- On Click Script for ingredients-->
+		<script>
+		function addIns(){
+			document.getElementById('instructions').innerHTML += '<input type="text" class="form-control">';
+		}
+		</script>
     </head>
     <body>
         
@@ -58,19 +72,25 @@
 					</div>
 					
 					<div class="form-group">
-					  <label for="ing">Ingredients</label>
-					  <input type="text" class="form-control">
-					
-						<button type="button" class="btn btn-default" aria-label="Left Align">
+						<label for="ing">Ingredients</label>
+						<input type="text" class="form-control">
+						<!-- This is where the added ingredient textboxes will go-->
+						<div id="ingredients"></div>
+						
+						<!-- Plus button for Ingredients-->
+						<button onclick="addIng()" type="button" class="btn btn-default" aria-label="Left Align">
 							<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 						</button>
 					</div>
 					
 					<div class="form-group">
-					  <label for="instruction">Instructions</label>
-					  <input type="text" class="form-control" id="pwd">
-					  
-						<button type="button" class="btn btn-default" aria-label="Left Align">
+						<label for="ing">Instructions</label>
+						<input type="text" class="form-control">
+						<!-- This is where the added instruction textboxes will go-->
+						<div id="instructions"></div>
+						
+						<!-- Plus button for Instructions-->
+						<button onclick="addIns()" type="button" class="btn btn-default" aria-label="Left Align">
 							<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 						</button>
 					</div>

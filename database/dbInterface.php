@@ -109,7 +109,7 @@ class dbInterface{
         $output = array(); //array for output
         //create array of ingredients
         for ($i = 1; $i < count($result); $i += 2){
-            $output[$i / 2] = $result[$i] . " " . $result[$i + 1];
+            $output[$i / 2 + 1] = $result[$i] . " " . $result[$i + 1];
         }
         return $output;
     }
@@ -138,3 +138,4 @@ class dbInterface{
         ob_end_clean();
     }
 }
+

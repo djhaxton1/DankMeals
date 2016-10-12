@@ -16,4 +16,8 @@ switch ($_POST["function"]){
     default:
         header("HTTP/1.1 400 Bad Request");
         echo "No such function";
+		break;
+	case ("getPageContent()"):
+		
+		break;
 }

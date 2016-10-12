@@ -10,7 +10,7 @@
     <meta name="author" content="">
 
     <title>Dank Meals</title>
-	
+
 	<script>
 		window.onload = function() {
 			load();
@@ -58,7 +58,9 @@
         <div class="row">
 
             <div class="col-md-8">
-                <img class="img-responsive" src="http://placehold.it/750x500" alt="">
+                <!--<img class="img-responsive" src="/DankMeals/pics/rec1/rec1_0.jpg" alt=""> -->
+                <div id="pics">
+                </div>
             </div>
 
             <div class="col-md-4">
@@ -68,15 +70,15 @@
 
         </div>
         <!-- /.row -->
-		
+
 		<!-- Instructions Row -->
 		<div class="row">
-		
+
 			<div class="col-md">
 				<h3>Instructions</h3>
 				<ol id="instructions"></ol>
 			</div>
-		
+
 		</div>
 		
         <!-- Related Projects Row -- >
@@ -126,7 +128,7 @@
 
     </div>
     <!-- /.container -->
-	
+
 	<!-- Populate Recipe -->
 	<script>
 		function load(){
@@ -169,6 +171,15 @@
 					document.getElementById("instructions").innerHTML = response;
 				}
 			})
+
+      $.ajax({
+        url:"getRecipe.php",
+        type: "post",
+        data: {"function": "getPic()", "argument": GET.id},
+        success: function (response) {
+					document.getElementById("pics").innerHTML = response;
+				}
+      })
 		}
 	</script>
 	<!-- /.Recipe -->

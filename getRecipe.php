@@ -20,6 +20,9 @@ switch ($_POST["function"]){
     case "getInstructions()":
         echo getInstructions($id);
         break;
+    case "getPic()":
+        echo getPic($id);
+        break;
     default:
         echo "Error: no such function!";
 }
@@ -95,6 +98,21 @@ function getIngredients($id){
     }
     return $output;
 }
+
+  function getPic($id){
+    ob_start();
+    $db = new database();
+    ob_end_clean();
+    $query = "SELECT * FROM recipes WHERE id =" . $id . ";";
+    $relevant = array("picture");
+    $result = $db->sendCommandParse($query, $relevant);
+    ob_start();
+    $db = null;
+    ob_end_clean();
+    $output = $result[1];
+    $output = "<img class='img-responsive' src='/DankMeals/pics" . $output . "' alt=''>";
+    return $output;
+  }
 
 //Example usage
 //echo getTitle(1) . "\n";

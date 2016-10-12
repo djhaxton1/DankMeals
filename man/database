@@ -12,7 +12,7 @@ database \- standard class containing functions for interfacing with the DankMea
 The Database class centralizes all data transfer between the remote TSP(Team Software Project) Database. The database class contains \fBfour\fR method declarations for constructing a connection, sending commands, and closing the connection when the desired tasks are completed.
 
 .SH FUNCTIONS LIST
-.BR Function			Description                           
+.BR Function			Description
 .br
 \fBsendCommand\fR		send an SQL Command and return the resulting class.
 .br

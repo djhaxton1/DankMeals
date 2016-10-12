@@ -9,12 +9,8 @@ switch ($_POST["function"]){
         echo json_encode($dbInterface->getRecipeList());
         break;
     case ("getRecipe()"):
-        $id = $_POST["argument"];   //recipe id that is passed to the page
-        if (gettype($id) != "integer"){
-            header("HTTP/1.1 400 Bad Request");
-            echo "Invalid ID";
-            return;
-        }
+        $id = (int) $_POST["argument"];   //recipe id that is passed to the page
+        //TODO validate argument
         echo json_encode($dbInterface->getRecipe($id));
         break;
     default:

@@ -26,6 +26,11 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <script>
+        window.onload = function(){
+            load();
+        }
+    </script>
 </head>
 
 <body>
@@ -103,35 +108,37 @@
 	
 	<!-- Population Script -->
 	<script>
-       $.ajax({
-         url: "dbController.php",
-         type: "post",
-         data:  {"function": "getRecipeList()"},
-         success: function (response) {
-             var data = JSON.parse(response);
-             var out = "";
-             for (var i = 1; i < Number(data["length"]) + 1; i++){
-                if (i % 3 == 1){
-                    out += "<div class='row'>";
-                 }
-                 out += "<div class='col-md-4 portfolio-item'><a href='recipePage.html?id=" +
-                         data["ids"][i] + "'><img class='img-responsive' src='/pics"  +
-                         data["pictures"][i] + "' alt=''></a><h3><a href='recipePage.html?id=" +
-                         data["ids"][i] + "'>" + data["titles"][i] + "</a></h3></div>";
-                 if (i % 3 == 0){
-                     out += "</div>";
-                 }
-             }
-             if (data["length"] % 3 != 0){
-                 out += "</div>";
-             }
-             document.getElementById("recipe_table").innerHTML = out;
-             console.log(out);
-         },
-         error: function(jqXHR, textStatus, errorThrown) {
-           console.log(textStatus, errorThrown);
-         }
-       });
+        function load() {
+            $.ajax({
+                url: "dbController.php",
+                type: "post",
+                data: {"function": "getRecipeList()"},
+                success: function (response) {
+                    var data = JSON.parse(response);
+                    var out = "";
+                    for (var i = 1; i < Number(data["length"]) + 1; i++) {
+                        if (i % 3 == 1) {
+                            out += "<div class='row'>";
+                        }
+                        out += "<div class='col-md-4 portfolio-item'><a href='recipePage.html?id=" +
+                                data["ids"][i] + "'><img class='img-responsive' src='pics" +
+                                data["pictures"][i] + "' alt=''></a><h3><a href='recipePage.html?id=" +
+                                data["ids"][i] + "'>" + data["titles"][i] + "</a></h3></div>";
+                        if (i % 3 == 0) {
+                            out += "</div>";
+                        }
+                    }
+                    if (data["length"] % 3 != 0) {
+                        out += "</div>";
+                    }
+                    document.getElementById("recipe_table").innerHTML = out;
+                    console.log(out);
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    console.log(textStatus, errorThrown);
+                }
+            });
+        }
     </script>
 	<!-- /.Population Script -->
 	

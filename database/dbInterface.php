@@ -95,10 +95,15 @@ class dbInterface{
      *                      string that contains the picture path in $output["picture"]
      */
     function getRecipe($id){
-        //TODO validate id
-
         $output = array();
         $output["title"] = $this->getTitle($id);
+        //check if id is a valid recipe id
+        if ($output["title"] == null){
+            $output["error"] = -1;  //error code
+            return $output;
+        }else{
+            $output["error"] = 0;   //no error
+        }
         $output["ingredients"] = $this->getIngredients($id);
         $output["instructions"] = $this->getInstructions($id);
         $output["picture"] = $this->getPicture($id);
@@ -169,4 +174,3 @@ class dbInterface{
         ob_end_clean();
     }
 }
-

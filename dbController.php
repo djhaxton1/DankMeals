@@ -9,9 +9,22 @@ switch ($_POST["function"]){
         echo json_encode($dbInterface->getRecipeList());
         break;
     case ("getRecipe()"):
-        $id = (int) $_POST["argument"];   //recipe id that is passed to the page
-        //TODO validate argument
-        echo json_encode($dbInterface->getRecipe($id));
+        //check that id is composed of decimal digits
+        if (! ctype_digit($_POST["argument"])){
+           header("HTTP/1.1 404 Page Not Found");
+            echo "Invalid id";
+            die("Invalid ID passed in url");
+        }
+
+        $id = (int) $_POST["argument"];  //recipe id that is passed to the page
+        $out = $dbInterface->getRecipe($id);
+        //check if dbInterface returned an error code
+        if($out["error"]){
+            header("HTTP/1.1 404 Page Not Found");
+            echo "No Recipe with that ID";
+            die("Invalid ID passed in url");
+        }
+        echo json_encode($out);
         break;
     default:
         header("HTTP/1.1 400 Bad Request");

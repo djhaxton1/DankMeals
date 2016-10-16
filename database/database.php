@@ -22,7 +22,7 @@ class database {
 
 		// Verify a Connection was made
 		if ($this->conn->connect_error) {
-			die("Connection failed: " . $conn->connect_error);
+			die("Connection failed: " . $this->conn->connect_error);
 		} else {
 			echo ("Connected Successfully\n");
 		}

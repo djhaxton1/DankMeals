@@ -18,42 +18,27 @@
 			document.getElementById('instructions').innerHTML += '<input type="text" class="form-control">';
 		}
 		</script>
-    </head>
+
+		<!-- Bootstrap Core CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="bootstrap/css/meals.css">
+		
+		<!-- Loads the Google interface -->
+		<script src="https://apis.google.com/js/platform.js" async defer></script>
+		<meta name="google-signin-client_id" content="406057883070-d26boopl1m5dd1cbknjl2cj3c1jl4eas.apps.googleusercontent.com">
+		
+	</head>
+
     <body>
         
-		 <!-- Navigation -->
-		 <div class="container">
-		<nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
-			<div class="container">
-				<!-- Brand and toggle get grouped for better mobile display -->
-				<div class="navbar-header page-scroll">
-					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-						<span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
-					</button>
-					<a class="navbar-brand" href="#page-top">Dank Meals</a>
-				</div>
-
-				<!-- Collect the nav links, forms, and other content for toggling -->
-				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-					<ul class="nav navbar-nav navbar-right">
-						<li class="hidden">
-							<a href="#page-top"></a>
-						</li>
-						<li style="color: #e67300">
-							<a href="index.html">Home</a>
-						</li>
-						<li style="color: #e67300">
-							<a href="addRecipe.html">Add Recipe</a>
-						</li>
-						<li style="color: #e67300">
-							<a href="contact.html">Contact Us</a>
-						</li>
-					</ul>
-				</div>
-				<!-- /.navbar-collapse -->
-			</div>
-			<!-- /.container-fluid -->
-		</nav>
+		<!-- Navigation -->
+		<div id="navigation" class="container">
+			<script>
+				$.get("assets/nav.html", function(data) {
+					$("#navigation").replaceWith(data);
+				});
+			</script>
 		</div>
 		
 		<div class="container" style="padding-top: 80px">
@@ -63,8 +48,8 @@
 				<h1>Do you have a dank meal to share?</h1> 
 				<h2><i>Please insert your dankness below.</i></h2> 
 				<br />
-				<p>
 				
+<<<<<<< HEAD
 				<form>
 					<div class="form-group">
 					  <label for="rec_name">Recipe Name</label>
@@ -107,6 +92,11 @@
 				</form>
 				
 				</p>
+=======
+				<div id="content">
+					<div class="g-signin2" data-onsuccess="onSignIn"></div>
+				</div>
+>>>>>>> b5635b3ab3de724729e3f628d65ccf9e7d8b762a
 			</div> 
 			
 			<!-- footer -->
@@ -132,5 +122,14 @@
 			</div>
 		</div>
 		
+		<script>
+			function onSignIn(googleUser) {
+			  var profile = googleUser.getBasicProfile();
+			  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+			  console.log('Name: ' + profile.getName());
+			  console.log('Image URL: ' + profile.getImageUrl());
+			  console.log('Email: ' + profile.getEmail());
+			}
+		</script>
     </body>
 </html>

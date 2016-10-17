@@ -51,16 +51,6 @@ class dbInterface{
         $relevant = array("title");
         $result = $this->db->sendCommandParse($query,$relevant);    //retrieve titles
         return $result;
-<<<<<<< HEAD
-    }
-
-    private function getLength(){
-        $query = "SELECT COUNT(*) FROM recipes";
-        $relevant = array("COUNT(*)");
-        $result = $this->db->sendCommandParse($query, $relevant);
-        return $result[1];
-=======
->>>>>>> 3d88ef9e52c6f9ce013f7452d4e6b3833ec1759a
     }
 
     /**

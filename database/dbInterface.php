@@ -29,7 +29,6 @@ class dbInterface{
         $output = array();
         $output["ids"] = $this->getIDs();   //add ids to output array
         $output["titles"] = $this->getTitles(); //add titles to output array
-        $output["length"] = $this->getLength(); //add the number of recipe entries
         $output["pictures"] = $this->getPictures(); //add the recipe thumbnail pictures
         return $output;
     }
@@ -41,12 +40,7 @@ class dbInterface{
         $query = "SELECT * FROM recipes ORDER BY id";
         $relevant = array("id");
         $result = $this->db->sendCommandParse($query, $relevant);   //retrieve id's
-        $ids = array();     //array for output
-        //create an array of the ids
-        for ($i = 1; $i < count($result); $i++){
-            $ids[$i] = $result[$i];
-        }
-        return $ids;
+        return $result;
     }
 
     /**
@@ -56,19 +50,7 @@ class dbInterface{
         $query = "SELECT * FROM recipes ORDER BY id";
         $relevant = array("title");
         $result = $this->db->sendCommandParse($query,$relevant);    //retrieve titles
-        $titles = array();    //array for output
-        //create an array of the titles
-        for ($i = 1; $i < count($result); $i++){
-            $titles[$i] = $result[$i];
-        }
-        return $titles;
-    }
-
-    private function getLength(){
-        $query = "SELECT COUNT(*) FROM recipes";
-        $relevant = array("COUNT(*)");
-        $result = $this->db->sendCommandParse($query, $relevant);
-        return $result[1];
+        return $result;
     }
 
     /**
@@ -78,12 +60,7 @@ class dbInterface{
         $query = "SELECT * FROM recipes ORDER BY id";
         $relevant = array("picture");
         $result = $this->db->sendCommandParse($query, $relevant);
-        $pictures = array();    //array for output
-        //create an array of pictures
-        for ($i = 1; $i < count($result); $i++){
-            $pictures[$i] = $result[$i];
-        }
-        return $pictures;
+        return $result;
     }
     /**
      * @param $id   the id of the recipe requested
@@ -118,8 +95,7 @@ class dbInterface{
         $query = "SELECT * FROM recipes WHERE id=" . $id;
         $relevant = array("title");
         $result = $this->db->sendCommandParse($query, $relevant); //retrieve title
-        $output = $result[1];   //output
-        return $output;
+        return $result[0];
     }
 
     /**
@@ -132,8 +108,8 @@ class dbInterface{
         $result = $this->db->sendCommandParse($query, $relevant);
         $output = array(); //array for output
         //create array of ingredients
-        for ($i = 1; $i < count($result); $i += 2){
-            $output[$i / 2 + 1] = $result[$i] . " " . $result[$i + 1];
+        for ($i = 0; $i < count($result); $i += 2){
+            $output[$i / 2] = $result[$i] . " " . $result[$i + 1];
         }
         return $output;
     }
@@ -146,12 +122,7 @@ class dbInterface{
         $query = "SELECT * FROM instructions WHERE rec_id=" . $id . " ORDER BY order_num";
         $relevant = array("instruction_text");
         $result = $this->db->sendCommandParse($query, $relevant);
-        $output = array();  //array for output
-        //create array of instructions
-        for ($i = 1; $i < count($result); $i++){
-            $output[$i] = $result[$i];
-        }
-        return $output;
+        return $result;
     }
 
     /**
@@ -162,8 +133,7 @@ class dbInterface{
         $query = "SELECT * FROM recipes WHERE id=" . $id;
         $relevant = array("picture");
         $result = $this->db->sendCommandParse($query, $relevant);
-        $output = $result[1];
-        return $output;
+        return $result[0];
     }
 
 

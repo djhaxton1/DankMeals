@@ -116,19 +116,21 @@
                 success: function (response) {
                     var data = JSON.parse(response);
                     var out = "";
-                    for (var i = 1; i < Number(data["length"]) + 1; i++) {
-                        if (i % 3 == 1) {
+                    var i = 0;
+                    while (data["titles"][i] != undefined){
+                        if ((i + 1) % 3 == 1) {
                             out += "<div class='row'>";
                         }
                         out += "<div class='col-md-4 portfolio-item'><div id='tile'><a href='recipePage.html?id=" +
                                 data["ids"][i] + "'><img src='pics"  + 
 								data["pictures"][i] + "'></a></div><h3><a href='recipePage.html?id=" +
                                 data["ids"][i] + "'>" + data["titles"][i] + "</a></h3></div>";
-                        if (i % 3 == 0) {
+                        if ((i + 1) % 3 == 0) {
                             out += "</div>";
                         }
+                        i++;
                     }
-                    if (data["length"] % 3 != 0) {
+                    if ((i + 1) % 3 != 0) {
                         out += "</div>";
                     }
                     document.getElementById("recipe_table").innerHTML = out;

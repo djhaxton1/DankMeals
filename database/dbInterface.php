@@ -41,27 +41,17 @@ class dbInterface{
         $query = "SELECT * FROM recipes ORDER BY id";
         $relevant = array("id");
         $result = $this->db->sendCommandParse($query, $relevant);   //retrieve id's
-        $ids = array();     //array for output
-        //create an array of the ids
-        for ($i = 1; $i < count($result); $i++){
-            $ids[$i] = $result[$i];
-        }
-        return $ids;
+        return $result;
     }
 
     /**
      * @return array    array of recipe titles
      */
-    private function getTitles(){
-        $query = "SELECT * FROM recipes ORDER BY id";
+    function getTitles(){
+        $query = "SELECT * FROM recipes ORDER BY id;";
         $relevant = array("title");
         $result = $this->db->sendCommandParse($query,$relevant);    //retrieve titles
-        $titles = array();    //array for output
-        //create an array of the titles
-        for ($i = 1; $i < count($result); $i++){
-            $titles[$i] = $result[$i];
-        }
-        return $titles;
+        return $result;
     }
 
     private function getLength(){
@@ -78,12 +68,7 @@ class dbInterface{
         $query = "SELECT * FROM recipes ORDER BY id";
         $relevant = array("picture");
         $result = $this->db->sendCommandParse($query, $relevant);
-        $pictures = array();    //array for output
-        //create an array of pictures
-        for ($i = 1; $i < count($result); $i++){
-            $pictures[$i] = $result[$i];
-        }
-        return $pictures;
+        return $result;
     }
     /**
      * @param $id   the id of the recipe requested

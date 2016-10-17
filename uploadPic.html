@@ -2,11 +2,37 @@
 <html>
 <body>
 
-<form action="uploadPic.php" method="post" enctype="multipart/form-data">
     Select image to upload:
     <input type="file" name="fileToUpload" id="fileToUpload">
-    <input type="submit" value="Upload Image" name="submit">
-</form>
+    <input type="submit" value="Upload Image" name="submit" onclick="upload">
 
 </body>
+<script>
+var client = new XMLHttpRequest();
+
+
+ function upload()
+ {
+   console.log("uploading");
+    var file = document.getElementById("uploadfile");
+
+    /* Create a FormData instance */
+    var formData = new FormData();
+    /* Add the file */
+    formData.append("upload", file.files[0]);
+
+    client.open("post", "/uploadPic.php", true);
+    client.setRequestHeader("Content-Type", "multipart/form-data");
+    client.send(formData);  /* Send to server */
+ }
+
+ /* Check the response status */
+ client.onreadystatechange = function()
+ {
+    if (client.readyState == 4 && client.status == 200)
+    {
+       alert(client.statusText);
+    }
+ }
+</script>
 </html>

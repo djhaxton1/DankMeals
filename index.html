@@ -120,9 +120,9 @@
                         if (i % 3 == 1) {
                             out += "<div class='row'>";
                         }
-                        out += "<div class='col-md-4 portfolio-item'><a href='recipePage.html?id=" +
-                                data["ids"][i] + "'><img class='img-responsive' src='pics" +
-                                data["pictures"][i] + "' alt=''></a><h3><a href='recipePage.html?id=" +
+                        out += "<div class='col-md-4 portfolio-item'><div id='tile'><a href='recipePage.html?id=" +
+                                data["ids"][i] + "'><img src='pics"  + 
+								data["pictures"][i] + "'></a></div><h3><a href='recipePage.html?id=" +
                                 data["ids"][i] + "'>" + data["titles"][i] + "</a></h3></div>";
                         if (i % 3 == 0) {
                             out += "</div>";

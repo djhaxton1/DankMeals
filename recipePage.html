@@ -158,7 +158,7 @@
                         i += 1;
                     }
                     //create instructions string
-                    i = 1;
+                    i = 0;
                     while (data["instructions"][i] != undefined) {
                         instructions += '<li>' + data["instructions"][i] + '</li>';
                         i += 1;
@@ -166,8 +166,8 @@
                     document.getElementById("title").innerHTML = '<h1>' + data["title"] + '</h1>';
                     document.getElementById("ingredients").innerHTML = ingredients;
                     document.getElementById("instructions").innerHTML = instructions;
-                    document.getElementById("pics").innerHTML = "<img class='img-responsive' src='pics"
-                            + data["picture"] + "' alt=''>";
+                    document.getElementById("pics").innerHTML = "<div id='image'><img src='pics"
+                            + data["picture"] + "' alt=''></div>";
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
                     console.log(textStatus, errorThrown);

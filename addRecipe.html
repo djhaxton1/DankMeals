@@ -2,7 +2,6 @@
 <html>
     <head>
         <title>Add Recipe - Dank Meals</title>
-        <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 		
 		<!-- On Click Script for ingredients-->
@@ -12,7 +11,7 @@
 		}
 		</script>
 		
-		<!-- On Click Script for ingredients-->
+		<!-- On Click Script for instructions-->
 		<script>
 		function addIns(){
 			document.getElementById('instructions').innerHTML += '<input type="text" class="form-control">';
@@ -21,7 +20,6 @@
 
 		<!-- Bootstrap Core CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<link rel="stylesheet" href="bootstrap/css/meals.css">
 		
 		<!-- Loads the Google interface -->
@@ -92,7 +90,7 @@
 				
 				</p>
 				<div id="content">
-					<div class="g-signin2" data-onsuccess="onSignIn"></div>
+					<div id="my-signin2" class="g-signin2" data-onsuccess="onSignIn"></div>
 				</div>
 			</div> 
 			
@@ -126,6 +124,20 @@
 			  console.log('Name: ' + profile.getName());
 			  console.log('Image URL: ' + profile.getImageUrl());
 			  console.log('Email: ' + profile.getEmail());
+			}
+			function onFailure(error) {
+				console.log(error);
+			}
+			function renderButton() {
+				gapi.signin2.render('my-signin2', {
+					'scope': 'profile email',
+					'width': 240,
+					'height': 50,
+					'longtitle': true,
+					'theme': 'dark',
+					'onsuccess': onSignIn,
+					'onfailure': onFailure
+				});
 			}
 		</script>
     </body>

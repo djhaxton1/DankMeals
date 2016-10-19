@@ -47,7 +47,7 @@ class database {
 	function sendCommandParse($cmd, $array) {
 		$result = mysqli_query($this->conn, $cmd);
 		$size = count($array);
-		$r = array(null);
+		$r = array();
 		
 		/* store the data requested in an array */
 		while($row = $result->fetch_assoc()) {

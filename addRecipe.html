@@ -8,14 +8,14 @@
 		<!-- On Click Script for ingredients-->
 		<script>
 		function addIng(){
-			document.getElementById('ingredients').insertAdjacentHTML('beforeend','<input type="text" class="form-control">');
+			document.getElementById('ingredients').insertAdjacentHTML('beforeend','<input type="text" name="ingredient" class="form-control">');
 		}
 		</script>
 		
 		<!-- On Click Script for ingredients-->
 		<script>
 		function addIns(){
-			document.getElementById('instructions').insertAdjacentHTML('beforeend', '<input type="text" class="form-control">');
+			document.getElementById('instructions').insertAdjacentHTML('beforeend', '<input type="text" name="instruction" class="form-control">');
 		}
 		</script>
 
@@ -49,15 +49,15 @@
 				<h2><i>Please insert your dankness below.</i></h2> 
 				<br />
 				
-				<form>
+				<form action="database/submitRecipe.php" method="get">
 					<div class="form-group">
 					  <label for="rec_name">Recipe Name</label>
-					  <input type="text" class="form-control">
+					  <input type="text" name="name" class="form-control">
 					</div>
 					
 					<div class="form-group">
 						<label for="ing">Ingredients</label>
-						<input type="text" class="form-control">
+						<input type="text" name="ingredient" class="form-control">
 						<!-- This is where the added ingredient textboxes will go-->
 						<div id="ingredients"></div>
 						
@@ -69,7 +69,7 @@
 					
 					<div class="form-group">
 						<label for="ing">Instructions</label>
-						<input type="text" class="form-control">
+						<input type="text" name="instruction" class="form-control">
 						<!-- This is where the added instruction textboxes will go-->
 						<div id="instructions"></div>
 						
@@ -81,7 +81,7 @@
 					
 					<div class="form-group">
 						<label class="custom-file">
-						  <input type="file" id="file" class="custom-file-input">
+						  <input type="file" id="file" name="picture" class="custom-file-input">
 						  <span class="custom-file-control"></span>
 						</label>
 					</div>

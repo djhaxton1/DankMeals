@@ -5,6 +5,7 @@
     include 'dbInterface.php';
     $db        = new dbInterface();
     $recipes   = $db->getTitles();
+    $db = null;
     $occurance = array_fill(0, count($recipes), 0);
     
 	$t = explode(" ", $_POST["search-terms"]);

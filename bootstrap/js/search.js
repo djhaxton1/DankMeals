@@ -3,6 +3,7 @@
 	// get vars
 	var searchEl = document.querySelector("#input");
 	var labelEl = document.querySelector("#label");
+	var menuEl = document.querySelector("#menu-button");
 
 	// register clicks and toggle classes
 	labelEl.addEventListener("click",function(){
@@ -12,6 +13,14 @@
 		} else {
 			classie.add(searchEl,"focus");
 			classie.add(labelEl,"active");
+		}
+	});
+	
+	menuEl.addEventListener("click",function(){
+		if (classie.has(menuEl,"focus")) {
+			classie.remove(menuEl,"focus");
+		} else {
+			classie.add(menuEl,"focus");
 		}
 	});
 

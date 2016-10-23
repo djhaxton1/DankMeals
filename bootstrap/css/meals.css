@@ -14,7 +14,10 @@ h3, h1 {
 #recipe_table {
 	text-align: center;
 }
+
+/* Firefox Workaround for text cut-offs */
 line-height: normal;
+
 input[type=text] {
 	width: 130px;
 	-webkit-transition: width 0.4s ease-in-out;

@@ -8,6 +8,7 @@
 class database {
 	/* Private Data Members */
 	private $conn;
+	private $last_id;
 	
 	/**
 	 * Instaintates an new connection to the database
@@ -18,7 +19,8 @@ class database {
 		$password =            "null";
 		$db       =           "tspdb";
 		// Create a Connection
-		$this->conn  = new mysqli($server, $username, $password, $db);
+		$this->conn    = new mysqli($server, $username, $password, $db);
+		$this->last_id = NULL;
 
 		// Verify a Connection was made
 		if ($this->conn->connect_error) {
@@ -35,6 +37,7 @@ class database {
 	 */
 	function sendCommand($cmd) {
 		$result = mysqli_query($this->conn, $cmd);
+		$this->last_id = mysqli_insert_id($this->conn);
 		return $result;
 	}
 	
@@ -46,6 +49,7 @@ class database {
 	 */
 	function sendCommandParse($cmd, $array) {
 		$result = mysqli_query($this->conn, $cmd);
+		$this->last_id = mysqli_insert_id($this->conn);
 		$size = count($array);
 		$r = array();
 		
@@ -58,6 +62,13 @@ class database {
 				}
 		}
 		return $r;
+	}
+	
+	/**
+	 * Retrieve the last executed command id.
+	 */
+	function getLastID() {
+		return $this->last_id;
 	}
 	
 	/**

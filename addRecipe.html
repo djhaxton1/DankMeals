@@ -7,14 +7,14 @@
 		<!-- On Click Script for ingredients-->
 		<script>
 		function addIng(){
-			document.getElementById('ingredients').innerHTML += '<input type="text" class="form-control">';
+			document.getElementById('ingredients').insertAdjacentHTML('beforeend','<input type="text" class="form-control">');
 		}
 		</script>
 		
 		<!-- On Click Script for instructions-->
 		<script>
 		function addIns(){
-			document.getElementById('instructions').innerHTML += '<input type="text" class="form-control">';
+			document.getElementById('instructions').insertAdjacentHTML('beforeend', '<input type="text" class="form-control">');
 		}
 		</script>
 

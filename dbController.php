@@ -7,12 +7,14 @@ $dbInterface = new dbInterface();   //the dbInterface object used to access data
 switch ($_POST["function"]){
     case ("getRecipeList()"):
         echo json_encode($dbInterface->getRecipeList());
+        $dbInterface = null;
         break;
     case ("getRecipe()"):
         //check that id is composed of decimal digits
         if (! ctype_digit($_POST["argument"])){
            header("HTTP/1.1 404 Page Not Found");
             echo "Invalid id";
+            $dbInterface = null;
             die("Invalid ID passed in url");
         }
 
@@ -25,12 +27,11 @@ switch ($_POST["function"]){
             die("Invalid ID passed in url");
         }
         echo json_encode($out);
+        $dbInterface = null;
         break;
     default:
         header("HTTP/1.1 400 Bad Request");
         echo "No such function";
-		break;
-	case ("getPageContent()"):
-		
+        $dbInterface = null;
 		break;
 }

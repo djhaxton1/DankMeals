@@ -11,7 +11,7 @@ class database {
 	private $last_id;
 	
 	/**
-	 * Instaintates an new connection to the database
+	 * Instantiates an new connection to the database
 	 */
 	function __construct() {
 		$server   = "141.219.196.115";

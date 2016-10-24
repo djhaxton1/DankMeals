@@ -34,16 +34,6 @@ class dbInterface{
     }
 
     /**
-     * @return array    array of recipe ids
-     */
-    private function getIDs(){
-        $query = "SELECT * FROM recipes ORDER BY id";
-        $relevant = array("id");
-        $result = $this->db->sendCommandParse($query, $relevant);   //retrieve id's
-        return $result;
-    }
-
-    /**
      * @return array    array of recipe titles
      */
     function getTitles(){
@@ -53,15 +43,6 @@ class dbInterface{
         return $result;
     }
 
-    /**
-     * @return array    array of recipe thumbnail pictures
-     */
-    private function getPictures(){
-        $query = "SELECT * FROM recipes ORDER BY id";
-        $relevant = array("picture");
-        $result = $this->db->sendCommandParse($query, $relevant);
-        return $result;
-    }
     /**
      * @param $id   the id of the recipe requested
      * @return array    associative array containing all relevant data for a single recipe entry
@@ -85,6 +66,65 @@ class dbInterface{
         $output["instructions"] = $this->getInstructions($id);
         $output["picture"] = $this->getPicture($id);
         return $output;
+    }
+
+    /**
+     * @param $data     an associative array that contains information in the following format
+     *                      data["title"]: the name of the recipe as a string
+     *                      data["parent_id"]: the id of the parent recipe as an integer  |  NUll if no parent
+     *                      data["ingredient_measurement"]: an array of ingredient measurement strings in the order they appear
+     *                      data["ingredient_name"]: an array of ingredient name strings in the order they appear
+     *                      data["instructions"]: an array of instruction text strings in the order they appear
+     *
+     * @return int     ID of the newly added recipe in the recipes table
+     *
+     * Inserts a new recipe and its associated instructions and ingredients
+     *     Note:  this function assumes that a correctly formatted directory will be built for the picture file
+     */
+    function InsertRecipe($data){
+        //TODO validate argument
+        $id = -1;
+        //insert main recipe entry
+        $query = "INSERT INTO recipes (parent_id, title, picture) VALUES (" . data["parent_id"] . ", " . data["title"] . ",'')";
+        $this->db->sendCommand($query);
+        $id = $this->db->getLastID();   //find the id of the newly inserted recipe
+        //insert the assumed path to the picture file
+        $directory = "/rec" . $id ."/rec" . $id . "_0.jpg";
+        $query = "UPDATE recipes SET picture=" . $directory . " WHERE id=" . $id;
+        $this->db->sendCommand($query);
+        //insert ingredients to ingredients table
+        for ($i = 0; i < count(data["ingredient_measurement"]); $i++){
+            $query = "INSERT INTO ingredients (rec_id, order_num, measurement, name) VALUES (" . $id . ", " .
+                $i+1 . ", " . data["ingredient_measurement"][$id] . ", " . data["ingredient_name"][$id] . ")";
+            $this->db->sendCommand($query);
+        }
+        //insert instructions to instructions table
+        for ($i = 0; i < count(data["instructions"]); $i++){
+            $query = "INSERT INTO instructions (rec_id, order_num, instruction_text) VALUES (" . $id . ", " .
+                $i+1 . ", " . data["instructions"][$id];
+            $this->db->sendCommand($query);
+        }
+        return $id; //the id of the new entry in the recipes table
+    }
+
+    /**
+     * @return array    array of recipe ids
+     */
+    private function getIDs(){
+        $query = "SELECT * FROM recipes ORDER BY id";
+        $relevant = array("id");
+        $result = $this->db->sendCommandParse($query, $relevant);   //retrieve id's
+        return $result;
+    }
+
+    /**
+     * @return array    array of recipe thumbnail pictures
+     */
+    private function getPictures(){
+        $query = "SELECT * FROM recipes ORDER BY id";
+        $relevant = array("picture");
+        $result = $this->db->sendCommandParse($query, $relevant);
+        return $result;
     }
 
     /**

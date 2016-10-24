@@ -6,8 +6,12 @@
 		
 		<!-- On Click Script for ingredients-->
 		<script>
+		var index = 2;
+		
 		function addIng(){
-			document.getElementById('ingredients').insertAdjacentHTML('beforeend','<input type="text" name="ingredient" class="form-control">');
+			document.getElementById('ingredients').insertAdjacentHTML('beforeend',
+				'<input type="text" name="ingredient" class="form-control">');
+			index = index + 1;
 		}
 		</script>
 		

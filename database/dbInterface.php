@@ -85,7 +85,7 @@ class dbInterface{
         //TODO validate argument
         $id = -1;
         //insert main recipe entry
-        $query = "INSERT INTO recipes (parent_id, title, picture) VALUES (" . data["parent_id"] . ", " . data["title"] . ",'')";
+        $query = "INSERT INTO recipes (parent_id, title, picture) VALUES (" . $data["parent_id"] . ", " . $data["title"] . ",'')";
         $this->db->sendCommand($query);
         $id = $this->db->getLastID();   //find the id of the newly inserted recipe
         //insert the assumed path to the picture file
@@ -93,15 +93,15 @@ class dbInterface{
         $query = "UPDATE recipes SET picture=" . $directory . " WHERE id=" . $id;
         $this->db->sendCommand($query);
         //insert ingredients to ingredients table
-        for ($i = 0; i < count(data["ingredient_measurement"]); $i++){
+        for ($i = 0; i < count($data["ingredient_measurement"]); $i++){
             $query = "INSERT INTO ingredients (rec_id, order_num, measurement, name) VALUES (" . $id . ", " .
-                $i+1 . ", " . data["ingredient_measurement"][$id] . ", " . data["ingredient_name"][$id] . ")";
+                $i+1 . ", " . $data["ingredient_measurement"][$id] . ", " . $data["ingredient_name"][$id] . ")";
             $this->db->sendCommand($query);
         }
         //insert instructions to instructions table
-        for ($i = 0; i < count(data["instructions"]); $i++){
+        for ($i = 0; i < count($data["instructions"]); $i++){
             $query = "INSERT INTO instructions (rec_id, order_num, instruction_text) VALUES (" . $id . ", " .
-                $i+1 . ", " . data["instructions"][$id];
+                $i+1 . ", " . $data["instructions"][$id];
             $this->db->sendCommand($query);
         }
         return $id; //the id of the new entry in the recipes table

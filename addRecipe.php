@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html>
     <head>
+		<?php
+			include 'autocomplete.php';
+		?>
+	
         <title>Add Recipe - Dank Meals</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 		
 		<!-- On Click Script for ingredients-->
 		<script>
 		var index = 2;
-		var ingredientCount = 1;
+		var ingredientCount = 0;
 		function addIng(){
 			document.getElementById('ingredients').insertAdjacentHTML('beforeend',
-				'<input type="text" name="ingredient' + (ingredientCount++) + '" class="form-control">');
+				createAutocompleteTextbox('ingredients' + (ingredientCount++)));
 			index = index + 1;
 			$('#ingredient_count').val(ingredientCount);
 		}
@@ -56,7 +60,7 @@
 				<h2><i>Please insert your dankness below.</i></h2> 
 				<br />
 				
-				<form action="database/submitRecipe.php" method="get">
+				<form action="database/submitRecipe.php" method="get" autocomplete="off">
 					<div class="form-group">
 					  <label for="rec_name">Recipe Name</label>
 					  <input type="text" name="name" class="form-control">
@@ -64,10 +68,12 @@
 					
 					<div class="form-group">
 						<label for="ing">Ingredients</label>
-						<input type="hidden" name="ingredient_count" id="ingredient_count" value="1">
-						<input type="text" name="ingredient0" class="form-control">
+						<input type="hidden" name="ingredient_count" id="ingredient_count" value='0'>
 						<!-- This is where the added ingredient textboxes will go-->
 						<div id="ingredients"></div>
+						<script>addIng();</script>
+						
+						
 						
 						<!-- Plus button for Ingredients-->
 						<button onclick="addIng()" type="button" class="btn btn-default" aria-label="Left Align">

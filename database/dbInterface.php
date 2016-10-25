@@ -81,7 +81,7 @@ class dbInterface{
      * Inserts a new recipe and its associated instructions and ingredients
      *     Note:  this function assumes that a correctly formatted directory will be built for the picture file
      */
-    function InsertRecipe($data){
+    /*function InsertRecipe($data){
         //TODO validate argument
         $id = -1;
         //insert main recipe entry
@@ -105,7 +105,7 @@ class dbInterface{
             $this->db->sendCommand($query);
         }
         return $id; //the id of the new entry in the recipes table
-    }
+    }*/
 
     /**
      * @return array    array of recipe ids

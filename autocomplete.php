@@ -15,7 +15,7 @@
 		
 		//Check if our database has anything that starts with text (only if something changed)
 		if (selectionIndex == oldIndex) {
-			$("#autocompleteDiv" + id).load("autocompleteSearch.php?id=" + escape(id) + "&query=" + escape(text));	
+			$("#autocompleteDiv" + id).load("database/autocompleteSearch.php?id=" + escape(id) + "&query=" + escape(text));	
 		}
 		
 		//Highlight whatever object is at the correct index
@@ -36,18 +36,18 @@
 		selectionIndex = -1;
 		$("#autocompleteDiv" + id).show(200);
 	}
+	
+	function createAutocompleteTextbox(id) {
+		return " "
+			+ "<input type='text' class='form-control' name='" + id + "' id='" + id + "' onKeyUp='autocompleteIngredient(this,\"" + id + "\",event)' onBlur='hideAutocompleteDiv(\"" + id + "\")' onFocus='showAutocompleteDiv(\"" + id + "\")'>"
+			+ "<div id='autocompleteDiv" + id + "' style='background-color: #fff; border: 1px solid #ccc; padding-left: 5px; padding-right: 5px; display: none; position: absolute'></div>"
+	}
 </script>
 
-<?php
-	function autocompleteTextbox($id) {
-		return "
-		<input type='text' name='$id' id='$id' onKeyUp='autocompleteIngredient(this,\"$id\",event)' onBlur='hideAutocompleteDiv(\"$id\")' onFocus='showAutocompleteDiv(\"$id\")'><br>
-		<div id='autocompleteDiv$id' style='background-color: #fff; border: 1px solid #ccc; padding-left: 5px; padding-right: 5px; display: none; position: fixed'></div>
-		";
-	}
-	
-	echo autocompleteTextbox("a");	
-	
-?>
+<script>
+
+//document.write(createAutocompleteTextbox('a'));
+
+</script>
 
 

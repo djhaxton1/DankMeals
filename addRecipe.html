@@ -7,11 +7,12 @@
 		<!-- On Click Script for ingredients-->
 		<script>
 		var index = 2;
-		
+		var ingredientCount = 1;
 		function addIng(){
 			document.getElementById('ingredients').insertAdjacentHTML('beforeend',
-				'<input type="text" name="ingredient" class="form-control">');
+				'<input type="text" name="ingredient' + (ingredientCount++) + '" class="form-control">');
 			index = index + 1;
+			$('#ingredient_count').val(ingredientCount)
 		}
 		</script>
 		
@@ -59,7 +60,8 @@
 					
 					<div class="form-group">
 						<label for="ing">Ingredients</label>
-						<input type="text" name="ingredient" class="form-control">
+						<input type="hidden" name="ingredient_count" id="ingredient_count" value="1">
+						<input type="text" name="ingredient0" class="form-control">
 						<!-- This is where the added ingredient textboxes will go-->
 						<div id="ingredients"></div>
 						

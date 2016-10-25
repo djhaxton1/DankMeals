@@ -136,7 +136,23 @@ class dbInterface{
         return $result[0];
     }
 
+	/**Search our database for an ingredient that starts with $text
+	* Return an array of results that match this pattern
+	*/
+	function getIngredientAutocomplete($text) {
+		
+		$query = "SELECT * FROM ingredients WHERE name LIKE '$text%' ORDER BY name ASC LIMIT 10";
 
+		$matches = array();
+		if ($text == "") { return $matches; }
+		
+		$result = $this->db->sendCommand($query);
+		while ($row = mysqli_fetch_array($result)) {
+			$matches[] = $row['name'];
+		}
+		
+		return $matches;
+	}
 
     function __destruct(){
         ob_start();

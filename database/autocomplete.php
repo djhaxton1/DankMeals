@@ -46,6 +46,7 @@
 		";
 	}
 	
+	echo autocompleteTextbox("a");	
 	
 ?>
 

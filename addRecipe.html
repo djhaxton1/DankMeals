@@ -12,14 +12,18 @@
 			document.getElementById('ingredients').insertAdjacentHTML('beforeend',
 				'<input type="text" name="ingredient' + (ingredientCount++) + '" class="form-control">');
 			index = index + 1;
-			$('#ingredient_count').val(ingredientCount)
+			$('#ingredient_count').val(ingredientCount);
 		}
 		</script>
 		
 		<!-- On Click Script for instructions-->
 		<script>
+		var instructionCount = 1;
 		function addIns(){
-			document.getElementById('instructions').insertAdjacentHTML('beforeend', '<input type="text" name="instruction" class="form-control">');
+			document.getElementById('instructions').insertAdjacentHTML('beforeend', 
+				'<input type="text" name="instruction' + (instructionCount++) + '" class="form-control">');
+				
+			$('#instruction_count').val(instructionCount);
 		}
 		</script>
 
@@ -73,7 +77,8 @@
 					
 					<div class="form-group">
 						<label for="ing">Instructions</label>
-						<input type="text" name="instruction" class="form-control">
+						<input type="hidden" name="instruction_count" id="instruction_count" value="1">
+						<input type="text" name="instruction0" class="form-control">
 						<!-- This is where the added instruction textboxes will go-->
 						<div id="instructions"></div>
 						

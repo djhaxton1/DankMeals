@@ -47,12 +47,6 @@
 	}
 	
 	
-	
-	echo autocompleteTextbox("a");
-	echo autocompleteTextbox("b");
-	echo autocompleteTextbox("c");
-	echo autocompleteTextbox("d");
-	
 ?>
 
 

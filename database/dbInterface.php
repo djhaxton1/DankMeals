@@ -81,6 +81,7 @@ class dbInterface{
      * Inserts a new recipe and its associated instructions and ingredients
      *     Note:  this function assumes that a correctly formatted directory will be built for the picture file
      */
+    function insertRecipe($data){
         //TODO validate argument
         $id = -1;
         //insert main recipe entry

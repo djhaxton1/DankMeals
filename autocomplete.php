@@ -3,8 +3,10 @@
 	var selectionIndex;
 
 	function autocompleteIngredient(textbox, id, event) {
+		//what is inside the textbox (user input)
 		var text = textbox.value;
 		
+		//what the user "cursor" was on before keyUp of another key
 		var oldIndex = selectionIndex;
 		var close = false;
 		if (event.keyCode == 38) { selectionIndex--; }	//38 = up arrow key
@@ -22,7 +24,12 @@
 		$("#autocompleteDivSelection" + id + selectionIndex).click();
 		$("#autocompleteDivSelection" + id + selectionIndex).trigger("mouseenter");
 		$("#autocompleteDivSelection" + id + oldIndex).trigger("mouseleave");
+		$("#autocompleteDivSelection" + id + oldIndex).trigger("click");
+
 		
+		if(event.click()) { close - true; }
+		
+		//get rid of the autocomplete options if the user pushes enter or clicks the mouse
 		if (close) {
 			$(textbox).blur();
 		}

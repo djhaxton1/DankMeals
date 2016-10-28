@@ -83,25 +83,40 @@ class dbInterface{
      */
     function insertRecipe($data){
         //TODO validate argument
+        if (gettype($data["parent_id"]) !== "integer" && $data["parent_id"] != "NULL"){
+            die("Invalid parent Id passed in data['parent_id']. This should be an integer.");
+        }
+        if (gettype($data["title"]) !== "string"){
+            die("Invalid title passed in data['title']. This should be a string.");
+        }
+        if (gettype($data["ingredient_measurement"]) !== "array" || gettype($data["ingredient_measurement"][0]) != "string"){
+            die("Invalid measurement passed in data['ingredient_measurement']. This should be an array of strings.");
+        }
+        if (gettype($data["ingredient_name"]) !== "array" || gettype($data["ingredient_name"][0]) !== "string"){
+            die("Invalid name passed in data['ingredient_name']. This should be an array of strings.");
+        }
+        if (gettype($data["instructions"]) !== "array" || gettype($data["instructions"][0]) !== "string"){
+            die("Invalid instruction passed in data['instruction']. This should be an array of strings.");
+        }
         $id = -1;
         //insert main recipe entry
-        $query = "INSERT INTO recipes (parent_id, title, picture) VALUES (" . $data["parent_id"] . ", " . $data["title"] . ",'')";
+        $query = "INSERT INTO recipes (parent_id, title, picture) VALUES (" . $data["parent_id"] . ", '" . $data["title"] . "', NULL)";
         $this->db->sendCommand($query);
         $id = $this->db->getLastID();   //find the id of the newly inserted recipe
         //insert the assumed path to the picture file
         $directory = "/rec" . $id ."/rec" . $id . "_0.jpg";
-        $query = "UPDATE recipes SET picture=" . $directory . " WHERE id=" . $id;
+        $query = "UPDATE recipes SET picture='" . $directory . "' WHERE id=" . $id;
         $this->db->sendCommand($query);
         //insert ingredients to ingredients table
-        for ($i = 0; i < count($data["ingredient_measurement"]); $i++){
-            $query = "INSERT INTO ingredients (rec_id, order_num, measurement, name) VALUES (" . $id . ", " .
-                $i+1 . ", " . $data["ingredient_measurement"][$id] . ", " . $data["ingredient_name"][$id] . ")";
+        for ($i = 0; $i < count($data["ingredient_measurement"]); $i++){
+            $query = "INSERT INTO ingredients (rec_id, order_num, measurement, name) VALUES (" .
+                $id . ", " . ($i+1) . ", '" . $data["ingredient_measurement"][$i] . "', '" . $data["ingredient_name"][$i] . "')";
             $this->db->sendCommand($query);
         }
         //insert instructions to instructions table
-        for ($i = 0; i < count($data["instructions"]); $i++){
+        for ($i = 0; $i < count($data["instructions"]); $i++){
             $query = "INSERT INTO instructions (rec_id, order_num, instruction_text) VALUES (" . $id . ", " .
-                $i+1 . ", " . $data["instructions"][$id];
+                ($i+1) . ", '" . $data["instructions"][$i] . "')";
             $this->db->sendCommand($query);
         }
         return $id; //the id of the new entry in the recipes table
@@ -200,3 +215,17 @@ class dbInterface{
         ob_end_clean();
     }
 }
+
+$k = new dbInterface();
+$recipe = array();
+$recipe["parent_id"] = "NULL";
+$recipe["title"] = "Chicken Piccata";
+$temp = array("4", "3 tablespoons", "1 1/2 tablespoons", "Additional", "2 tablespoons", "1/3 cup", "1/4 cup", "1/4 cup", "1/4 cups", "1/4 cups");
+$recipe["ingredient_measurement"] = $temp;
+$temp = array("skinless boneless chicken breast", "butter room temperature", "all purpose flour", "all purpose flour", "olive oil", "dry white wine", "fresh lemon juice", "canned low-salt chicken broth", "drained capers", "chopped fresh parsley");
+$recipe["ingredient_name"] = $temp;
+$temp = array("Place chicken between 2 large sheets of plastic wrap. Using meat pounder or rolling pin, lightly pound chicken to 1/4-inch thickness. Sprinkle chicken with salt and pepper. Mix 1 tablespoon butter and 1 1/2 tablespoons flour in small bowl until smooth. Place additional flour in shallow baking dish. Dip chicken into flour to coat; shake off excess.", "Heat 1 tablespoon oil in each of 2 heavy large skillets. Add 2 chicken breasts to each skillet and cook until golden and cooked through, about 3 minutes per side. Transfer chicken to platter; tent with foil to keep warm.", "Bring wine, lemon juice and broth to boil in 1 skillet over medium-high heat. Whisk in butter-flour mixture and boil until sauce thickens slightly, about 2 minutes. Stir in capers, parsley and remaining 2 tablespoons butter. Season sauce to taste with salt and pepper. Pour sauce over chicken and serve.");
+$recipe["instructions"] = $temp;
+$k->insertRecipe($recipe);
+
+

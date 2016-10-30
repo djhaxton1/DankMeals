@@ -17,14 +17,13 @@ h3, h1 {
 
 
 /* Firefox Workaround for text cut-offs */
-
 line-height: normal;
+
 
 input[type=text] {
 	width: 130px;
 	-webkit-transition: width 0.4s ease-in-out;
 	transition: width 0.4s ease-in-out;
-	width: 130px;
 	box-sizing: border-box;
 	border: 2px solid #ccc;
 	border-radius: 4px;
@@ -64,7 +63,7 @@ input[type=text]:focus {
 		display: block;
 		width: 60px;
 		height: 60px;
-		background: url("../../assets/search.png") 0 0;
+		background: url("search.png") 0 0;
 		font-size: 0;
 		color: rgba(0, 0, 0, 0);
 		text-indent: -9999px;
@@ -72,11 +71,11 @@ input[type=text]:focus {
 	}
 
 	#label label:hover {
-		background: url("../../assets/search.png") -60px 0;
+		background: url("search.png") -60px 0;
 	}
 
 	#label.active label {
-		/*background: url("../../assets/search.png") -60px 0;*/
+		/*background: url("search.png") -60px 0;*/
 	}
 
 	#input {
@@ -139,7 +138,7 @@ input[type=text]:focus {
 		display: block;
 		width: 60px;
 		height: 60px;
-		background: url("../../assets/search.png") 0 0;
+		background: url("search.png") 0 0;
 		font-size: 0;
 		color: rgba(0, 0, 0, 0);
 		text-indent: -9999px;
@@ -147,11 +146,11 @@ input[type=text]:focus {
 	}
 
 	#label label:hover {
-		background: url("../../assets/search.png") -60px 0;
+		background: url("search.png") -60px 0;
 	}
 
 	#label.active label {
-		/*background: url("../../assets/search.png") -60px 0;*/
+		/*background: url("search.png") -60px 0;*/
 	}
 
 	#input {
@@ -243,6 +242,7 @@ nav a {
 	color: #e67300;
 	padding-top: 5px;
 	padding-bottom: 5px;
+	margin-right: 5px;
 }
 
 #navbar-li:hover {
@@ -267,11 +267,11 @@ nav a {
 }
 
 #tile, #image{
-	background-color: #eee;
 	border-radius: 6px;
 	margin: 5px;
 	width: 350px;
 	height: 200px;
+	background: #eee url("imageError.png") no-repeat center;
 }
 
 #tile img, #image img {
@@ -297,4 +297,58 @@ nav a {
 	}
 }
 
-/*# sourceMappingURL=bootstrap.css.map */
+#search-result {
+	list-style-type: none;
+}
+
+#search-result li {
+	color: #e67300;
+	padding: 5px;
+	font
+}
+
+#sign-in {
+	background-color: #e67300;
+	position: relative;
+	margin-right: 5px;
+	width: 60px;
+	height: 60px;
+}
+
+#sign-in:hover{
+	background-color: #e6903a;
+}
+
+#sign-in .glyphicon {
+	display: block;
+	color: white;
+	font-size: 2em;
+	text-align: center;
+	min-height: 60px;
+	line-height: 60px;
+}
+
+#fb-login {
+	width: 120px;
+	height: 36px;
+	color: white;
+	background-color: #4267b2;
+	border-radius: 2px;
+	box-shadow: 0px 2px 4px 0px rgba(0,0,0,.25);
+	transition: box-shadow 0.08s;
+	padding-left: 45px;
+	background-image: url("fb-logo.png");
+	background-size: 18px;
+	background-repeat: no-repeat;
+	background-position: 6px 50%;
+	
+}
+
+#fb-login:hover {
+	box-shadow: 0px 0px 3px 2px #9ebeff;
+	transition: box-shadow 0.08s;
+}
+
+#fb-login img {
+
+}

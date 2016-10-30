@@ -33,7 +33,7 @@
 
 		<!-- Bootstrap Core CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-		<link rel="stylesheet" href="bootstrap/css/meals.css">
+		<link rel="stylesheet" href="assets/meals.css">
 		
 		<!-- Loads the Google interface -->
 		<script src="https://apis.google.com/js/platform.js" async defer></script>
@@ -106,10 +106,6 @@
 				</form>
 				
 				</p>
-
-				<div id="content">
-					<div id="my-signin2" class="g-signin2" data-onsuccess="onSignIn"></div>
-				</div>
 			</div> 
 			
 			<!-- Footer -->
@@ -122,28 +118,6 @@
 			</div>
 		</div>
 		
-		<script>
-			function onSignIn(googleUser) {
-			  var profile = googleUser.getBasicProfile();
-			  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-			  console.log('Name: ' + profile.getName());
-			  console.log('Image URL: ' + profile.getImageUrl());
-			  console.log('Email: ' + profile.getEmail());
-			}
-			function onFailure(error) {
-				console.log(error);
-			}
-			function renderButton() {
-				gapi.signin2.render('my-signin2', {
-					'scope': 'profile email',
-					'width': 240,
-					'height': 50,
-					'longtitle': true,
-					'theme': 'dark',
-					'onsuccess': onSignIn,
-					'onfailure': onFailure
-				});
-			}
-		</script>
     </body>
+	
 </html>

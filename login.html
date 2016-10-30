@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Dank Meals</title>
+	
+	<!-- Loads the Google interface -->
+	<script src="https://apis.google.com/js/platform.js" async defer></script>
+	<meta name="google-signin-client_id" content="406057883070-d26boopl1m5dd1cbknjl2cj3c1jl4eas.apps.googleusercontent.com">
+
+	<script src="bootstrap/js/facebook.js"></script>
+	
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	
+    <!-- Bootstrap Core CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="assets/meals.css">
+
+</head>
+
+<body>
+	<!-- Load Facebook API -->
+	<script>
+	  window.fbAsyncInit = function() {
+		FB.init({
+		  appId      : '1218060738265442',
+		  xfbml      : true,
+		  version    : 'v2.8'
+		});
+	  };
+
+	  (function(d, s, id){
+		 var js, fjs = d.getElementsByTagName(s)[0];
+		 if (d.getElementById(id)) {return;}
+		 js = d.createElement(s); js.id = id;
+		 js.src = "//connect.facebook.net/en_US/sdk.js";
+		 fjs.parentNode.insertBefore(js, fjs);
+	   }(document, 'script', 'facebook-jssdk'));
+	</script>
+
+    <!-- Navigation -->
+	<div id="navigation" class="container">
+		<script>
+			$.get("assets/nav.html", function(data) {
+				$("#navigation").replaceWith(data);
+			});
+		</script>	
+	</div>
+
+	<br>
+
+    <!-- Page Content -->
+    <div id="content" class="container">
+		<h1 style="text-align:center">Sign in</h1>
+		<div class="container" style="width:400px">
+			<div id="login" class="jumbotron" align="center">
+				<h3>With Google</h3>
+				<div id="my-signin2" class="g-signin2" data-onsuccess="onSignIn"></div>
+				<br>
+				<h4>- OR -</h4>
+				<h3>With Facebook</h3>
+				<form><button id="fb-login" onclick="login()" type="button" class="btn">Sign In</button></form>
+				<!--<fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>-->
+				<br>
+			</div>
+		</div>
+				
+		<!-- Footer -->
+		<div id="footer" class="container">
+			<script>
+				$.get("assets/foot.html", function(data) {
+					$("#footer").replaceWith(data);
+				});
+			</script>
+		</div>
+		
+    </div>
+    <!-- /.container -->
+	
+	<script>
+		function onSignIn(googleUser) {
+		  var profile = googleUser.getBasicProfile();
+		  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+		  console.log('Name: ' + profile.getName());
+		  console.log('Image URL: ' + profile.getImageUrl());
+		  console.log('Email: ' + profile.getEmail());
+		}
+		function onFailure(error) {
+			console.log(error);
+		}
+		function renderButton() {
+			gapi.signin2.render('my-signin2', {
+				'scope': 'profile email',
+				'width': 240,
+				'height': 50,
+				'longtitle': true,
+				'theme': 'dark',
+				'onsuccess': onSignIn,
+				'onfailure': onFailure
+			});
+		}
+	</script>
+
+</body>
+
+</html>

@@ -42,6 +42,12 @@
 	</head>
 
     <body>
+	<style>
+		.glyphicon {
+			z-index: -5;
+		}
+		
+	</style>
         
 		<!-- Navigation -->
 		<div id="navigation" class="container">
@@ -76,7 +82,7 @@
 						
 						
 						<!-- Plus button for Ingredients-->
-						<button onclick="addIng()" type="button" class="btn btn-default" aria-label="Left Align">
+						<button onclick="addIng()" type="button" class="btn btn-default" aria-label="Left Align" style="z-index: -6">
 							<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 						</button>
 					</div>

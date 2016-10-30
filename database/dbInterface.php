@@ -22,7 +22,6 @@ class dbInterface{
      *                  Data Currently Output:
      *                      array of recipe ids in $output["ids"]
      *                      array of recipe titles in $output["titles"]
-     *                      integer that is the number of recipe entries in $output["length"]
      *                      array of recipe pictures in $output["pictures"]
      */
     function getRecipeList(){
@@ -75,6 +74,7 @@ class dbInterface{
      *                      data["ingredient_measurement"]: an array of ingredient measurement strings in the order they appear
      *                      data["ingredient_name"]: an array of ingredient name strings in the order they appear
      *                      data["instructions"]: an array of instruction text strings in the order they appear
+     *                      data["author"]: an integer that maps to a name and Google ID
      *
      * @return int     ID of the newly added recipe in the recipes table
      *
@@ -82,26 +82,50 @@ class dbInterface{
      *     Note:  this function assumes that a correctly formatted directory will be built for the picture file
      */
     function insertRecipe($data){
-        //TODO validate argument
+        if (gettype($data["parent_id"]) !== "integer" && $data["parent_id"] != "NULL"){
+            die("Invalid parent Id passed in data['parent_id']. This should be an integer.");
+        }
+        if (gettype($data["title"]) !== "string"){
+            die("Invalid title passed in data['title']. This should be a string.");
+        }
+        if (gettype($data["ingredient_measurement"]) !== "array" || gettype($data["ingredient_measurement"][0]) != "string"){
+            die("Invalid measurement passed in data['ingredient_measurement']. This should be an array of strings.");
+        }
+        if (gettype($data["ingredient_name"]) !== "array" || gettype($data["ingredient_name"][0]) !== "string"){
+            die("Invalid name passed in data['ingredient_name']. This should be an array of strings.");
+        }
+        if (gettype($data["instructions"]) !== "array" || gettype($data["instructions"][0]) !== "string"){
+            die("Invalid instruction passed in data['instruction']. This should be an array of strings.");
+        }
+        if (gettype($data["author"]) !== "integer" || $data["author"] < 0){
+            die("Invalid author passed in data['author']. This should be a positive integer.");
+        }
         $id = -1;
         //insert main recipe entry
-        $query = "INSERT INTO recipes (parent_id, title, picture) VALUES (" . $data["parent_id"] . ", " . $data["title"] . ",'')";
+        if ($data["parent_id"] === NULL){
+            $data["parent_id"] = "NULL";
+        }
+        $query = "INSERT INTO recipes (parent_id, title, picture, author) VALUES (" . $data["parent_id"] . ", '" .
+            $data["title"] . "', NULL, " . $data["author"] .")";
         $this->db->sendCommand($query);
         $id = $this->db->getLastID();   //find the id of the newly inserted recipe
+
         //insert the assumed path to the picture file
         $directory = "/rec" . $id ."/rec" . $id . "_0.jpg";
-        $query = "UPDATE recipes SET picture=" . $directory . " WHERE id=" . $id;
+        $query = "UPDATE recipes SET picture='" . $directory . "' WHERE id=" . $id;
         $this->db->sendCommand($query);
+
         //insert ingredients to ingredients table
-        for ($i = 0; i < count($data["ingredient_measurement"]); $i++){
-            $query = "INSERT INTO ingredients (rec_id, order_num, measurement, name) VALUES (" . $id . ", " .
-                $i+1 . ", " . $data["ingredient_measurement"][$id] . ", " . $data["ingredient_name"][$id] . ")";
+        for ($i = 0; $i < count($data["ingredient_measurement"]); $i++){
+            $query = "INSERT INTO ingredients (rec_id, order_num, measurement, name) VALUES (" .
+                $id . ", " . ($i+1) . ", '" . $data["ingredient_measurement"][$i] . "', '" . $data["ingredient_name"][$i] . "')";
             $this->db->sendCommand($query);
         }
+
         //insert instructions to instructions table
-        for ($i = 0; i < count($data["instructions"]); $i++){
+        for ($i = 0; $i < count($data["instructions"]); $i++){
             $query = "INSERT INTO instructions (rec_id, order_num, instruction_text) VALUES (" . $id . ", " .
-                $i+1 . ", " . $data["instructions"][$id];
+                ($i+1) . ", '" . $data["instructions"][$i] . "')";
             $this->db->sendCommand($query);
         }
         return $id; //the id of the new entry in the recipes table
@@ -180,17 +204,17 @@ class dbInterface{
 	* Return an array of results that match this pattern
 	*/
 	function getIngredientAutocomplete($text) {
-		
+
 		$query = "SELECT * FROM ingredients WHERE name LIKE '$text%' ORDER BY name ASC LIMIT 10";
 
 		$matches = array();
 		if ($text == "") { return $matches; }
-		
+
 		$result = $this->db->sendCommand($query);
 		while ($row = mysqli_fetch_array($result)) {
 			$matches[] = $row['name'];
 		}
-		
+
 		return $matches;
 	}
 
@@ -200,3 +224,6 @@ class dbInterface{
         ob_end_clean();
     }
 }
+
+
+

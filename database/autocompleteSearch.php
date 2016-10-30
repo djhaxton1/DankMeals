@@ -9,6 +9,11 @@
 	}
 </style>
 <?php
+	/*
+	 * make sure users do not try to navigate to the
+	 * autocompleteSearce.php page manually
+	 */
+	 
 	if (!isset($_GET['query']) || !isset($_GET['id'])) {
 		echo "You cannot visit this page manually";
 		exit();
@@ -17,8 +22,12 @@
 	include "dbInterface.php";
 	$interface = new dbInterface();
 	
-	//TODO make this safe!  (you can just find replace characters that may be dangerous " ' ! - / \ 
 	$query = $_GET['query'];
+	//TODO make this safe!  (you can just find replace characters that may be dangerous " ' ! - / \ 
+	
+	//$spChar = array('"', '\'', '!', '-', '/', '\\');
+	//$query = str_replate($spChar, '', $query);
+	
 	$id = $_GET['id'];
 	$matches = $interface->getIngredientAutocomplete($query);
 	

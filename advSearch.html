@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Advanced Search - Dank Meals</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		
+		<!-- Bootstrap Core CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" href="assets/meals.css">
+		
+    </head>
+    <body>
+        
+		<!-- Navigation -->
+		<div id="navigation" class="container">
+			<script>
+				$.get("assets/nav.html", function(data) {
+					$("#navigation").replaceWith(data);
+				});
+			</script>	
+		</div>
+		
+		<div class="container" style="padding-top: 80px">
+			
+			<!-- Page Content -->
+			<div class="jumbotron" style="padding-bottom: 80px">
+				<h1>Advanced Search</h1>
+				<form action="database/advSearch.php" method="get">
+				
+					<!--Text Box-->
+					<label for="sel2">List ingredients you want to use. Separate by commas.</label>
+					<textarea class="form-control input-lg" rows="5" id="ing_list"></textarea>
+				
+					<!--Select list-->
+					<!-- 
+					  <select multiple class="form-control" id="sel2">
+						<!---
+						Example of option
+							<option>1</option>
+						-->
+						<!--
+						<div id="ing_list"></div>
+						
+					  </select> -->
+					<br>
+					<button type="submit" class="btn btn-mybtn" style="align-items:center">Search Ingredients</button>				
+			</div> 
+			
+			<!-- Footer -->
+		<div id="footer" class="container">
+			<script>
+				$.get("assets/foot.html", function(data) {
+					$("#footer").replaceWith(data);
+				});
+			</script>
+		</div>
+		
+		<!-- Population Script -->
+	<!--<script>
+        function load() {
+            $.ajax({
+                url: "dbController.php",
+                type: "post",
+                data: {"function": "getIngredients"},
+                success: function (response) {
+                    var data = JSON.parse(response);
+                    var out = "";
+                    var i = 0;
+                    while (data["name"][i] != undefined){
+                     
+						out += "<option>" . data["name"][i] . "</option>";
+					 
+                    document.getElementById("ing_list").innerHTML = out;
+					},
+					error: function (jqXHR, textStatus, errorThrown) {
+						console.log(textStatus, errorThrown);
+					}
+				}
+            });
+        }
+    </script> -->
+	<!-- /.Population Script -->
+			
+		</div>
+		
+    </body>
+</html>

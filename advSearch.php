@@ -6,7 +6,7 @@
 		
 		<!-- Bootstrap Core CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-		<link rel="stylesheet" href="bootstrap/css/meals.css">
+		<link rel="stylesheet" href="assets/meals.css">
 		
 		<script>
 			var ingredientCount = 0;

@@ -10,10 +10,19 @@
 
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		<!-- Search -->
 			<form class="nav navbar-nav navbar-right" id="search" action="database/search.php" method="post">
 				<div id="label"><label for="search-terms" id="search-label">search</label></div>
 				<div id="input"><input type="text" name="search-terms" id="search-terms" placeholder="Enter search terms..."></div>
 			</form>
+			
+			<div id="sign-in" class="nav navbar-nav navbar-right">
+				<a href="login.html" style="text-decoration: none;">
+					<span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>
+				</a>
+			</div>
+			
+			<!-- Navigation -->
 			<ul id="pages" class="nav navbar-nav navbar-right">
 				<li class="hidden">
 					<a href="#page-top"></a>

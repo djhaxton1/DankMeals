@@ -1,10 +1,6 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <?php
-			include "database/advancedSearchTag.php";
-		?>
-		
+    <head>		
 		<title>Advanced Search - Dank Meals</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 		

@@ -83,25 +83,40 @@ class dbInterface{
      */
     function insertRecipe($data){
         //TODO validate argument
+        if (gettype($data["parent_id"]) !== "integer" && $data["parent_id"] != "NULL"){
+            die("Invalid parent Id passed in data['parent_id']. This should be an integer.");
+        }
+        if (gettype($data["title"]) !== "string"){
+            die("Invalid title passed in data['title']. This should be a string.");
+        }
+        if (gettype($data["ingredient_measurement"]) !== "array" || gettype($data["ingredient_measurement"][0]) != "string"){
+            die("Invalid measurement passed in data['ingredient_measurement']. This should be an array of strings.");
+        }
+        if (gettype($data["ingredient_name"]) !== "array" || gettype($data["ingredient_name"][0]) !== "string"){
+            die("Invalid name passed in data['ingredient_name']. This should be an array of strings.");
+        }
+        if (gettype($data["instructions"]) !== "array" || gettype($data["instructions"][0]) !== "string"){
+            die("Invalid instruction passed in data['instruction']. This should be an array of strings.");
+        }
         $id = -1;
         //insert main recipe entry
-        $query = "INSERT INTO recipes (parent_id, title, picture) VALUES (" . $data["parent_id"] . ", " . $data["title"] . ",'')";
+        $query = "INSERT INTO recipes (parent_id, title, picture) VALUES (" . $data["parent_id"] . ", '" . $data["title"] . "', NULL)";
         $this->db->sendCommand($query);
         $id = $this->db->getLastID();   //find the id of the newly inserted recipe
         //insert the assumed path to the picture file
         $directory = "/rec" . $id ."/rec" . $id . "_0.jpg";
-        $query = "UPDATE recipes SET picture=" . $directory . " WHERE id=" . $id;
+        $query = "UPDATE recipes SET picture='" . $directory . "' WHERE id=" . $id;
         $this->db->sendCommand($query);
         //insert ingredients to ingredients table
-        for ($i = 0; i < count($data["ingredient_measurement"]); $i++){
-            $query = "INSERT INTO ingredients (rec_id, order_num, measurement, name) VALUES (" . $id . ", " .
-                $i+1 . ", " . $data["ingredient_measurement"][$id] . ", " . $data["ingredient_name"][$id] . ")";
+        for ($i = 0; $i < count($data["ingredient_measurement"]); $i++){
+            $query = "INSERT INTO ingredients (rec_id, order_num, measurement, name) VALUES (" .
+                $id . ", " . ($i+1) . ", '" . $data["ingredient_measurement"][$i] . "', '" . $data["ingredient_name"][$i] . "')";
             $this->db->sendCommand($query);
         }
         //insert instructions to instructions table
-        for ($i = 0; i < count($data["instructions"]); $i++){
+        for ($i = 0; $i < count($data["instructions"]); $i++){
             $query = "INSERT INTO instructions (rec_id, order_num, instruction_text) VALUES (" . $id . ", " .
-                $i+1 . ", " . $data["instructions"][$id];
+                ($i+1) . ", '" . $data["instructions"][$i] . "')";
             $this->db->sendCommand($query);
         }
         return $id; //the id of the new entry in the recipes table
@@ -200,3 +215,6 @@ class dbInterface{
         ob_end_clean();
     }
 }
+
+
+

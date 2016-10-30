@@ -64,6 +64,7 @@ class dbInterface{
         $output["ingredients"] = $this->getIngredients($id);
         $output["instructions"] = $this->getInstructions($id);
         $output["picture"] = $this->getPicture($id);
+        $output["author"] = $this->getAuthor($id);
         return $output;
     }
 
@@ -214,9 +215,23 @@ class dbInterface{
 		while ($row = mysqli_fetch_array($result)) {
 			$matches[] = $row['name'];
 		}
+        return $matches;
+    }
 
-		return $matches;
-	}
+    private function getAuthor($id){
+        $query = "SELECT author FROM recipes where id =" . $id . ";";
+        $relevant = array("author");
+        $result = $this->db->sendCommandParse($query, $relevant);
+        $userId = $result[0];
+        if($userId == null)
+        {
+            return null;
+        }
+        $query = "SELECT name FROM users where id =" . $userId . ";";
+        $relevant = array("name");
+        $result = $this->db->sendCommandParse($query, $relevant);
+        return $result;
+  }
 
     function __destruct(){
         ob_start();

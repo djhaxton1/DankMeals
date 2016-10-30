@@ -22,7 +22,6 @@ class dbInterface{
      *                  Data Currently Output:
      *                      array of recipe ids in $output["ids"]
      *                      array of recipe titles in $output["titles"]
-     *                      integer that is the number of recipe entries in $output["length"]
      *                      array of recipe pictures in $output["pictures"]
      */
     function getRecipeList(){
@@ -75,6 +74,7 @@ class dbInterface{
      *                      data["ingredient_measurement"]: an array of ingredient measurement strings in the order they appear
      *                      data["ingredient_name"]: an array of ingredient name strings in the order they appear
      *                      data["instructions"]: an array of instruction text strings in the order they appear
+     *                      data["author"]: an integer that maps to a name and Google ID
      *
      * @return int     ID of the newly added recipe in the recipes table
      *
@@ -97,15 +97,19 @@ class dbInterface{
         if (gettype($data["instructions"]) !== "array" || gettype($data["instructions"][0]) !== "string"){
             die("Invalid instruction passed in data['instruction']. This should be an array of strings.");
         }
+        if (gettype($data["author"]) !== "integer" || $data["author"] < 0){
+            die("Invalid author passed in data['author']. This should be a positive integer.");
+        }
         $id = -1;
-
         //insert main recipe entry
         if ($data["parent_id"] === NULL){
             $data["parent_id"] = "NULL";
         }
-        $query = "INSERT INTO recipes (parent_id, title, picture) VALUES (" . $data["parent_id"] . ", '" . $data["title"] . "', NULL)";
+        $query = "INSERT INTO recipes (parent_id, title, picture, author) VALUES (" . $data["parent_id"] . ", '" .
+            $data["title"] . "', NULL, " . $data["author"] .")";
         $this->db->sendCommand($query);
         $id = $this->db->getLastID();   //find the id of the newly inserted recipe
+
         //insert the assumed path to the picture file
         $directory = "/rec" . $id ."/rec" . $id . "_0.jpg";
         $query = "UPDATE recipes SET picture='" . $directory . "' WHERE id=" . $id;
@@ -200,17 +204,17 @@ class dbInterface{
 	* Return an array of results that match this pattern
 	*/
 	function getIngredientAutocomplete($text) {
-		
+
 		$query = "SELECT * FROM ingredients WHERE name LIKE '$text%' ORDER BY name ASC LIMIT 10";
 
 		$matches = array();
 		if ($text == "") { return $matches; }
-		
+
 		$result = $this->db->sendCommand($query);
 		while ($row = mysqli_fetch_array($result)) {
 			$matches[] = $row['name'];
 		}
-		
+
 		return $matches;
 	}
 

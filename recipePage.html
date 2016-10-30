@@ -49,6 +49,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header" id="title">Recipe Name</h1>
+                <div id="author"></div>
             </div>
         </div>
         <!-- /.row -->
@@ -167,6 +168,14 @@
                     document.getElementById("instructions").innerHTML = instructions;
                     document.getElementById("pics").innerHTML = "<div id='image'><img src='pics"
                             + data["picture"] + "' alt=''></div>";
+                    if(data["author"] == null)
+                    {
+                        document.getElementById("author").innerHTML = "<p>Anonymous</p>";
+                    }
+                    else
+                    {
+                        document.getElementById("author").innerHTML = "<p>" + data["author"] + "</p>";
+                    }
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
                     console.log(textStatus, errorThrown);

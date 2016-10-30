@@ -82,7 +82,6 @@ class dbInterface{
      *     Note:  this function assumes that a correctly formatted directory will be built for the picture file
      */
     function insertRecipe($data){
-        //TODO validate argument
         if (gettype($data["parent_id"]) !== "integer" && $data["parent_id"] != "NULL"){
             die("Invalid parent Id passed in data['parent_id']. This should be an integer.");
         }
@@ -99,7 +98,11 @@ class dbInterface{
             die("Invalid instruction passed in data['instruction']. This should be an array of strings.");
         }
         $id = -1;
+
         //insert main recipe entry
+        if ($data["parent_id"] === NULL){
+            $data["parent_id"] = "NULL";
+        }
         $query = "INSERT INTO recipes (parent_id, title, picture) VALUES (" . $data["parent_id"] . ", '" . $data["title"] . "', NULL)";
         $this->db->sendCommand($query);
         $id = $this->db->getLastID();   //find the id of the newly inserted recipe
@@ -107,12 +110,14 @@ class dbInterface{
         $directory = "/rec" . $id ."/rec" . $id . "_0.jpg";
         $query = "UPDATE recipes SET picture='" . $directory . "' WHERE id=" . $id;
         $this->db->sendCommand($query);
+
         //insert ingredients to ingredients table
         for ($i = 0; $i < count($data["ingredient_measurement"]); $i++){
             $query = "INSERT INTO ingredients (rec_id, order_num, measurement, name) VALUES (" .
                 $id . ", " . ($i+1) . ", '" . $data["ingredient_measurement"][$i] . "', '" . $data["ingredient_name"][$i] . "')";
             $this->db->sendCommand($query);
         }
+
         //insert instructions to instructions table
         for ($i = 0; $i < count($data["instructions"]); $i++){
             $query = "INSERT INTO instructions (rec_id, order_num, instruction_text) VALUES (" . $id . ", " .

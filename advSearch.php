@@ -21,7 +21,7 @@
 						$("#ing_input").val("");
 						ings.push(input);
 						//input += (ingredientCount++);
-						var text = "<button class='btn btn-primary' id='" + input + "' onclick='removeTag(this)'>" + input + "</button>" + " ";
+						var text = "<div class='btn btn-primary' id='" + input + "' onclick='removeTag(this)'>" + input + "</div>" + " ";
 						 $("#ing_list").append(text);
 					}	
 				});
@@ -46,15 +46,18 @@
 		<script>
 			//removes an ingredient from the list the user has entered
 			//this function is called when the user clicks on one of the buttons
-			$(document).ready(function(){
+			//$(document).ready(function(){
 					function removeTag(elem){
+						
+						//$("#ing_list").append("text");
 						//TODO
 						//remove from inglist array
 						
+						
 						//remove from page
 						
-					};
-				});
+					}
+				//});
 		
 		</script>
 		
@@ -91,7 +94,7 @@
 					<!--Text Box-->
 					<label for="sel2">List ingredients you want to use. Separate by commas.</label>
 					<input type="hidden" name="ingredient_count" id="ingredient_count" value='0' />
-					<input type="text" class="form-control input-lg" id="ing_input" onKeyUp="enterVal()" autocomplete="off" />
+					<input type="text" class="form-control input-lg" id="ing_input" autocomplete="off" />
 				
 					<br />
 				

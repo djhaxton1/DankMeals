@@ -55,7 +55,7 @@
     <body>
 	<style>
 		.glyphicon {
-			z-index: -5;
+			z-index: 0;
 		}
 		
 	</style>
@@ -90,9 +90,8 @@
 						<div id="ingredients"></div>
 						<script>addIng();</script>
 						
-						
-						
 						<!-- Plus button for Ingredients-->
+						<!-- TODO: change z-index for items to make sure the + glyphicon does not appear on top of the select box for the autocomplete function-->
 						<button onclick="addIng()" type="button" class="btn btn-default" aria-label="Left Align" style="z-index: -6">
 							<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 						</button>

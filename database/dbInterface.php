@@ -33,6 +33,24 @@ class dbInterface{
     }
 
     /**
+     * Gathers basic information for a set number of recipes (currently 12) given a location to start from
+     * @param $page the page of recipes requested
+     * @return array   an associative array containing basic data for all recipes where each index is a single entry
+     *                      array of recipe ids in $output["ids"]
+     *                      array of recipe titles in $output["titles"]
+     *                      array of recipe pictures in $output["pictures"]
+     */
+    function getRecipeListN($page){
+        define("ENTRIES", 9);
+        $start = ($page * ENTRIES);
+        $output = array();
+        $output["ids"] = $this->getIDsN($start, ENTRIES);
+        $output["titles"] = $this->getTitlesN($start, ENTRIES);
+        $output["pictures"] = $this->getPicturesN($start, ENTRIES);
+        return $output;
+    }
+
+    /**
      * @return array    array of recipe titles
      */
     function getTitles(){
@@ -143,10 +161,34 @@ class dbInterface{
     }
 
     /**
+     * @param $start    the entry number the current page starts at
+     * @param $entries  the number of entries in a page
+     * @return array    array of <$entries> ids starting at the <$start> entry
+     */
+    private function getIDsN($start, $entries){
+        $query = "SELECT * FROM recipes ORDER BY id LIMIT " . $start . ", " . $entries;
+        $relevant = array("id");
+        $result = $this->db->sendCommandParse($query, $relevant);
+        return $result;
+    }
+
+    /**
      * @return array    array of recipe thumbnail pictures
      */
     private function getPictures(){
         $query = "SELECT * FROM recipes ORDER BY id";
+        $relevant = array("picture");
+        $result = $this->db->sendCommandParse($query, $relevant);
+        return $result;
+    }
+
+    /**
+     * @param $start    the entry number the current page starts at
+     * @param $entries  the number of entries in a page
+     * @return array    array of <$entries> picture paths starting at the <$start> entry
+     */
+    private function getPicturesN($start, $entries){
+        $query = "SELECT * FROM recipes ORDER BY id LIMIT " . $start . ", " . $entries;
         $relevant = array("picture");
         $result = $this->db->sendCommandParse($query, $relevant);
         return $result;
@@ -161,6 +203,18 @@ class dbInterface{
         $relevant = array("title");
         $result = $this->db->sendCommandParse($query, $relevant); //retrieve title
         return $result[0];
+    }
+
+    /**
+     * @param $start    the entry number the current page starts at
+     * @param $entries  the number of entries in a page
+     * @return array    array of <$entries> titles starting at the <$start> entry
+     */
+    private function getTitlesN($start, $entries){
+        $query = "SELECT * FROM recipes ORDER BY id LIMIT " . $start . ", " . $entries;
+        $relevant = array("title");
+        $result = $this->db->sendCommandParse($query, $relevant);
+        return $result;
     }
 
     /**
@@ -239,6 +293,3 @@ class dbInterface{
         ob_end_clean();
     }
 }
-
-
-

@@ -9,8 +9,9 @@
 		<link rel="stylesheet" href="assets/meals.css">
 		
 		<script>
-			var ingredientCount = 0;
+			//var ingredientCount = 0;
 			var ings = [];
+			
 			$(document).ready(function(){
 				$("#ing_input").keyup(function(){
 					if (event.keyCode == 13) { //13 = enter
@@ -23,6 +24,10 @@
 						//input += (ingredientCount++);
 						var text = "<div class='btn btn-primary' id='" + input + "' onclick='removeTag(this)'>" + input + "</div>" + " ";
 						 $("#ing_list").append(text);
+						 
+						 
+						 
+						 //ingredientCount++;
 					}	
 				});
 			});
@@ -50,6 +55,7 @@
 					function removeTag(elem){
 						
 						//$("#ing_list").append("text");
+						$("ing_list").append($document.getElementById("ingredient_count").value());
 						//TODO
 						//remove from inglist array
 						

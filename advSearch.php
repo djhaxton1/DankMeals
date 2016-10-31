@@ -21,7 +21,7 @@
 						$("#ing_input").val("");
 						ings.push(input);
 						//input += (ingredientCount++);
-						var text = "<button class='btn btn-primary' id='ing" + (ingredientCount++) + "' onclick='removeTag(this)'>" + input + "</button>" + " ";
+						var text = "<button class='btn btn-primary' id='" + input + "' onclick='removeTag(this)'>" + input + "</button>" + " ";
 						 $("#ing_list").append(text);
 					}	
 				});
@@ -50,6 +50,7 @@
 					function removeTag(elem){
 						//TODO
 						//remove from inglist array
+						
 						//remove from page
 						
 					};

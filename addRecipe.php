@@ -20,6 +20,17 @@
 		}
 		</script>
 		
+		<script>
+			//stops the form from trying to submit when the user presses enter
+			$(document).on("keypress", 'form', function (e) {
+				var code = e.keyCode || e.which;
+				if (code == 13) {
+					e.preventDefault();
+					return false;
+				}
+			});
+		</script>
+		
 		<!-- On Click Script for instructions-->
 		<script>
 		var instructionCount = 1;

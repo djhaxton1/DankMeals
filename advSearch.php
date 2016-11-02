@@ -55,13 +55,14 @@
 					function removeTag(elem){
 						
 						//$("#ing_list").append("text");
-						$("ing_list").append($document.getElementById("ingredient_count").value());
+						var id = elem.id;
+						$("ing_list").append(id);
 						//TODO
-						//remove from inglist array
+						//remove from ing_list array
 						
 						
 						//remove from page
-						
+						$(elem).hide();
 					}
 				//});
 		
@@ -98,7 +99,8 @@
 				<form action="database/getAdvSearchResults.php" method="get">
 				
 					<!--Text Box-->
-					<label for="sel2">List ingredients you want to use. Separate by commas.</label>
+					<!--label for="sel2">List ingredients you want to use. Separate by commas.</label-->
+					<label for="sel2">List keywords you want to search for. Press enter after each keyword.</label>
 					<input type="hidden" name="ingredient_count" id="ingredient_count" value='0' />
 					<input type="text" class="form-control input-lg" id="ing_input" autocomplete="off" />
 				
@@ -119,7 +121,7 @@
 						
 					  </select>  -->
 					<br />
-					<button type="submit" class="btn btn-mybtn" style="align-items:center">Search Ingredients</button>				
+					<input type="submit" class="btn btn-mybtn" style="align-items:center" value="Search Ingredients"/>				
 			</div> 
 			
 			<!-- Footer -->

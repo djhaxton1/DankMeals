@@ -41,8 +41,7 @@
         <!-- Portfolio Item Heading -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header" id="title">Recipe Name</h1>
-                <div id="author"></div>
+                <h1 class="page-header" id="title"></h1>
             </div>
         </div>
         <!-- /.row -->
@@ -156,18 +155,21 @@
                         instructions += '<li>' + data["instructions"][i] + '</li>';
                         i += 1;
                     }
-                    document.getElementById("title").innerHTML = '<h1>' + data["title"] + '</h1>';
+					if(data["picture"] == null) {
+						data["picture"] = "/imageError.png";
+					}
+                    document.getElementById("title").innerHTML += data["title"];
                     document.getElementById("ingredients").innerHTML = ingredients;
                     document.getElementById("instructions").innerHTML = instructions;
                     document.getElementById("pics").innerHTML = "<div id='image'><img src='pics"
                             + data["picture"] + "' alt=''></div>";
                     if(data["author"] == null)
                     {
-                        document.getElementById("author").innerHTML = "<p>Anonymous</p>";
+                        document.getElementById("title").innerHTML += "<p id='author'>Anonymous</p>";
                     }
                     else
                     {
-                        document.getElementById("author").innerHTML = "<p>" + data["author"] + "</p>";
+                        document.getElementById("title").innerHTML += "<p id='author'>" + data["author"] + "</p>";
                     }
                 },
                 error: function(jqXHR, textStatus, errorThrown) {

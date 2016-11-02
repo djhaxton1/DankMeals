@@ -3,13 +3,9 @@ function drawTile(id, title, picture) {
 				"<div id='tile'>" +
 					"<a href='recipePage.html?id=" + id + "'>" +
 						"<img src='pics" + picture + "'>" +
+						"<div id='tile-title'><p>" + title + "</p></div>" +
 					"</a>" +
 				"</div>" +
-				"<h3>" +
-					"<a href='recipePage.html?id=" + id + "'>" +
-						title +
-					"</a>" +
-				"</h3>" +
 			"</div>";
 			
 	return out;

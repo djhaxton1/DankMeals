@@ -1,10 +1,6 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <?php
-			include "database/advancedSearchTag.php";
-		?>
-		
+    <head>		
 		<title>Advanced Search - Dank Meals</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 		
@@ -13,8 +9,9 @@
 		<link rel="stylesheet" href="assets/meals.css">
 		
 		<script>
-			var ingredientCount = 0;
+			//var ingredientCount = 0;
 			var ings = [];
+			
 			$(document).ready(function(){
 				$("#ing_input").keyup(function(){
 					if (event.keyCode == 13) { //13 = enter
@@ -25,8 +22,12 @@
 						$("#ing_input").val("");
 						ings.push(input);
 						//input += (ingredientCount++);
-						var text = "<button class='btn btn-primary' id='ing" + (ingredientCount++) + "' onclick='removeTag(this)'>" + input + "</button>" + " ";
+						var text = "<div class='btn btn-primary' id='" + input + "' onclick='removeTag(this)'>" + input + "</div>" + " ";
 						 $("#ing_list").append(text);
+						 
+						 
+						 
+						 //ingredientCount++;
 					}	
 				});
 			});
@@ -50,14 +51,20 @@
 		<script>
 			//removes an ingredient from the list the user has entered
 			//this function is called when the user clicks on one of the buttons
-			$(document).ready(function(){
+			//$(document).ready(function(){
 					function removeTag(elem){
-						//TODO
-						//remove from inglist array
-						//remove from page
 						
-					};
-				});
+						//$("#ing_list").append("text");
+						var id = elem.id;
+						$("ing_list").append(id);
+						//TODO
+						//remove from ing_list array
+						
+						
+						//remove from page
+						$(elem).hide();
+					}
+				//});
 		
 		</script>
 		
@@ -92,9 +99,10 @@
 				<form action="database/getAdvSearchResults.php" method="get">
 				
 					<!--Text Box-->
-					<label for="sel2">List ingredients you want to use. Separate by commas.</label>
+					<!--label for="sel2">List ingredients you want to use. Separate by commas.</label-->
+					<label for="sel2">List keywords you want to search for. Press enter after each keyword.</label>
 					<input type="hidden" name="ingredient_count" id="ingredient_count" value='0' />
-					<input type="text" class="form-control input-lg" id="ing_input" onKeyUp="enterVal()" autocomplete="off" />
+					<input type="text" class="form-control input-lg" id="ing_input" autocomplete="off" />
 				
 					<br />
 				
@@ -113,7 +121,7 @@
 						
 					  </select>  -->
 					<br />
-					<button type="submit" class="btn btn-mybtn" style="align-items:center">Search Ingredients</button>				
+					<input type="submit" class="btn btn-mybtn" style="align-items:center" value="Search Ingredients"/>				
 			</div> 
 			
 			<!-- Footer -->

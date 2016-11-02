@@ -8,10 +8,18 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<link rel="stylesheet" href="assets/meals.css">
 		
+		<!--style>
+		.btn btn-primary {
+			margin-top: 3px;
+			margin-right: 3px;
+		}
+		</style-->
+		
+		
 		<script>
 			//var ingredientCount = 0;
 			var ings = [];
-			
+				
 			$(document).ready(function(){
 				$("#ing_input").keyup(function(){
 					if (event.keyCode == 13) { //13 = enter
@@ -22,12 +30,9 @@
 						$("#ing_input").val("");
 						ings.push(input);
 						//input += (ingredientCount++);
-						var text = "<div class='btn btn-primary' id='" + input + "' onclick='removeTag(this)'>" + input + "</div>" + " ";
+						var text = "<div class='btn btn-primary' style='margin-top: 5px; margin-right: 5px' id='" + input + "' onclick='removeTag(this)'>" + input + "</div>";
 						 $("#ing_list").append(text);
-						 
-						 
-						 
-						 //ingredientCount++;
+
 					}	
 				});
 			});
@@ -49,6 +54,29 @@
 		</script>
 		
 		<script>
+		
+			
+		
+			function getTags(){
+				var tags = document.getElementById("ing_list").getElementsByTagName("div");
+				//var ings = [];
+				var len = tags.length;
+				for(var i=0; i<len; i+=1){
+					//console.log("num = " + len);
+					ings.push(tags[i].id);
+				}
+				
+				//TODO - why does this have length*2 elements in the array?
+				for(var i=0; i<ings.length; i+=1){
+					console.log("index=" + i);
+					console.log(ings[i]);
+				}
+				
+			}		
+		
+		</script>
+		
+		<script>
 			//removes an ingredient from the list the user has entered
 			//this function is called when the user clicks on one of the buttons
 			//$(document).ready(function(){
@@ -57,10 +85,7 @@
 						//$("#ing_list").append("text");
 						var id = elem.id;
 						$("ing_list").append(id);
-						//TODO
-						//remove from ing_list array
-						
-						
+
 						//remove from page
 						$(elem).hide();
 					}
@@ -96,19 +121,20 @@
 			<!-- Page Content -->
 			<div class="jumbotron" style="padding-bottom: 80px">
 				<h1>Advanced Search</h1>
-				<form action="database/getAdvSearchResults.php" method="get">
+				<!--form action="database/getAdvSearchResults.php" method="get"-->
+				<form method="get">
 				
 					<!--Text Box-->
 					<!--label for="sel2">List ingredients you want to use. Separate by commas.</label-->
 					<label for="sel2">List keywords you want to search for. Press enter after each keyword.</label>
-					<input type="hidden" name="ingredient_count" id="ingredient_count" value='0' />
+					<!--input type="hidden" name="keywords" id="ingredient_count" value='0' /-->
 					<input type="text" class="form-control input-lg" id="ing_input" autocomplete="off" />
 				
 					<br />
 				
 					<!-- Where to put the list of ingredients to search for -->
-					<ul id="ing_list"></ul>
-				
+					<span id="ing_list" name="ingredients"></span>
+					<br />
 					<!--Select list Option-->
 					<!-- -
 					  <select multiple class="form-control" id="sel2">
@@ -121,7 +147,7 @@
 						
 					  </select>  -->
 					<br />
-					<input type="submit" class="btn btn-mybtn" style="align-items:center" value="Search Ingredients"/>				
+					<input type="submit" onclick="getTags()" class="btn btn-mybtn" style="align-items:center" value="Search Ingredients"/>				
 			</div> 
 			
 			<!-- Footer -->

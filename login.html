@@ -10,15 +10,15 @@
     <meta name="author" content="">
 
     <title>Dank Meals</title>
-	
+
 	<!-- Loads the Google interface -->
 	<script src="https://apis.google.com/js/platform.js" async defer></script>
 	<meta name="google-signin-client_id" content="406057883070-d26boopl1m5dd1cbknjl2cj3c1jl4eas.apps.googleusercontent.com">
 
 	<script src="bootstrap/js/facebook.js"></script>
-	
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	
+
     <!-- Bootstrap Core CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" href="assets/meals.css">
@@ -51,7 +51,7 @@
 			$.get("assets/nav.html", function(data) {
 				$("#navigation").replaceWith(data);
 			});
-		</script>	
+		</script>
 	</div>
 
 	<br>
@@ -71,7 +71,7 @@
 				<br>
 			</div>
 		</div>
-				
+
 		<!-- Footer -->
 		<div id="footer" class="container">
 			<script>
@@ -80,10 +80,10 @@
 				});
 			</script>
 		</div>
-		
+
     </div>
     <!-- /.container -->
-	
+
 	<script>
 		function onSignIn(googleUser) {
 		  var profile = googleUser.getBasicProfile();
@@ -91,6 +91,7 @@
 		  console.log('Name: ' + profile.getName());
 		  console.log('Image URL: ' + profile.getImageUrl());
 		  console.log('Email: ' + profile.getEmail());
+			var id_token = googleUser.getAuthResponse().id_token;
 		}
 		function onFailure(error) {
 			console.log(error);

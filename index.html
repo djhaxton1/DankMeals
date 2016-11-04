@@ -63,13 +63,13 @@
             <div class="col-lg-12">
                 <ul class="pagination">
                     <li>
-                        <a id="left" href="#">&laquo;</a>
+                        <a id="previous_page" href="#">&laquo;</a>
                     </li>
                     <li class="active">
-                        <a href="#">1</a>
+                        <a id="current_page" href="#">1</a>
                     </li>
                     <li>
-                        <a href="#">&raquo;</a>
+                        <a id="next_page" href="#">&raquo;</a>
                     </li>
                 </ul>
             </div>
@@ -93,14 +93,35 @@
 	<!-- Population Script -->
 	<script>
         function load() {
-			var el = document.getElementById('left');
-			if(el)
-				el.className += el.className ? ' disabled' : 'disabled';
-		
+            //get the page number from url
+            var GET = {};
+            var urlVars = window.location.search.substring(1).split("&");
+            for (var i = 0; i < urlVars.length; i++) {
+                if (urlVars[i] === "") {
+                    continue;
+                }
+                var param = urlVars[i].split("=");
+                GET[decodeURIComponent(param[0])] = decodeURIComponent(param[1] || "");
+            }
+
+            var page = 1;
+            //TODO: validate url argument
+            if (isNaN(parseInt(GET.page, 10))) {
+                page = 1;
+            }else{
+                page = parseInt(GET.page,10);
+            }
+            console.log(page);
+
+            var url = window.location.href;
+            url = url.split("?")[0];
+            document.getElementById("previous_page").setAttribute("href", url + "?page=" + (page - 1));
+            document.getElementById("next_page").setAttribute("href", url + "?page=" + (page + 1))
+
             $.ajax({
                 url: "dbController.php",
                 type: "post",
-                data: {"function": "getRecipeList()"},
+                data: {"function": "getRecipeListN()", "page": page},
                 success: function (response) {
                     var data = JSON.parse(response);
                     document.getElementById("recipe_table").innerHTML = genPage(data);

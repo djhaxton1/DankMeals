@@ -43,7 +43,7 @@ class dbInterface{
      */
     function getRecipeListN($page){
         define("ENTRIES", 9);
-        $start = ($page * ENTRIES);
+        $start = (($page - 1) * ENTRIES);
         $output = array();
         $output["ids"] = $this->getIDsN($start, ENTRIES);
         $output["titles"] = $this->getTitlesN($start, ENTRIES);

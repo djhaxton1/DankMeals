@@ -41,13 +41,14 @@
 		}
 	}
 	
-	
+	echo "<br>$title<br><br>";
 	$recipe["title"]           = $title;
-	$recipe["parent_id"]       = null;
+	$recipe["parent_id"]       = NULL;
 	$recipe["ingredient_name"] = $ing;
 	$recipe["instruction"]     = $ins;
+	$recipe[["ingredient_measurement"] = array();
 	
-	$id = $db->InsertRecipe($recipe);
+	$id = $db->insertRecipe($recipe);
 	$db = null;
 	
 	if(isset($_FILES['image'])) {
@@ -62,7 +63,6 @@
 		}
 
 		if(empty($errors) == true) {
-			$id = InsertRecipe($recipe);
 
 			$dirpath = realpath(dirname(getcwd()));
 			mkdir($dirpath . "/DankMeals/pics/rec" . $id);

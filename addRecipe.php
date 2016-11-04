@@ -10,11 +10,11 @@
 		
 		<!-- On Click Script for ingredients-->
 		<script>
-		var index = 2;
-		var ingredientCount = 0;
+		//var index = 2;
+		//var ingredientCount = 0;
 		function addIng(){
 			document.getElementById('ingredients').insertAdjacentHTML('beforeend',
-				createAutocompleteTextbox('ingredients' + (ingredientCount++)));
+				createAutocompleteTextbox('ingredients'));
 			index = index + 1;
 			$('#ingredient_count').val(ingredientCount);
 		}
@@ -33,7 +33,7 @@
 		
 		<!-- On Click Script for instructions-->
 		<script>
-		var instructionCount = 1;
+		//var instructionCount = 1;
 		function addIns(){
 			document.getElementById('instructions').insertAdjacentHTML('beforeend', 
 				'<input type="text" name="instruction' + (instructionCount++) + '" class="form-control">');
@@ -77,10 +77,10 @@
 				<h2><i>Please insert your dankness below.</i></h2> 
 				<br />
 				
-				<form action="database/submitRecipe.php" method="POST" enctype="multipart/form-data">
+				<form action="database/submitRecipe.php" method="get">
 					<div class="form-group">
 					  <label for="rec_name">Recipe Name</label>
-					  <input type="text" name="name" class="form-control">
+					  <input type="text" name="title" class="form-control">
 					</div>
 					
 					<div class="form-group">

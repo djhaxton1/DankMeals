@@ -1,5 +1,5 @@
 <?php
-include_once __DIR__ . '/../vendor/autoload.php';
+include_once __DIR__ . '\google-api-php-client-master\google-api-php-client-master\src\Google\autoload.php';
 include_once "templates/base.php";
 echo pageHeader("Retrieving An Id Token");
 
@@ -64,4 +64,4 @@ if (
  ************************************************/
 if ($client->getAccessToken()) {
   $token_data = $client->verifyIdToken();
-}}
+}

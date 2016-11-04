@@ -63,7 +63,7 @@
             <div class="col-lg-12">
                 <ul class="pagination">
                     <li>
-                        <a href="#">&laquo;</a>
+                        <a id="left" href="#">&laquo;</a>
                     </li>
                     <li class="active">
                         <a href="#">1</a>
@@ -93,6 +93,10 @@
 	<!-- Population Script -->
 	<script>
         function load() {
+			var el = document.getElementById('left');
+			if(el)
+				el.className += el.className ? ' disabled' : 'disabled';
+		
             $.ajax({
                 url: "dbController.php",
                 type: "post",
@@ -114,6 +118,10 @@
 			while (data["titles"][i] != undefined){
 				if ((i + 1) % 3 == 1) {
 					out += "<div class='row'>";
+				}
+				
+				if(data["pictures"][i] == null) {
+					data["pictures"][i] = "/imageError.png";
 				}
 				
 				out += drawTile(data["ids"][i],data["titles"][i],data["pictures"][i]);

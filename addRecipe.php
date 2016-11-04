@@ -24,7 +24,7 @@
 			//stops the form from trying to submit when the user presses enter
 			$(document).on("keypress", 'form', function (e) {
 				var code = e.keyCode || e.which;
-				if (code == 13) {
+				if (code == 13) { //13 = enter button
 					e.preventDefault();
 					return false;
 				}

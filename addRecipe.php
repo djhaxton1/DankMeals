@@ -77,7 +77,7 @@
 				<h2><i>Please insert your dankness below.</i></h2> 
 				<br />
 				
-				<form action="database/submitRecipe.php" method="get" autocomplete="off">
+				<form action="database/submitRecipe.php" method="POST" enctype="multipart/form-data">
 					<div class="form-group">
 					  <label for="rec_name">Recipe Name</label>
 					  <input type="text" name="name" class="form-control">
@@ -112,7 +112,7 @@
 					
 					<div class="form-group">
 						<label class="custom-file">
-						  <input type="file" id="file" name="picture" class="custom-file-input">
+						  <input type="file" id="file" name="image" class="custom-file-input">
 						  <span class="custom-file-control"></span>
 						</label>
 					</div>

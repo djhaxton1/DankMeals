@@ -25,9 +25,13 @@
 	$recipe["title"]                  = $title;
 	$recipe["parent_id"]              = NULL;
 	$recipe["ingredient_name"]        = $ing;
-	$recipe["instruction"]            = $ins;
-	$recipe["ingredient_measurement"] = array(count($ing));
-	
+	$recipe["instructions"]            = $ins;
+	$recipe["ingredient_measurement"] = array();
+	for($i = 0; $i < count($recipe["ingredient_name"]); $i++){
+		$recipe["ingredient_measurement"][$i] = "";
+	}
+	$recipe["author"] 				  = -1;
+	echo json_encode($recipe);
 	$id = $db->insertRecipe($recipe);
 	echo "ID is" + $id + "<br>";
 	$db = null; // Close the database
@@ -51,6 +55,6 @@
 		} else {
 			print_r($errors);
 		}
-	}*/
+	}
 
 ?>

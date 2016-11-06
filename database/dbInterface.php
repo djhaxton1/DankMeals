@@ -34,7 +34,7 @@ class dbInterface{
     }
 
     /**
-     * Gathers basic information for a set number of recipes (currently 12) given a location to start from
+     * Gathers basic information for a set number of recipes (currently 9) given a location to start from
      * @param $page the page of recipes requested
      * @return array   an associative array containing basic data for all recipes where each index is a single entry
      *                      array of recipe ids in $output["ids"]

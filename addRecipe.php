@@ -10,7 +10,7 @@
 		
 		<!-- On Click Script for ingredients-->
 		<script>
-		var $ing = 1;
+		var ing = 1;
 		function addIng(){
 			// TODO: Fix autocomplete
 			/*document.getElementById('ingredients').insertAdjacentHTML('beforeend',
@@ -18,9 +18,9 @@
 			ing = ing + 1;
 			*/
 			document.getElementById('ingredients').insertAdjacentHTML('beforeend', 
-				'<input type="text" name="ingredient[' + ($ing++) + ']" class="form-control">');
+				'<input type="text" name="ingredient[' + (ing++) + ']" class="form-control">');
 
-			$('#ingredient_count').val($ing);
+			$('#ingredient_count').val(ing);
 		}
 		</script>
 		
@@ -37,12 +37,12 @@
 		
 		<!-- On Click Script for instructions-->
 		<script>
-		var $ins = 1;
+		var ins = 1;
 		function addIns(){
 			document.getElementById('instructions').insertAdjacentHTML('beforeend', 
-				'<input type="text" name="instruction[' + ($ins++) + ']" class="form-control">');
+				'<input type="text" name="instruction[' + (ins++) + ']" class="form-control">');
 				
-			$('#instruction_count').val($ins);
+			$('#instruction_count').val(ins);
 		}
 		</script>
 

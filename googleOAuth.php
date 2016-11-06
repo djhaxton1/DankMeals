@@ -1,6 +1,6 @@
 <?php
-include_once __DIR__ . '\google-api-php-client-master\google-api-php-client-master\src\Google\autoload.php';
-include_once "templates/base.php";
+include_once __DIR__ . '\google-api-php-client-2.1.0\vendor\autoload.php';
+include_once __DIR__ . '\google-api-php-client-2.1.0\examples\templates\base.php';
 echo pageHeader("Retrieving An Id Token");
 
 /*************************************************

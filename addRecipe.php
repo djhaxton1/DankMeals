@@ -10,13 +10,17 @@
 		
 		<!-- On Click Script for ingredients-->
 		<script>
-		//var index = 2;
-		//var ingredientCount = 0;
+		var ing = 1;
 		function addIng(){
-			document.getElementById('ingredients').insertAdjacentHTML('beforeend',
-				createAutocompleteTextbox('ingredients'));
-			index = index + 1;
-			$('#ingredient_count').val(ingredientCount);
+			// TODO: Fix autocomplete
+			/*document.getElementById('ingredients').insertAdjacentHTML('beforeend',
+				createAutocompleteTextbox('ingredients[' + (ing) + ']'));
+			ing = ing + 1;
+			*/
+			document.getElementById('ingredients').insertAdjacentHTML('beforeend', 
+				'<input type="text" name="ingredient[' + (ing++) + ']" class="form-control">');
+
+			$('#ingredient_count').val(ing);
 		}
 		</script>
 		
@@ -33,12 +37,12 @@
 		
 		<!-- On Click Script for instructions-->
 		<script>
-		//var instructionCount = 1;
+		var ins = 1;
 		function addIns(){
 			document.getElementById('instructions').insertAdjacentHTML('beforeend', 
-				'<input type="text" name="instruction' + (instructionCount++) + '" class="form-control">');
+				'<input type="text" name="instruction[' + (ins++) + ']" class="form-control">');
 				
-			$('#instruction_count').val(instructionCount);
+			$('#instruction_count').val(ins);
 		}
 		</script>
 
@@ -77,7 +81,7 @@
 				<h2><i>Please insert your dankness below.</i></h2> 
 				<br />
 				
-				<form action="database/submitRecipe.php" method="get">
+				<form action="database/submitRecipe.php" method="POST" enctype=multipart/form-data>
 					<div class="form-group">
 					  <label for="rec_name">Recipe Name</label>
 					  <input type="text" name="title" class="form-control">
@@ -100,7 +104,7 @@
 					<div class="form-group">
 						<label for="ing">Instructions</label>
 						<input type="hidden" name="instruction_count" id="instruction_count" value="1">
-						<input type="text" name="instruction0" class="form-control">
+						<input type="text" name="instruction[0]" class="form-control">
 						<!-- This is where the added instruction textboxes will go-->
 						<div id="instructions"></div>
 						

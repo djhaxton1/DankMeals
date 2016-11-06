@@ -14,42 +14,23 @@
 	/* Connect to Database */
 	include 'dbInterface.php';
 	$db = new dbInterface();
-	$rec = $_GET["name"];
 	$recipe = array();
-	$title;
-	$par_id;
-	$ing = array();
-	$ins = array();
 	
-	/* Decode the URL */
-	foreach (explode("&", $_SERVER['QUERY_STRING']) as $tmp_arr_param) {
-		$split_param = explode("=", $tmp_arr_param);
-		
-		/* Is the parameter a title */
-		if ($split_param[0] == "title") {
-			$title = $split_param[1];
-		}
-		
-		/* Is the parameter an ingredient? */
-		if ($split_param[0] == "ingredient") {
-		    $ing[] = urldecode($split_param[1]);
-		}
-		
-		/* Is the parameter an instruction? */
-		if ($split_param[0] == "instruction") {
-			$ins[] = urldecode($split_param[1]);
-		}
-	}
+	/* Populate Arrays with information */
+	$title = $_POST['title'];
+	$ing   = $_POST['ingredient'];
+	$ins   = $_POST['instruction'];
 	
-	echo "<br>$title<br><br>";
-	$recipe["title"]           = $title;
-	$recipe["parent_id"]       = NULL;
-	$recipe["ingredient_name"] = $ing;
-	$recipe["instruction"]     = $ins;
-	$recipe[["ingredient_measurement"] = array();
+	/* prepare Recipe for insertion into database */
+	$recipe["title"]                  = $title;
+	$recipe["parent_id"]              = NULL;
+	$recipe["ingredient_name"]        = $ing;
+	$recipe["instruction"]            = $ins;
+	$recipe["ingredient_measurement"] = array(count($ing));
 	
 	$id = $db->insertRecipe($recipe);
-	$db = null;
+	echo "ID is" + $id + "<br>";
+	$db = null; // Close the database
 	
 	if(isset($_FILES['image'])) {
 		$errors    = array();
@@ -70,6 +51,6 @@
 		} else {
 			print_r($errors);
 		}
-	}
+	}*/
 
 ?>

@@ -90,8 +90,9 @@
 					<div class="form-group">
 						<label for="ing">Ingredients</label>
 						<input type="hidden" name="ingredient_count" id="ingredient_count" value='0'>
-						<input type="text" name="ingredient[0]" class="form-control">
+						<!-- This is where the added ingredient textboxes will go-->
 						<div id="ingredients"></div>
+						<script>addIng();</script>
 						
 						<!-- Plus button for Ingredients-->
 						<!-- TODO: change z-index for items to make sure the + glyphicon does not appear on top of the select box for the autocomplete function-->
@@ -101,9 +102,10 @@
 					</div>
 					
 					<div class="form-group">
-						<label for="ins">Instructions</label>
+						<label for="ing">Instructions</label>
 						<input type="hidden" name="instruction_count" id="instruction_count" value="1">
 						<input type="text" name="instruction[0]" class="form-control">
+						<!-- This is where the added instruction textboxes will go-->
 						<div id="instructions"></div>
 						
 						<!-- Plus button for Instructions-->

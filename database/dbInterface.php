@@ -34,7 +34,7 @@ class dbInterface{
     }
 
     /**
-     * Gathers basic information for a set number of recipes (currently 12) given a location to start from
+     * Gathers basic information for a set number of recipes (currently 9) given a location to start from
      * @param $page the page of recipes requested
      * @return array   an associative array containing basic data for all recipes where each index is a single entry
      *                      array of recipe ids in $output["ids"]
@@ -101,7 +101,7 @@ class dbInterface{
      * Note:  this function assumes that a correctly formatted directory will be built for the picture file
      */
     function insertRecipe($data){
-        if (gettype($data["parent_id"]) !== "integer" && $data["parent_id"] != "NULL"){
+        if (gettype($data["parent_id"]) !== "integer" && $data["parent_id"] != "NULL" && $data["parent_id"] !== NULL){
             die("Invalid parent Id passed in data['parent_id']. This should be an integer.");
         }
         if (gettype($data["title"]) !== "string"){

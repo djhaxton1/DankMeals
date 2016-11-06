@@ -101,7 +101,7 @@ class dbInterface{
      * Note:  this function assumes that a correctly formatted directory will be built for the picture file
      */
     function insertRecipe($data){
-        if (gettype($data["parent_id"]) !== "integer" && $data["parent_id"] != "NULL"){
+        if (gettype($data["parent_id"]) !== "integer" && $data["parent_id"] != "NULL" && $data["parent_id"] !== NULL){
             die("Invalid parent Id passed in data['parent_id']. This should be an integer.");
         }
         if (gettype($data["title"]) !== "string"){

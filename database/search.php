@@ -31,13 +31,15 @@
 	</div>
 
 	<br>
-	
+
+	<script src="assets/tile.js" type="text/javascript"></script>
 	<div class="container">
 		<?php
 		/* Connect to Database */
 		include 'dbInterface.php';
 		$db        = new dbInterface();
 		$recipes   = $db->getTitles();
+		$ids	   = $db->getIDs();
 		$occurance = array_fill(0, count($recipes), 0);
 		
 		$t = explode(" ", $_POST["search-terms"]);
@@ -67,15 +69,22 @@
 					$temp = $recipes[$i];
 					$recipes[$i] = $recipes[$j];
 					$recipes[$j] = $temp;
+					
+					$temp = $ids[$i];
+					$ids[$i] = $ids[$j];
+					$ids[$j] = $temp;
 				}
 			}
 		}
 
 		/* Create a table of possible results */
-		echo "<h2>Search Results:</h2><ul id='search-result'>";
+		echo "<h1 style='text-align:center'>Search Results:</h1>";
 		for($i = 0; $i < count($recipes); $i++) {
 			if($occurance[$i] != 0) {
-				echo"<li>$recipes[$i]</li>";
+				$rec = $db->getRecipe($ids[$i]);
+				if($rec["picture"] == null)
+					$rec["picture"] = "/imageError.png";
+				echo"<div class='col-md-4 portfolio-item'><div id='tile'><a href='recipePage.html?id=" . $ids[$i] . "'><img src='pics" . $rec["picture"] . "'><div id='tile-title'><p>" . $rec["title"] . "</p></div></a></div></div>";
 			}
 		}
 		echo "</ul>";

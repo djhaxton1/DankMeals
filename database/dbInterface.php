@@ -154,7 +154,7 @@ class dbInterface{
     /**
      * @return array    array of recipe ids
      */
-    private function getIDs(){
+    function getIDs(){
         $query = "SELECT * FROM recipes ORDER BY id";
         $relevant = array("id");
         $result = $this->db->sendCommandParse($query, $relevant);   //retrieve id's
@@ -172,7 +172,7 @@ class dbInterface{
         $result = $this->db->sendCommandParse($query, $relevant);
         return $result;
     }
-
+	
     /**
      * @return array    array of recipe thumbnail pictures
      */

@@ -108,6 +108,10 @@
             //TODO: validate url argument
             if (isNaN(parseInt(GET.page, 10))) {
                 page = 1;
+				var el = document.getElementById('previous_page');
+				if(el) {
+					el.className += el.className ? ' disabled' : 'disabled';
+				}
             }else{
                 page = parseInt(GET.page,10);
             }

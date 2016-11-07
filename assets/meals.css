@@ -423,6 +423,7 @@ nav a {
 	font
 }
 
+/*Sign-In buttons*/
 #sign-in {
 	background-color: #e67300;
 	position: relative;
@@ -467,6 +468,7 @@ nav a {
 	transition: box-shadow 0.08s;
 }
 
-#fb-login img {
-
+#previous_page.disabled {
+	background-color: #eee;
+	pointer-events: none;
 }

@@ -21,7 +21,7 @@
 			var ings = [];
 				
 			$(document).ready(function(){
-				$("#ing_input").keyup(function(){
+				$("#ing_input").keyup(function(event){
 					if (event.keyCode == 13) { //13 = enter
 						//$(this).hide(); 
 						

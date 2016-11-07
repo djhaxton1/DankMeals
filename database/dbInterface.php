@@ -114,7 +114,7 @@ class dbInterface{
             die("Invalid name passed in data['ingredient_name']. This should be an array of strings.");
         }
         if (gettype($data["instructions"]) !== "array" || gettype($data["instructions"][0]) !== "string"){
-            die("Invalid instruction passed in data['instruction']. This should be an array of strings.");
+            die("Invalid instruction passed in data['instructions']. This should be an array of strings.");
         }
         if (gettype($data["author"]) !== "integer" || $data["author"] < 0){
             die("Invalid author passed in data['author']. This should be a positive integer.");
@@ -294,3 +294,5 @@ class dbInterface{
         ob_end_clean();
     }
 }
+
+

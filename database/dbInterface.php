@@ -22,7 +22,7 @@ class dbInterface{
 	 * Data Currently Output:
      * array of recipe ids in $output["ids"]
      * array of recipe titles in $output["titles"]
-     * integer that is the number of recipe entries in $output["length"]
+     * integer that is the number of recipe entries in $output["count"]
      * array of recipe pictures in $output["pictures"]
      */
     function getRecipeList(){
@@ -30,6 +30,7 @@ class dbInterface{
         $output["ids"] = $this->getIDs();   //add ids to output array
         $output["titles"] = $this->getTitles(); //add titles to output array
         $output["pictures"] = $this->getPictures(); //add the recipe thumbnail pictures
+        $output["count"] = $this->getCount();   //add the number of entries in the recipes table
         return $output;
     }
 
@@ -40,6 +41,7 @@ class dbInterface{
      *                      array of recipe ids in $output["ids"]
      *                      array of recipe titles in $output["titles"]
      *                      array of recipe pictures in $output["pictures"]
+     *                      integer that is the number of entries in the recipes table in $output["count"]
      */
     function getRecipeListN($page){
         define("ENTRIES", 9);
@@ -48,6 +50,7 @@ class dbInterface{
         $output["ids"] = $this->getIDsN($start, ENTRIES);
         $output["titles"] = $this->getTitlesN($start, ENTRIES);
         $output["pictures"] = $this->getPicturesN($start, ENTRIES);
+        $output["count"] = $this->getCount();
         return $output;
     }
 
@@ -159,6 +162,17 @@ class dbInterface{
         $relevant = array("id");
         $result = $this->db->sendCommandParse($query, $relevant);   //retrieve id's
         return $result;
+    }
+
+    /**
+     * Gets the current number of entries in the recipes table
+     * @return mixed    the number of entries in the recipes table as an integer
+     */
+    private function getCount(){
+        $query = "SELECT COUNT(*) FROM recipes";
+        $relevant = array("COUNT(*)");
+        $result = $this->db->sendCommandParse($query, $relevant);
+        return $result[0];
     }
 
     /**

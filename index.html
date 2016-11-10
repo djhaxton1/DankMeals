@@ -105,9 +105,10 @@
             }
 
             var page = 1;
-            //TODO: validate url argument
-            if (isNaN(parseInt(GET.page, 10))) {
+            //Check if this is the first page
+            if (isNaN(parseInt(GET.page, 10)) || parseInt(GET.page, 10) == 1) {
                 page = 1;
+                //disable the previous page button
 				var el = document.getElementById('previous_page');
 				if(el) {
 					el.className += el.className ? ' disabled' : 'disabled';
@@ -115,13 +116,20 @@
             }else{
                 page = parseInt(GET.page,10);
             }
-            console.log(page);
+
+            var ENTRIES_PER_PAGE = 9;
+            //check how many entries are allowed per page
+            if (isNaN(parseInt(GET.ENTRIES_PER_PAGE, 10)) || parseInt(GET.ENTRIES_PER_PAGE, 10) < 1){
+                ENTRIES_PER_PAGE = 9;
+            }else{
+                ENTRIES_PER_PAGE = parseInt(GET.ENTRIES_PER_PAGE, 10);
+            }
 
             var url = window.location.href;
             url = url.split("?")[0];
             document.getElementById("previous_page").setAttribute("href", url + "?page=" + (page - 1));
             document.getElementById("next_page").setAttribute("href", url + "?page=" + (page + 1))
-
+            document.getElementById("current_page").innerHTML = "" + page;
             $.ajax({
                 url: "dbController.php",
                 type: "post",
@@ -129,13 +137,36 @@
                 success: function (response) {
                     var data = JSON.parse(response);
                     document.getElementById("recipe_table").innerHTML = genPage(data);
+                    checkMaxPage(data, page, ENTRIES_PER_PAGE);
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
                     console.log(textStatus, errorThrown);
+                    window.location.href = '404.html';
                 }
             });
+
         }
-		
+
+        function checkMaxPage(data, page, ENTRIES_PER_PAGE){
+            var maxPage = Math.floor(data["count"] / ENTRIES_PER_PAGE);
+            if (data["count"] % ENTRIES_PER_PAGE != 0){
+                maxPage += 1;
+            }
+            if (page >= maxPage){
+                //disable the next page button
+               var el = document.getElementById('next_page');
+                if (el){
+                    el.className += el.className ? ' disabled' : 'disabled';
+                }
+            }
+
+            //check if the page is outside the limits
+            console.log(page < 1);
+            if (page > maxPage || page < 1){
+                window.location.href = "404.html";  //redirect to 404 page if invalid page number
+            }
+
+        }
 		function genPage(data) {
 			var out = "";
 			var i = 0;

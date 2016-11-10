@@ -40,6 +40,12 @@ switch ($_POST["function"]){
             die("Invalid Page passed in url");
         }
         $page = (int) $_POST["page"];
+        if ($page < 1){
+            header("HTTP/1.1 404 Page Not Found");
+            echo "invalid page";
+            $dbInterface = NULL;
+            die("Invalid Page passed in url");
+        }
         $out = $dbInterface->getRecipeListN($page);
         echo json_encode($out);
         $dbInterface = NULL;

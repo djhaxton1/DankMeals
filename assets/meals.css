@@ -472,3 +472,8 @@ nav a {
 	background-color: #eee;
 	pointer-events: none;
 }
+
+#next_page.disabled {
+	background-color: #eee;
+	pointer-events: none;
+}

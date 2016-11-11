@@ -286,7 +286,13 @@ nav a {
 
 .btn-mybtn {
 	border-color: #e67300;
+	color: white;
 	background-color: #e67300;
+}
+
+.btn-mybtn:hover {
+	color: white;
+	background-color: #e6903a
 }
 
 .nav > li.disabled > a {
@@ -423,7 +429,6 @@ nav a {
 	font
 }
 
-/*Sign-In buttons*/
 #sign-in {
 	background-color: #e67300;
 	position: relative;
@@ -441,10 +446,22 @@ nav a {
 #sign-in .glyphicon {
 	display: block;
 	color: white;
-	font-size: 2em;
+	font-size: 30px;
 	text-align: center;
 	min-height: 60px;
-	line-height: 60px;
+	line-height: 30px;
+}
+
+#sign-in p {
+	color: white;
+	font-size: 12px;
+	line-height: 12px;
+	text-align: left;
+}
+
+#sign-in a {
+	height: 60px;
+	padding-top: 9px;
 }
 
 #fb-login {

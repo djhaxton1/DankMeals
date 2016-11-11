@@ -30,7 +30,7 @@
 	for($i = 0; $i < count($recipe["ingredient_name"]); $i++){
 		$recipe["ingredient_measurement"][$i] = "";
 	}
-	$recipe["author"] 				  = 1;
+	$recipe["author"] 				  = 0;
 	$id = $db->insertRecipe($recipe);
 	$db = null; // Close the database
 	

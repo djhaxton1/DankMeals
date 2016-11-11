@@ -119,8 +119,8 @@ class dbInterface{
         if (gettype($data["instructions"]) !== "array" || gettype($data["instructions"][0]) !== "string"){
             die("Invalid instruction passed in data['instructions']. This should be an array of strings.");
         }
-        if (gettype($data["author"]) !== "integer" || $data["author"] < 0){
-            die("Invalid author passed in data['author']. This should be a positive integer.");
+        if (gettype($data["author"]) !== "integer" || $data["author"] <= 0){
+            die("Invalid author passed in data['author']. This should be a positive integer, or 0 for anonymous.");
         }
         $id = -1;
        

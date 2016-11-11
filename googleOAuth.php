@@ -24,7 +24,7 @@ $client->setScopes('email');
  * If we're logging out we just need to clear our
  * local access token in this case
  ************************************************/
-if (isset($_REQUEST['logout'])) {
+/*if (isset($_REQUEST['logout'])) {
   unset($_SESSION['id_token_token']);
 }
 /************************************************
@@ -34,7 +34,7 @@ if (isset($_REQUEST['logout'])) {
  * function. We store the resultant access token
  * bundle in the session, and redirect to ourself.
  ************************************************/
-if (isset($_GET['code'])) {
+/*if (isset($_GET['code'])) {
   $token = $client->fetchAccessTokenWithAuthCode($_GET['code']);
   $client->setAccessToken($token);
   // store in the session also
@@ -46,7 +46,7 @@ if (isset($_GET['code'])) {
   If we have an access token, we can make
   requests, else we generate an authentication URL.
  ************************************************/
-if (
+/*if (
   !empty($_SESSION['id_token_token'])
   && isset($_SESSION['id_token_token']['id_token'])
 ) {
@@ -62,6 +62,22 @@ if (
   to retrieve the Google certificate to verify it,
   and that can be cached.
  ************************************************/
-if ($client->getAccessToken()) {
-  $token_data = $client->verifyIdToken();
+  $token = $_POST["idtoken"];
+   $ticket = $client->verifyIdToken($token);
+  if ($ticket) {
+    $data = $ticket->getAttributes();
+    //echo $data['payload']['sub']; // user ID
+  }
+  else
+  {
+    echo false;
+  }
+/*$ticket = $client->verifyIdToken($_SESSION['id_token']);
+if ($ticket) {
+  $data = $ticket->getAttributes();
+  echo $data['payload']['sub'];
 }
+else{
+  echo false;
+}*/
+

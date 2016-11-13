@@ -48,8 +48,13 @@
 		if(empty($errors) == true) {
 
 			$dirpath = realpath(dirname(getcwd()));
-			mkdir($dirpath . "/pics/rec" . $id);
-			move_uploaded_file($file_tmp, $dirpath . "/pics/rec" . $id . "/rec" . $id . "_0.jpg");
+			if(DIRECTORY_SEPARATOR == '\\') {
+				mkdir($dirpath . "\\pics\\rec" . $id);
+				move_uploaded_file($file_tmp, $dirpath . "\\pics\\rec" . $id . "\\rec" . $id . "_0.jpg");
+			} else {
+				mkdir($dirpath . "/pics/rec" . $id);
+				move_uploaded_file($file_tmp, $dirpath . "/pics/rec" . $id . "/rec" . $id . "_0.jpg");
+			}
 		} else {
 			print_r($errors);
 		}

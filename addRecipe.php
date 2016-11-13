@@ -17,8 +17,10 @@
 				createAutocompleteTextbox('ingredients[' + (ing) + ']'));
 			ing = ing + 1;
 			*/
-			document.getElementById('ingredients').insertAdjacentHTML('beforeend', 
-				'<input type="text" name="ingredient[' + (ing++) + ']" class="form-control">');
+			document.getElementById('ingredients').insertAdjacentHTML('beforeend',''
+				+'<div class="col-lg-2"><input type="text" name="measurement[' + (ing) + ']" class="form-control"></div>'
+				+'<div class="col-lg-8"><input type="text" name="ingredient[' + (ing) + ']" class="form-control"></div>'
+				+'<div class="col-lg-2"><button type="button" name="(ing++)" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span></button></div><br /><br />');
 
 			$('#ingredient_count').val(ing);
 		}
@@ -45,7 +47,17 @@
 			$('#instruction_count').val(ins);
 		}
 		</script>
-
+		
+		<script>
+		function removeIng(elem){
+			var num = elem.name;
+			var measName = "measurement[" + num + "]";
+			var ingName = "ingredient[" + num + "]";
+			
+			
+		}
+		</script>
+		
 		<!-- Bootstrap Core CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<link rel="stylesheet" href="assets/meals.css">
@@ -88,10 +100,29 @@
 					</div>
 					
 					<div class="form-group">
+						<!--
 						<label for="ing">Ingredients</label>
 						<input type="hidden" name="ingredient_count" id="ingredient_count" value='0'>
 						<input type="text" name="ingredient[0]" class="form-control">
 						<div id="ingredients"></div>
+						-->
+						
+						<label for="ing">Ingredients</label><br />
+						<i><span class="col-lg-2">Example: [1 pinch]</span> <span class="col-lg-8">[salt]<span></i><br />
+						<div class="col-lg-2">
+							<input type="text" name="measurement[0]" class="form-control">
+						</div>
+						<div class="col-lg-8">
+							<input type="text" name="ingredient[0]" class="form-control">
+						</div>
+						<div class="col-lg-2">
+							<button onclick="removeIng(this)" type="button" class="btn btn-default" name="0">
+								<span class="glyphicon glyphicon-remove"></span>
+							</button>
+						</div>
+						<br /><br />
+						<div id="ingredients"></div>
+						
 						
 						<!-- Plus button for Ingredients-->
 						<!-- TODO: change z-index for items to make sure the + glyphicon does not appear on top of the select box for the autocomplete function-->

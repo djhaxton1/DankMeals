@@ -46,6 +46,7 @@
 	
 	function createAutocompleteTextbox(id) {
 		return " "
+			+ "<input type='text' class='form-control' id='measurement" + id + "'>"
 			+ "<input type='text' class='form-control' z-index='5' name='" + id + "' id='" + id + "' onKeyUp='autocompleteIngredient(this,\"" + id + "\",event)' autocomplete='off' onBlur='hideAutocompleteDiv(\"" + id + "\")' onFocus='showAutocompleteDiv(\"" + id + "\")'>"
 			+ "<div id='autocompleteDiv" + id + "' style='background-color: #fff; border: 1px solid #ccc; padding-left: 5px; padding-right: 5px; display: none; position: absolute'></div>"
 	}

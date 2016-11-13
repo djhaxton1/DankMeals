@@ -18,19 +18,22 @@
 	
 	/* Populate Arrays with information */
 	$title = $_POST['title'];
-	$ing   = $_POST['ingredient'];
+	$ing_name   = $_POST['ingredient'];
+	$ing_meas = $_POST['measurement'];
 	$ins   = $_POST['instruction'];
 	
 	/* prepare Recipe for insertion into database */
 	$recipe["title"]                  = $title;
 	$recipe["parent_id"]              = NULL;
-	$recipe["ingredient_name"]        = $ing;
+	$recipe["ingredient_name"]        = $ing_name;
 	$recipe["instructions"]           = $ins;
-	$recipe["ingredient_measurement"] = array();
+	$recipe["ingredient_measurement"] = $ing_meas;
 	for($i = 0; $i < count($recipe["ingredient_name"]); $i++){
-		$recipe["ingredient_measurement"][$i] = "";
+		if(!$ing_meas){
+			$recipe["ingredient_measurement"][$i] = "";
+		}
 	}
-	$recipe["author"] 				  = 0;
+	$recipe["author"] 				  = 1;
 	$id = $db->insertRecipe($recipe);
 	$db = null; // Close the database
 	

@@ -29,7 +29,7 @@
 	$recipe["instructions"]           = $ins;
 	$recipe["ingredient_measurement"] = $ing_meas;
 	for($i = 0; $i < count($recipe["ingredient_name"]); $i++){
-		if(!$ing_meas){
+		if(!$ing_meas[$i]){
 			$recipe["ingredient_measurement"][$i] = "";
 		}
 	}

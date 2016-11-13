@@ -11,7 +11,7 @@
  * $pic = picture of the recipe
  */
 
-	/* Connect to Database */
+/* Connect to Database */
 	include 'dbInterface.php';
 	$db = new dbInterface();
 	$recipe = array();
@@ -30,7 +30,7 @@
 	for($i = 0; $i < count($recipe["ingredient_name"]); $i++){
 		$recipe["ingredient_measurement"][$i] = "";
 	}
-	$recipe["author"] 				  = 0;
+	$recipe["author"] 				  = 1;
 	$id = $db->insertRecipe($recipe);
 	$db = null; // Close the database
 	
@@ -48,8 +48,8 @@
 		if(empty($errors) == true) {
 
 			$dirpath = realpath(dirname(getcwd()));
-			mkdir($dirpath . "/DankMeals/pics/rec" . $id);
-			move_uploaded_file($file_tmp, $dirpath . "/DankMeals/pics/rec" . $id . "/rec" . $id . "_0.jpg");
+			mkdir($dirpath . "/pics/rec" . $id);
+			move_uploaded_file($file_tmp, $dirpath . "/pics/rec" . $id . "/rec" . $id . "_0.jpg");
 		} else {
 			print_r($errors);
 		}

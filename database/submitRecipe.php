@@ -54,5 +54,5 @@
 			print_r($errors);
 		}
 	}
-	header("Location:https://meals.cs.mtu.edu/recipePage.html?id=" . $id);
+	header("Location:meals.cs.mtu.edu/recipePage.html?id=" . $id);
 ?>

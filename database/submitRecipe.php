@@ -34,6 +34,11 @@
 		}
 	}
 	$recipe["author"] 				  = 1;
+	if(!file_exists($_FILES['image']['tmp_name']) || !is_uploaded_file($_FILES['image']['tmp_name'])) {
+		$recipe["picture"]            = 0;
+	}else{
+		$recipe["picture"]            = 1;
+	}
 	$id = $db->insertRecipe($recipe);
 	$db = null; // Close the database
 	

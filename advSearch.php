@@ -87,7 +87,8 @@
 						$("ing_list").append(id);
 
 						//remove from page
-						$(elem).hide();
+						//$(elem).hide();
+						document.getElementById(id).remove();
 					}
 				//});
 		

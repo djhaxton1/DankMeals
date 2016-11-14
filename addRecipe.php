@@ -20,7 +20,7 @@
 			document.getElementById('ingredients').insertAdjacentHTML('beforeend',''
 				+'<div id="row' + ing + '"><div class="col-lg-2"><input type="text" name="measurement[' + (ing) + ']" class="form-control"></div>'
 				+'<div class="col-lg-8"><input type="text" name="ingredient[' + (ing) + ']" class="form-control"></div>'
-				+'<div class="col-lg-2"><button onclick="removeIng(this)" type="button" name="' + (ing) + '" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span></button></div><br /><br />');
+				+'<div class="col-lg-2"><button onclick="removeIng(this)" type="button" name="' + ing + '" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span></button></div><br /><br />');
 
 			$('#ingredient_count').val(ing);
 			ing++
@@ -42,8 +42,14 @@
 		<script>
 		var ins = 1;
 		function addIns(){
-			document.getElementById('instructions').insertAdjacentHTML('beforeend', 
-				'<input type="text" name="instruction[' + (ins++) + ']" class="form-control">');
+			document.getElementById('instructions').insertAdjacentHTML('beforeend', ''
+				+ '<div id="insRow' + ins + '" >'
+				+ '<div class="col-lg-10"><input type="text" id="instruction[' + (ins) + '" name="instruction[' + (ins) + ']" class="form-control"></div>'
+				+ '<div class="col-lg-2"><button onclick="removeIns(this)" type="button" class="btn btn-default" name="' + ins + '"><span class="glyphicon glyphicon-remove"></span></button></div>'
+				+ '</div>'
+				+ '<br /><br />');
+				
+				ins++
 				
 			$('#instruction_count').val(ins);
 		}
@@ -54,6 +60,15 @@
 			var num = elem.name;
 			var id = "row" + num;
 			
+			document.getElementById(id).remove();
+			ing = ing - 1;
+		}
+		</script>
+		
+		<script>
+		function removeIns(elem){
+			var num = elem.name;
+			var id = "instruction[" + num + "]";
 			document.getElementById(id).remove();
 			
 		}
@@ -138,8 +153,19 @@
 					<div class="form-group">
 						<label for="ins">Instructions</label>
 						<input type="hidden" name="instruction_count" id="instruction_count" value="1">
-						<input type="text" name="instruction[0]" class="form-control">
-						<div id="instructions"></div>
+						<div id="instructions">
+							<div id=insRow0"> 
+								<div class="col-lg-10">
+									<input type="text" id="instruction[0]" name="instruction[0]" class="form-control">
+								</div>
+								<div class="col-lg-2">
+									<button onclick="removeIns(this)" type="button" class="btn btn-default" name="0">
+										<span class="glyphicon glyphicon-remove"></span>
+									</button>
+								</div>
+							</div>
+							<br /><br />
+						</div>
 						
 						<!-- Plus button for Instructions-->
 						<button onclick="addIns()" type="button" class="btn btn-default" aria-label="Left Align">

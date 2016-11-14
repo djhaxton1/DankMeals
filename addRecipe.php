@@ -20,9 +20,10 @@
 			document.getElementById('ingredients').insertAdjacentHTML('beforeend',''
 				+'<div id="row' + ing + '"><div class="col-lg-2"><input type="text" name="measurement[' + (ing) + ']" class="form-control"></div>'
 				+'<div class="col-lg-8"><input type="text" name="ingredient[' + (ing) + ']" class="form-control"></div>'
-				+'<div class="col-lg-2"><button type="button" name="' + (ing++) + '" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span></button></div></div><br /><br />');
+				+'<div class="col-lg-2"><button type="button" name="' + (ing) + '" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span></button></div><br /><br />');
 
 			$('#ingredient_count').val(ing);
+			ing++
 		}
 		</script>
 		

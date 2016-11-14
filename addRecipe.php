@@ -20,7 +20,7 @@
 			document.getElementById('ingredients').insertAdjacentHTML('beforeend',''
 				+'<div id="row' + ing + '"><div class="col-lg-2"><input type="text" name="measurement[' + (ing) + ']" class="form-control"></div>'
 				+'<div class="col-lg-8"><input type="text" name="ingredient[' + (ing) + ']" class="form-control"></div>'
-				+'<div class="col-lg-2"><button type="button" name="' + (ing) + '" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span></button></div><br /><br />');
+				+'<div class="col-lg-2"><button onclick="removeIng(this)" type="button" name="' + (ing) + '" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span></button></div><br /><br />');
 
 			$('#ingredient_count').val(ing);
 			ing++
@@ -110,21 +110,22 @@
 						
 						<label for="ing">Ingredients</label><br />
 						<i><span class="col-lg-2">Example: [1 pinch]</span> <span class="col-lg-8">[salt]<span></i><br />
-						<div id="row0">
-							<div class="col-lg-2">
-								<input type="text" name="measurement[0]" class="form-control">
-							</div>
-							<div class="col-lg-8">
-								<input type="text" name="ingredient[0]" class="form-control">
-							</div>
-							<div class="col-lg-2">
-								<button onclick="removeIng(this)" type="button" class="btn btn-default" name="0">
-									<span class="glyphicon glyphicon-remove"></span>
-								</button>
+						<div id="ingredients">
+							<div id="row0">
+								<div class="col-lg-2">
+									<input type="text" name="measurement[0]" class="form-control">
+								</div>
+								<div class="col-lg-8">
+									<input type="text" name="ingredient[0]" class="form-control">
+								</div>
+								<div class="col-lg-2">
+									<button onclick="removeIng(this)" type="button" class="btn btn-default" name="0">
+										<span class="glyphicon glyphicon-remove"></span>
+									</button>
+								</div>
+								<br /><br />
 							</div>
 						</div>
-						<br /><br />
-						<div id="ingredients"></div>
 						
 						
 						<!-- Plus button for Ingredients-->

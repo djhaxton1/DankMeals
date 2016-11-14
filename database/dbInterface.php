@@ -97,6 +97,7 @@ class dbInterface{
      * data["ingredient_measurement"]: an array of ingredient measurement strings in the order they appear
      * data["ingredient_name"]:        an array of ingredient name strings in the order they appear
      * data["instructions"]:           an array of instruction text strings in the order they appear
+     * data["picture"]:                a flag for whether a picture was uploaded
      *
      * @return int     ID of the newly added recipe in the recipes table
      *
@@ -129,15 +130,16 @@ class dbInterface{
             $data["parent_id"] = "NULL";
         }
         $query = "INSERT INTO recipes (parent_id, title, picture, author) VALUES (" . $data["parent_id"] . ", '" .
-            $data["title"] . "', NULL, " . $data["author"] .")";
+            $data["title"] . "', '/imageError.png', " . $data["author"] .")";
         $this->db->sendCommand($query);
         $id = $this->db->getLastID();   //find the id of the newly inserted recipe
 
-        //insert the assumed path to the picture file
-        $directory = "/rec" . $id ."/rec" . $id . "_0.jpg";
-        $query = "UPDATE recipes SET picture='" . $directory . "' WHERE id=" . $id;
-        $this->db->sendCommand($query);
-
+        if ($data["picture"]) {
+            //insert the assumed path to the picture file
+            $directory = "/rec" . $id . "/rec" . $id . "_0.jpg";
+            $query = "UPDATE recipes SET picture='" . $directory . "' WHERE id=" . $id;
+            $this->db->sendCommand($query);
+        }
         //insert ingredients to ingredients table
         for ($i = 0; $i < count($data["ingredient_measurement"]); $i++){
             $query = "INSERT INTO ingredients (rec_id, order_num, measurement, name) VALUES (" .

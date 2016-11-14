@@ -121,8 +121,7 @@
 			<!-- Page Content -->
 			<div class="jumbotron" style="padding-bottom: 80px">
 				<h1>Advanced Search</h1>
-				<!--form action="database/getAdvSearchResults.php" method="get"-->
-				<form method="get">
+				<form action="database/getAdvSearchResults.php" method='post'>
 				
 					<!--Text Box-->
 					<!--label for="sel2">List ingredients you want to use. Separate by commas.</label-->
@@ -138,16 +137,13 @@
 					<!--Select list Option-->
 					<!-- -
 					  <select multiple class="form-control" id="sel2">
-						<!---
-						Example of option
-							<option>1</option>
-						-->
-						<!-- 
+						<option>1</option> 
 						<div id="ing_list"></div>
 						
 					  </select>  -->
 					<br />
 					<input type="submit" onclick="getTags()" class="btn btn-mybtn" style="align-items:center" value="Search Ingredients"/>				
+			</form>
 			</div> 
 			
 			<!-- Footer -->

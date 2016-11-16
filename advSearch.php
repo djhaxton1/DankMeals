@@ -8,16 +8,7 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<link rel="stylesheet" href="assets/meals.css">
 		
-		<!--style>
-		.btn btn-primary {
-			margin-top: 3px;
-			margin-right: 3px;
-		}
-		</style-->
-		
-		
 		<script>
-			//var ingredientCount = 0;
 			var ings = [];
 				
 			$(document).ready(function(){
@@ -60,17 +51,19 @@
 			function getTags(){
 				var tags = document.getElementById("ing_list").getElementsByTagName("div");
 				//var ings = [];
-				var len = tags.length;
+				/*var len = tags.length;
 				for(var i=0; i<len; i+=1){
 					//console.log("num = " + len);
 					ings.push(tags[i].id);
-				}
+				}*/
 				
 				//TODO - why does this have length*2 elements in the array?
 				for(var i=0; i<ings.length; i+=1){
 					console.log("index=" + i);
 					console.log(ings[i]);
 				}
+
+				$.post("database/getAdvSearchResults.php", ings);
 				
 			}		
 		
@@ -81,7 +74,6 @@
 			//this function is called when the user clicks on one of the buttons
 			//$(document).ready(function(){
 					function removeTag(elem){
-						
 						//$("#ing_list").append("text");
 						var id = elem.id;
 						$("ing_list").append(id);
@@ -122,8 +114,8 @@
 			<!-- Page Content -->
 			<div class="jumbotron" style="padding-bottom: 80px">
 				<h1>Advanced Search</h1>
-				<form action="database/getAdvSearchResults.php" method='post'>
-				
+				<!--<form action="database/getAdvSearchResults.php" method='post'> -->
+				<form method='post'>
 					<!--Text Box-->
 					<!--label for="sel2">List ingredients you want to use. Separate by commas.</label-->
 					<label for="sel2">List keywords you want to search for. Press enter after each keyword.</label>

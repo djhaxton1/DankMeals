@@ -8,16 +8,7 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<link rel="stylesheet" href="assets/meals.css">
 		
-		<!--style>
-		.btn btn-primary {
-			margin-top: 3px;
-			margin-right: 3px;
-		}
-		</style-->
-		
-		
 		<script>
-			//var ingredientCount = 0;
 			var ings = [];
 				
 			$(document).ready(function(){
@@ -71,10 +62,8 @@
 					console.log("index=" + i);
 					console.log(ings[i]);
 				}
-				var data {
-					ing: ings
-				};
-				$.post("database/getAdvSearchResults.php", data);
+
+				$.post("database/getAdvSearchResults.php", ings);
 				
 			}		
 		
@@ -125,7 +114,8 @@
 			<!-- Page Content -->
 			<div class="jumbotron" style="padding-bottom: 80px">
 				<h1>Advanced Search</h1>
-				<form action="database/getAdvSearchResults.php" method='post'> -->
+				<!--<form action="database/getAdvSearchResults.php" method='post'> -->
+				<form method='post'>
 					<!--Text Box-->
 					<!--label for="sel2">List ingredients you want to use. Separate by commas.</label-->
 					<label for="sel2">List keywords you want to search for. Press enter after each keyword.</label>

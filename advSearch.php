@@ -90,7 +90,8 @@
 						$("ing_list").append(id);
 
 						//remove from page
-						$(elem).hide();
+						//$(elem).hide();
+						document.getElementById(id).remove();
 					}
 				//});
 		
@@ -146,7 +147,9 @@
 					  </select>  -->
 					<br />
 					<input type="submit" onclick="getTags()" class="btn btn-mybtn" style="align-items:center" value="Search Ingredients"/>				
-				</form>
+
+			</form>
+
 			</div> 
 			
 			<!-- Footer -->

@@ -125,8 +125,7 @@
 			<!-- Page Content -->
 			<div class="jumbotron" style="padding-bottom: 80px">
 				<h1>Advanced Search</h1>
-				<!--<form action="database/getAdvSearchResults.php" method='post'> -->
-					<form method='post'>
+				<form action="database/getAdvSearchResults.php" method='post'> -->
 					<!--Text Box-->
 					<!--label for="sel2">List ingredients you want to use. Separate by commas.</label-->
 					<label for="sel2">List keywords you want to search for. Press enter after each keyword.</label>

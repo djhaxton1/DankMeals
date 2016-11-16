@@ -146,6 +146,7 @@
 					<input type="submit" onclick="getTags()" class="btn btn-mybtn" style="align-items:center" value="Search Ingredients"/>				
 
 			</form>
+
 			</div> 
 			
 			<!-- Footer -->

@@ -43,11 +43,10 @@
 		var ins = 1;
 		function addIns(){
 			document.getElementById('instructions').insertAdjacentHTML('beforeend', ''
-				+ '<div id="insRow' + ins + '" >'
-				+ '<div class="col-lg-10"><input type="text" id="instruction[' + (ins) + '" name="instruction[' + (ins) + ']" class="form-control"></div>'
+				+ '<div id="insRow' + ins + '">'
+				+ '<div class="col-lg-10"><input type="text" name="instruction[' + ins + ']" id="instruction[' + ins + ']" class="form-control"></div>'
 				+ '<div class="col-lg-2"><button onclick="removeIns(this)" type="button" class="btn btn-default" name="' + ins + '"><span class="glyphicon glyphicon-remove"></span></button></div>'
-				+ '</div>'
-				+ '<br /><br />');
+				+ '<br /><br /></div>');
 				
 				ins++
 				
@@ -68,9 +67,10 @@
 		<script>
 		function removeIns(elem){
 			var num = elem.name;
-			var id = "instruction[" + num + "]";
-			document.getElementById(id).remove();
+			var id = "insRow" + num;
 			
+			document.getElementById(id).remove();
+			ins = ins - 1;
 		}
 		</script>
 		

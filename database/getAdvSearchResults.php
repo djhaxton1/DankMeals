@@ -41,9 +41,10 @@
 		$recipes   = $db->getTitles();
 		$ids	   = $db->getIDs();
 		$occurance = array_fill(0, count($recipes), 0);
-		
+
 		$t = $_POST["ings"];
-		var_dump($t);
+		$form_data['posted'] = var_dump($t);
+		echo json_encode($form_data);
 		/* Find occurances of substrings */
 		/*for($j = 0; $j < count($recipes); $j++) {
 			for($i = 0; $i < count($t); $i++) {

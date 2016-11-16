@@ -36,10 +36,6 @@ class database {
 	 * Output: result of query
 	 */
 	function sendCommand($cmd) {
-		//$result = mysqli_query($this->conn, $cmd);
-		/**The above statement is deprecated
-		* instead, use the object oriented method: $this->conn->query($cmd)
-		*/
 		$result = $this->conn->query($cmd);
 		$this->last_id = mysqli_insert_id($this->conn);
 		return $result;

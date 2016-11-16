@@ -2,8 +2,8 @@
 /** 
  * Author : Dustin Haxton
  * Purpose:
- * Collects data from the addRecipe.html Page. Processes that data and sends
- *	SQL Commands to the Server to save the recipe
+ * Collects data from the addRecipe.html Page. Processes 
+ * that data and sends SQL Commands to the Server to save the recipe
  * Data:
  * $rec = Recipe name.
  * $ing = array of ingredients
@@ -12,33 +12,47 @@
  */
 
 	/* Connect to Database */
-    include 'dbInterface.php';
-    $db = new dbInterface();
-	$rec = $_GET["name"];
-	$ing = array();
-	$ins = array();
+	include 'dbInterface.php';
+	$db = new dbInterface();
+	$recipe = array();
 	
-	/* Decode the URL */
-	foreach (explode("&", $_SERVER['QUERY_STRING']) as $tmp_arr_param) {
-		$split_param = explode("=", $tmp_arr_param);
-		
-		/* Is the parameter an ingredient? */
-		if ($split_param[0] == "ingredient") {
-		    $ing[] = urldecode($split_param[1]);
-		}
-		
-		/* Is the parameter an instruction? */
-		if ($split_param[0] == "instruction") {
-			$ing[] = urldecode($split_param[1]);
-		}
+	/* Populate Arrays with information */
+	$title = $_POST['title'];
+	$ing   = $_POST['ingredient'];
+	$ins   = $_POST['instruction'];
+	
+	/* prepare Recipe for insertion into database */
+	$recipe["title"]                  = $title;
+	$recipe["parent_id"]              = NULL;
+	$recipe["ingredient_name"]        = $ing;
+	$recipe["instructions"]           = $ins;
+	$recipe["ingredient_measurement"] = array();
+	for($i = 0; $i < count($recipe["ingredient_name"]); $i++){
+		$recipe["ingredient_measurement"][$i] = "";
 	}
+	$recipe["author"] 				  = 0;
+	$id = $db->insertRecipe($recipe);
+	$db = null; // Close the database
 	
-	for($i = 0; $i < count($ing); $i++) {
-		echo "$ing[$i]<br>";
-	}
-	
-	for($i = 0; $i < count($ins); $i++) {
-		echo "$ins[$i]<br>";
+	if(isset($_FILES['image'])) {
+		$errors    = array();
+		$file_name = $_FILES['image']['name'];
+		$file_size = $_FILES['image']['size'];
+		$file_tmp  = $_FILES['image']['tmp_name'];
+		$file_type = $_FILES['image']['type'];
+
+		if($file_size > 2097152) {
+			 $errors[] = 'File size must be less than 2 MB';
+		}
+
+		if(empty($errors) == true) {
+
+			$dirpath = realpath(dirname(getcwd()));
+			mkdir($dirpath . "/DankMeals/pics/rec" . $id);
+			move_uploaded_file($file_tmp, $dirpath . "/DankMeals/pics/rec" . $id . "/rec" . $id . "_0.jpg");
+		} else {
+			print_r($errors);
+		}
 	}
 
 ?>

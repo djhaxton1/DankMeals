@@ -21,7 +21,7 @@
 			var ings = [];
 				
 			$(document).ready(function(){
-				$("#ing_input").keyup(function(){
+				$("#ing_input").keyup(function(event){
 					if (event.keyCode == 13) { //13 = enter
 						//$(this).hide(); 
 						
@@ -30,7 +30,7 @@
 						$("#ing_input").val("");
 						ings.push(input);
 						//input += (ingredientCount++);
-						var text = "<div class='btn btn-primary' style='margin-top: 5px; margin-right: 5px' id='" + input + "' onclick='removeTag(this)'>" + input + "</div>";
+						var text = "<div class='btn btn-warning' style='margin-top: 5px; margin-right: 5px' id='" + input + "' onclick='removeTag(this)'>" + input + " " + "<span class='glyphicon glyphicon-remove'></span></div>";
 						 $("#ing_list").append(text);
 
 					}	

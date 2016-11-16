@@ -19,34 +19,38 @@ class dbInterface{
 
     /**
      * @return array    an associative array containing basic data for all recipes where each index is a single entry
-     *                  Data Currently Output:
-     *                      array of recipe ids in $output["ids"]
-     *                      array of recipe titles in $output["titles"]
-     *                      array of recipe pictures in $output["pictures"]
+	 * Data Currently Output:
+     * array of recipe ids in $output["ids"]
+     * array of recipe titles in $output["titles"]
+     * integer that is the number of recipe entries in $output["count"]
+     * array of recipe pictures in $output["pictures"]
      */
     function getRecipeList(){
         $output = array();
         $output["ids"] = $this->getIDs();   //add ids to output array
         $output["titles"] = $this->getTitles(); //add titles to output array
         $output["pictures"] = $this->getPictures(); //add the recipe thumbnail pictures
+        $output["count"] = $this->getCount();   //add the number of entries in the recipes table
         return $output;
     }
 
     /**
-     * Gathers basic information for a set number of recipes (currently 12) given a location to start from
+     * Gathers basic information for a set number of recipes (currently 9) given a location to start from
      * @param $page the page of recipes requested
      * @return array   an associative array containing basic data for all recipes where each index is a single entry
      *                      array of recipe ids in $output["ids"]
      *                      array of recipe titles in $output["titles"]
      *                      array of recipe pictures in $output["pictures"]
+     *                      integer that is the number of entries in the recipes table in $output["count"]
      */
     function getRecipeListN($page){
         define("ENTRIES", 9);
-        $start = ($page * ENTRIES);
+        $start = (($page - 1) * ENTRIES);
         $output = array();
         $output["ids"] = $this->getIDsN($start, ENTRIES);
         $output["titles"] = $this->getTitlesN($start, ENTRIES);
         $output["pictures"] = $this->getPicturesN($start, ENTRIES);
+        $output["count"] = $this->getCount();
         return $output;
     }
 
@@ -63,11 +67,11 @@ class dbInterface{
     /**
      * @param $id   the id of the recipe requested
      * @return array    associative array containing all relevant data for a single recipe entry
-     *                  Data Currently Output:
-     *                      title string in $output["title"]
-     *                      array of ingredient strings in $output["ingredients"]
-     *                      array of instruction strings in $output["instructions"]
-     *                      string that contains the picture path in $output["picture"]
+     * Data Currently Output:
+     * title string in $output["title"]
+     * array of ingredient strings in $output["ingredients"]
+     * array of instruction strings in $output["instructions"]
+     * string that contains the picture path in $output["picture"]
      */
     function getRecipe($id){
         $output = array();
@@ -88,20 +92,19 @@ class dbInterface{
 
     /**
      * @param $data     an associative array that contains information in the following format
-     *                      data["title"]: the name of the recipe as a string
-     *                      data["parent_id"]: the id of the parent recipe as an integer  |  NUll if no parent
-     *                      data["ingredient_measurement"]: an array of ingredient measurement strings in the order they appear
-     *                      data["ingredient_name"]: an array of ingredient name strings in the order they appear
-     *                      data["instructions"]: an array of instruction text strings in the order they appear
-     *                      data["author"]: an integer that maps to a name and Google ID
+     * data["title"]:                  the name of the recipe as a string
+     * data["parent_id"]:              the id of the parent recipe as an integer | NUll if no parent
+     * data["ingredient_measurement"]: an array of ingredient measurement strings in the order they appear
+     * data["ingredient_name"]:        an array of ingredient name strings in the order they appear
+     * data["instructions"]:           an array of instruction text strings in the order they appear
      *
      * @return int     ID of the newly added recipe in the recipes table
      *
      * Inserts a new recipe and its associated instructions and ingredients
-     *     Note:  this function assumes that a correctly formatted directory will be built for the picture file
+     * Note:  this function assumes that a correctly formatted directory will be built for the picture file
      */
     function insertRecipe($data){
-        if (gettype($data["parent_id"]) !== "integer" && $data["parent_id"] != "NULL"){
+        if (gettype($data["parent_id"]) !== "integer" && $data["parent_id"] != "NULL" && $data["parent_id"] !== NULL){
             die("Invalid parent Id passed in data['parent_id']. This should be an integer.");
         }
         if (gettype($data["title"]) !== "string"){
@@ -114,12 +117,13 @@ class dbInterface{
             die("Invalid name passed in data['ingredient_name']. This should be an array of strings.");
         }
         if (gettype($data["instructions"]) !== "array" || gettype($data["instructions"][0]) !== "string"){
-            die("Invalid instruction passed in data['instruction']. This should be an array of strings.");
+            die("Invalid instruction passed in data['instructions']. This should be an array of strings.");
         }
-        if (gettype($data["author"]) !== "integer" || $data["author"] < 0){
-            die("Invalid author passed in data['author']. This should be a positive integer.");
+        if (gettype($data["author"]) !== "integer" || $data["author"] <= 0){
+            die("Invalid author passed in data['author']. This should be a positive integer, or 0 for anonymous.");
         }
         $id = -1;
+       
         //insert main recipe entry
         if ($data["parent_id"] === NULL){
             $data["parent_id"] = "NULL";
@@ -153,11 +157,22 @@ class dbInterface{
     /**
      * @return array    array of recipe ids
      */
-    private function getIDs(){
+    function getIDs(){
         $query = "SELECT * FROM recipes ORDER BY id";
         $relevant = array("id");
         $result = $this->db->sendCommandParse($query, $relevant);   //retrieve id's
         return $result;
+    }
+
+    /**
+     * Gets the current number of entries in the recipes table
+     * @return mixed    the number of entries in the recipes table as an integer
+     */
+    private function getCount(){
+        $query = "SELECT COUNT(*) FROM recipes";
+        $relevant = array("COUNT(*)");
+        $result = $this->db->sendCommandParse($query, $relevant);
+        return $result[0];
     }
 
     /**
@@ -171,7 +186,7 @@ class dbInterface{
         $result = $this->db->sendCommandParse($query, $relevant);
         return $result;
     }
-
+	
     /**
      * @return array    array of recipe thumbnail pictures
      */
@@ -293,3 +308,5 @@ class dbInterface{
         ob_end_clean();
     }
 }
+
+

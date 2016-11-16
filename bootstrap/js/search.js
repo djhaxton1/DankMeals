@@ -9,9 +9,11 @@
 	// register clicks and toggle classes
 	labelEl.addEventListener("click",function(){
 		if (classie.has(searchEl,"focus")) {
-			classie.remove(searchEl,"focus");
-			classie.remove(labelEl,"active");
-			classie.remove(advanced,"focus");
+			if(document.querySelector("#search-terms").value == null);
+				document.querySelector("#search").submit();
+			//classie.remove(searchEl,"focus");
+			//classie.remove(labelEl,"active");
+			//classie.remove(advanced,"focus");
 		} else {
 			classie.add(searchEl,"focus");
 			classie.add(labelEl,"active");

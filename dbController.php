@@ -24,11 +24,33 @@ switch ($_POST["function"]){
         if($out["error"]){
             header("HTTP/1.1 404 Page Not Found");
             echo "No Recipe with that ID";
+            $dbInterface = NULL;
             die("Invalid ID passed in url");
         }
         echo json_encode($out);
-        $dbInterface = null;
+        $dbInterface = NULL;
         break;
+
+    case ("getRecipeListN()"):
+        //check the page is composed of decimal digits
+        if(! ctype_digit($_POST["page"])){
+            header("HTTP/1.1 404 Page Not Found");
+            echo "invalid page";
+            $dbInterface = NULL;
+            die("Invalid Page passed in url");
+        }
+        $page = (int) $_POST["page"];
+        if ($page < 1){
+            header("HTTP/1.1 404 Page Not Found");
+            echo "invalid page";
+            $dbInterface = NULL;
+            die("Invalid Page passed in url");
+        }
+        $out = $dbInterface->getRecipeListN($page);
+        echo json_encode($out);
+        $dbInterface = NULL;
+        break;
+
     default:
         header("HTTP/1.1 400 Bad Request");
         echo "No such function";

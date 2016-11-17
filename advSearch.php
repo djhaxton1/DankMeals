@@ -27,7 +27,6 @@
 					}	
 				});
 			});
-
 		</script>
 		
 		<!-- Search for Recipes -->
@@ -57,15 +56,15 @@
 		</script>
 		
 		<script>
-				function removeTag(elem){
-					//$("#ing_list").append("text");
-					var id = elem.id;
-					$("ing_list").append(id);
+			function removeTag(elem){
+				//$("#ing_list").append("text");
+				var id = elem.id;
+				$("ing_list").append(id);
 
-					//remove from page
-					//$(elem).hide();
-					document.getElementById(id).remove();
-				}
+				//remove from page
+				//$(elem).hide();
+				document.getElementById(id).remove();
+			}
 		</script>
 		
 		<script>
@@ -80,57 +79,51 @@
 		</script>
 		
     </head>
-    <body>
-        
-	<!-- Navigation -->
-	<div id="navigation" class="container">
-		<script>
-			$.get("assets/nav.html", function(data) {
-				$("#navigation").replaceWith(data);
-			});
-		</script>	
-	</div>
-	
-	<div class="container" style="padding-top: 80px">
-		
-		<!-- Page Content -->
-		<div class="jumbotron" style="padding-bottom: 80px">
-			<h1>Advanced Search</h1>
-			<form method='post' name="searchform">
-				<!--Text Box-->
-				<!--label for="sel2">List ingredients you want to use. Separate by commas.</label-->
-				<label for="sel2">List keywords you want to search for. Press enter after each keyword.</label>
-				<!--input type="hidden" name="keywords" id="ingredient_count" value='0' /-->
-				<input type="text" class="form-control input-lg" id="ing_input" autocomplete="off" />
-			
-				<br />
-			
-				<!-- Where to put the list of ingredients to search for -->
-				<span id="ing_list" name="ingredients"></span>
-				<br />
-				<!--Select list Option-->
-
-				<br />
-				<input type="submit" class="btn btn-mybtn" style="align-items:center" value="Search Ingredients"/>				
-
-		</form>
-
-		<!-- Search Results -->
-		<div id="searchresults" class="container">
-			<label for="sel2">The Dankness is lacking...</label>
-		<div>
-
-		</div> 
-		
-		<!-- Footer -->
-		<div id="footer" class="container">
+    <body>    
+		<!-- Navigation -->
+		<div id="navigation" class="container">
 			<script>
-				$.get("assets/foot.html", function(data) {
-					$("#footer").replaceWith(data);
+				$.get("assets/nav.html", function(data) {
+					$("#navigation").replaceWith(data);
 				});
-			</script>
+			</script>	
 		</div>
-	</div>
+	
+		<div class="container" style="padding-top: 80px">
+			<!-- Page Content -->
+			<div class="jumbotron" style="padding-bottom: 80px">
+				<h1>Advanced Search</h1>
+				<form method='post' name="searchform">
+					<!--Text Box-->
+					<!--label for="sel2">List ingredients you want to use. Separate by commas.</label-->
+					<label for="sel2">List keywords you want to search for. Press enter after each keyword.</label>
+					<!--input type="hidden" name="keywords" id="ingredient_count" value='0' /-->
+					<input type="text" class="form-control input-lg" id="ing_input" autocomplete="off" />
+			
+					<br />
+			
+					<!-- Where to put the list of ingredients to search for -->
+					<span id="ing_list" name="ingredients"></span>
+					<br />
+					<!--Select list Option-->
+
+					<br />
+					<input type="submit" class="btn btn-mybtn" style="align-items:center" value="Search Ingredients"/>				
+				</form>
+
+			<!-- Search Results -->
+			<div id="searchresults" class="container">
+				<label for="sel2">The Dankness is lacking...</label>
+			</div> 
 		
+			<!-- Footer -->
+			<div id="footer" class="container">
+				<script>
+					$.get("assets/foot.html", function(data) {
+						$("#footer").replaceWith(data);
+					});
+				</script>
+			</div>
+		</div>
     </body>
 </html>

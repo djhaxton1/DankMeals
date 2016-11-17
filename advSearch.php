@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<meta charset="UTF-8"> 
 <html>
     <head>		
 		<title>Advanced Search - Dank Meals</title>
@@ -38,7 +39,7 @@
 					//Validate fields if required using jQuery
 
 					var postForm = { //Fetch form data
-						'ings'     : $ings //Store name fields value
+						'ings'     : ings //Store name fields value
 					};
 
 					$.ajax({ //Process the form using $.ajax()

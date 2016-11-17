@@ -43,7 +43,7 @@
 		$occurance = array_fill(0, count($recipes), 0);
 
 		$t = $_POST["ings"];
-		$form_data['posted'] = var_dump($t);
+		$form_data['posted'] = "ello govna";
 		echo json_encode($form_data);
 		/* Find occurances of substrings */
 		/*for($j = 0; $j < count($recipes); $j++) {

@@ -48,13 +48,7 @@
 						data      : postForm,      //Forms name
 						dataType  : 'json',
 						success   : function(data) {
-		                	if (!data.success) { //If fails
-		                    	if (data.errors.name) {
-                    				$('.throw_error').fadeIn(1000).html(data.errors.name);
-		                    	}
-		                	} else {
-	                        	$('#searchresults').fadeIn(1000).append('<p>' + data.posted + '</p>'); //If successful, than throw a success message
-	                    	}
+                        	$('#searchresults').append('<p>' + data.posted + '</p>');
 						}
 					});
 					event.preventDefault(); //Prevent the default submit

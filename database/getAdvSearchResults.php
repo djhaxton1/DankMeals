@@ -4,12 +4,13 @@
 	$db        = new dbInterface();
 	$recipes   = $db->getTitles();
 	$ids	   = $db->getIDs();
+	$ings	   = $db->getAllIngredients();
 	$occurance = array_fill(0, count($recipes), 0);
 
 	$t = $_POST["ings"];
 	$form_data['posted'] = "";
 	
-	/* Find occurances of substrings */
+	/* Find occurances of recipe names */
 	for($j = 0; $j < count($recipes); $j++) {
 		for($i = 0; $i < count($t); $i++) {
 	
@@ -17,9 +18,28 @@
 			$inp = strtolower($t[$i]);
 			$found = strpos($rec, $inp);
 		
-			/* If an occurance is found increment the priority */
+			/* If an occurance is found find the */
 			if($found !== false) {
 				$occurance[$j]++;
+			}
+		}
+	}
+	
+	/* Find occurance of ingredients */
+	for($j = 1; $j < count($ings); $j = $j + 2) {
+		for($i = 0; $i < count($t); $i++) {
+			$ing = strtolower($ings[$j]);
+			$inp = strtolower($t[$i]);
+			$found = strpos($ing, $inp);
+
+			if($found !== false) {
+				$title = $db->getTitle($occurance[$j-1]);
+				for(int $k = 0; $k < count($recipes); $k++) {
+					if(strcmp($title, $recipes[$k]) !== false) {
+						$occurance[$k]++;
+						break;
+					}
+				}
 			}
 		}
 	}

@@ -251,6 +251,16 @@ class dbInterface{
     }
 
     /**
+     * @return array array containing all ingredients
+     */
+    public function getAllIngredients() {
+	$query = "SELECT * FROM ingredients";
+	$relevant = array("rec_id", "name");
+	$result = $this->db->sendCommandParse($query, $relevent);
+	return $result;
+    }
+
+    /**
      * @param $id   the id of the requested recipe
      * @return array    array containing the instructions associated with that recipe
      */

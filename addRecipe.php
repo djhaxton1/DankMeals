@@ -154,7 +154,7 @@
 						<label for="ins">Instructions</label>
 						<input type="hidden" name="instruction_count" id="instruction_count" value="1">
 						<div id="instructions">
-							<div id=insRow0"> 
+							<div id="insRow0">
 								<div class="col-lg-10">
 									<input type="text" id="instruction[0]" name="instruction[0]" class="form-control">
 								</div>

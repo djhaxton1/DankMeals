@@ -59,10 +59,11 @@
 			function removeTag(elem){
 				//$("#ing_list").append("text");
 				var id = elem.id;
-				$("ing_list").append(id);
-
+				var index = ings.indexOf(id);
+				if(index > -1) {
+					ings.splice(index, 1);
+				}
 				//remove from page
-				//$(elem).hide();
 				document.getElementById(id).remove();
 			}
 		</script>

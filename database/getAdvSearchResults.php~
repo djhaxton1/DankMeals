@@ -64,19 +64,13 @@
 
 	/* Create a table of possible results */
 	$form_data['posted'] .= "<h1 style='text-align:center'>Search Results:</h1>";
-	$posts = 0; // number of recipes that will be displayed
-	for($i = 0; $i < $count; $i++) {
+	for($i = 0; $i < count($recipes); $i++) {
 		if($occurance[$i] != 0) {
-			$post++;
 			$rec = $db->getRecipe($ids[$i]);
 			if($rec["picture"] == null)
 				$rec["picture"] = "/imageError.png";
 			$form_data['posted'] .= "<div class='col-md-4 portfolio-item'><div id='tile'><a href='recipePage.html?id=" . $ids[$i] . "'><img src='pics" . $rec["picture"] . "'><div id='tile-title'><p>" . $rec["title"] . "</p></div></a></div></div>";
 		}
-	}
-
-	if($posts == 0) {
-		$form_data['posted'] .= "The Dankness is lacking ...<br>";
 	}
 	$form_data['posted'] .= "</ul>";
 	echo json_encode($form_data);

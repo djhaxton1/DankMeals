@@ -116,13 +116,6 @@
 					</div>
 					
 					<div class="form-group">
-						<!--
-						<label for="ing">Ingredients</label>
-						<input type="hidden" name="ingredient_count" id="ingredient_count" value='0'>
-						<input type="text" name="ingredient[0]" class="form-control">
-						<div id="ingredients"></div>
-						-->
-						
 						<label for="ing">Ingredients</label><br />
 						<i><span class="col-lg-2">Example: [1 pinch]</span> <span class="col-lg-8">[salt]<span></i><br />
 						<div id="ingredients">
@@ -141,10 +134,8 @@
 								<br /><br />
 							</div>
 						</div>
-						
-						
+												
 						<!-- Plus button for Ingredients-->
-						<!-- TODO: change z-index for items to make sure the + glyphicon does not appear on top of the select box for the autocomplete function-->
 						<button onclick="addIng()" type="button" class="btn btn-default" aria-label="Left Align" style="z-index: -6">
 							<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 						</button>
@@ -154,7 +145,7 @@
 						<label for="ins">Instructions</label>
 						<input type="hidden" name="instruction_count" id="instruction_count" value="1">
 						<div id="instructions">
-							<div id=insRow0"> 
+							<div id="insRow0"> 
 								<div class="col-lg-10">
 									<input type="text" id="instruction[0]" name="instruction[0]" class="form-control">
 								</div>

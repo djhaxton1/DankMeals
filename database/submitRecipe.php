@@ -49,7 +49,7 @@
 		$file_tmp  = $_FILES['image']['tmp_name'];
 		$file_type = $_FILES['image']['type'];
 
-		if($file_size > 2097152) {
+		if($file_size > 5242880) {
 			 $errors[] = 'File size must be less than 2 MB';
 		}
 

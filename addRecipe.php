@@ -67,10 +67,15 @@
 		<script>
 		function removeIns(elem){
 			var num = elem.name;
-			var id = "insRow" + num;
-			
-			document.getElementById(id).remove();
-			ins = ins - 1;
+				
+			if(ins > 1) {
+				var id = "insRow" + num;
+				document.getElementById(id).remove();
+				ins = ins - 1;
+			} else {
+				id = "instruction[" + num + "]";
+				document.getElementById(id).value = "";
+			}
 		}
 		</script>
 		

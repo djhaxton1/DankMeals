@@ -4,7 +4,7 @@
 	$db        = new dbInterface();
 	$recipes   = $db->getTitles();
 	$ids	   = $db->getIDs();
-	//$ings	   = $db->getAllIngredients();
+	$ings	   = $db->getAllIngredients();
 	$occurance = array_fill(0, count($recipes), 0);
 
 	$t = $_POST["ings"];
@@ -26,7 +26,7 @@
 	}
 	
 	/* Find occurance of ingredients */
-	/*for($j = 1; $j < count($ings); $j = $j + 2) {
+	for($j = 1; $j < count($ings); $j = $j + 2) {
 		for($i = 0; $i < count($t); $i++) {
 			$ing = strtolower($ings[$j]);
 			$inp = strtolower($t[$i]);
@@ -42,7 +42,7 @@
 				}
 			}
 		}
-	}*/
+	}
 
 	for($i = 0; $i < count($recipes); $i++) {
 		for($j = $i + 1; $j < count($recipes); $j++) {
@@ -64,19 +64,13 @@
 
 	/* Create a table of possible results */
 	$form_data['posted'] .= "<h1 style='text-align:center'>Search Results:</h1>";
-	$posts = 0; // number of recipes that will be displayed
-	for($i = 0; $i < $count; $i++) {
+	for($i = 0; $i < count($recipes); $i++) {
 		if($occurance[$i] != 0) {
-			$post++;
 			$rec = $db->getRecipe($ids[$i]);
 			if($rec["picture"] == null)
 				$rec["picture"] = "/imageError.png";
 			$form_data['posted'] .= "<div class='col-md-4 portfolio-item'><div id='tile'><a href='recipePage.html?id=" . $ids[$i] . "'><img src='pics" . $rec["picture"] . "'><div id='tile-title'><p>" . $rec["title"] . "</p></div></a></div></div>";
 		}
-	}
-
-	if($posts == 0) {
-		$form_data['posted'] .= "The Dankness is lacking ...<br>";
 	}
 	$form_data['posted'] .= "</ul>";
 	echo json_encode($form_data);

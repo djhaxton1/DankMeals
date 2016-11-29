@@ -26,15 +26,17 @@
 	}
 	
 	/* Find occurance of ingredients */
-	/*for($j = 1; $j < count($ings); $j = $j + 2) {
+	for($j = 1; $j < count($ings); $j = $j + 2) {
+		/*for each ingredent compare to the tags */
 		for($i = 0; $i < count($t); $i++) {
 			$ing = strtolower($ings[$j]);
 			$inp = strtolower($t[$i]);
 			$found = strpos($ing, $inp);
 
 			if($found !== false) {
-				$title = $db->getTitle($occurance[$j-1]);
-				for(int $k = 0; $k < count($recipes); $k++) {
+				$title = $db->getTitle($ings[$j-1]);
+				/* Locate the recipe in the recipes arra */
+				for($k = 0; $k < count($recipes); $k++) {
 					if(strcmp($title, $recipes[$k]) !== false) {
 						$occurance[$k]++;
 						break;
@@ -42,7 +44,7 @@
 				}
 			}
 		}
-	}*/
+	}
 	
 	/*Sort Recipes based on Priority */
 	for($i = 0; $i < count($recipes); $i++) {

@@ -24,7 +24,8 @@
 			}
 		}
 	}
-	$form_data['posted'] .= var_dump($ings);	
+	
+	$form_data['posted'] .= "<br>" .  var_dump($ings) . "<br>";	
 	/* Find occurance of ingredients */
 	for($j = 1; $j < count($ings); $j = $j + 2) {
 		for($i = 0; $i < count($t); $i++) {

@@ -24,7 +24,7 @@
 			}
 		}
 	}
-	
+	$form_data['posted'] .= var_dump($ings);	
 	/* Find occurance of ingredients */
 	for($j = 1; $j < count($ings); $j = $j + 2) {
 		for($i = 0; $i < count($t); $i++) {
@@ -43,7 +43,8 @@
 			}
 		}
 	}
-
+	
+	/*Sort Recipes based on Priority */
 	for($i = 0; $i < count($recipes); $i++) {
 		for($j = $i + 1; $j < count($recipes); $j++) {
 			if($occurance[$i] < $occurance[$j]) {

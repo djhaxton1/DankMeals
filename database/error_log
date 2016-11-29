@@ -1,0 +1,41 @@
+[18-Nov-2016 14:04:27 America/New_York] PHP Parse error:  syntax error, unexpected '$k' (T_VARIABLE), expecting ';' in /dcs/local/home/mealscs/public_html/database/getAdvSearchResults.php on line 37
+[18-Nov-2016 14:04:27 America/New_York] PHP Parse error:  syntax error, unexpected '$k' (T_VARIABLE), expecting ';' in /dcs/local/home/mealscs/public_html/database/getAdvSearchResults.php on line 37
+[18-Nov-2016 14:04:33 America/New_York] PHP Parse error:  syntax error, unexpected '$k' (T_VARIABLE), expecting ';' in /dcs/local/home/mealscs/public_html/database/getAdvSearchResults.php on line 37
+[18-Nov-2016 14:04:34 America/New_York] PHP Parse error:  syntax error, unexpected '$k' (T_VARIABLE), expecting ';' in /dcs/local/home/mealscs/public_html/database/getAdvSearchResults.php on line 37
+[18-Nov-2016 14:04:34 America/New_York] PHP Parse error:  syntax error, unexpected '$k' (T_VARIABLE), expecting ';' in /dcs/local/home/mealscs/public_html/database/getAdvSearchResults.php on line 37
+[18-Nov-2016 14:06:13 America/New_York] PHP Warning:  mysqli::mysqli(): (HY000/2003): Can't connect to MySQL server on '141.219.196.115' (111) in /dcs/local/home/mealscs/public_html/database/database.php on line 22
+[18-Nov-2016 14:06:13 America/New_York] PHP Warning:  mysqli::close(): Couldn't fetch mysqli in /dcs/local/home/mealscs/public_html/database/database.php on line 79
+[18-Nov-2016 14:06:14 America/New_York] PHP Warning:  mysqli::mysqli(): (HY000/2003): Can't connect to MySQL server on '141.219.196.115' (111) in /dcs/local/home/mealscs/public_html/database/database.php on line 22
+[18-Nov-2016 14:06:14 America/New_York] PHP Warning:  mysqli::close(): Couldn't fetch mysqli in /dcs/local/home/mealscs/public_html/database/database.php on line 79
+[18-Nov-2016 14:06:14 America/New_York] PHP Warning:  mysqli::mysqli(): (HY000/2003): Can't connect to MySQL server on '141.219.196.115' (111) in /dcs/local/home/mealscs/public_html/database/database.php on line 22
+[18-Nov-2016 14:06:14 America/New_York] PHP Warning:  mysqli::close(): Couldn't fetch mysqli in /dcs/local/home/mealscs/public_html/database/database.php on line 79
+[18-Nov-2016 14:06:14 America/New_York] PHP Warning:  mysqli::mysqli(): (HY000/2003): Can't connect to MySQL server on '141.219.196.115' (111) in /dcs/local/home/mealscs/public_html/database/database.php on line 22
+[18-Nov-2016 14:06:14 America/New_York] PHP Warning:  mysqli::close(): Couldn't fetch mysqli in /dcs/local/home/mealscs/public_html/database/database.php on line 79
+[18-Nov-2016 14:06:37 America/New_York] PHP Warning:  mysqli::mysqli(): (HY000/2003): Can't connect to MySQL server on '141.219.196.115' (111) in /dcs/local/home/mealscs/public_html/database/database.php on line 22
+[18-Nov-2016 14:06:37 America/New_York] PHP Warning:  mysqli::close(): Couldn't fetch mysqli in /dcs/local/home/mealscs/public_html/database/database.php on line 79
+[18-Nov-2016 14:07:42 America/New_York] PHP Warning:  mysqli::mysqli(): (HY000/2003): Can't connect to MySQL server on '141.219.196.115' (111) in /dcs/local/home/mealscs/public_html/database/database.php on line 22
+[18-Nov-2016 14:07:42 America/New_York] PHP Warning:  mysqli::close(): Couldn't fetch mysqli in /dcs/local/home/mealscs/public_html/database/database.php on line 79
+[18-Nov-2016 14:07:43 America/New_York] PHP Warning:  mysqli::mysqli(): (HY000/2003): Can't connect to MySQL server on '141.219.196.115' (111) in /dcs/local/home/mealscs/public_html/database/database.php on line 22
+[18-Nov-2016 14:07:43 America/New_York] PHP Warning:  mysqli::close(): Couldn't fetch mysqli in /dcs/local/home/mealscs/public_html/database/database.php on line 79
+[18-Nov-2016 14:07:43 America/New_York] PHP Warning:  mysqli::mysqli(): (HY000/2003): Can't connect to MySQL server on '141.219.196.115' (111) in /dcs/local/home/mealscs/public_html/database/database.php on line 22
+[18-Nov-2016 14:07:43 America/New_York] PHP Warning:  mysqli::close(): Couldn't fetch mysqli in /dcs/local/home/mealscs/public_html/database/database.php on line 79
+[18-Nov-2016 14:07:43 America/New_York] PHP Warning:  mysqli::mysqli(): (HY000/2003): Can't connect to MySQL server on '141.219.196.115' (111) in /dcs/local/home/mealscs/public_html/database/database.php on line 22
+[18-Nov-2016 14:07:43 America/New_York] PHP Warning:  mysqli::close(): Couldn't fetch mysqli in /dcs/local/home/mealscs/public_html/database/database.php on line 79
+[18-Nov-2016 14:07:43 America/New_York] PHP Warning:  mysqli::mysqli(): (HY000/2003): Can't connect to MySQL server on '141.219.196.115' (111) in /dcs/local/home/mealscs/public_html/database/database.php on line 22
+[18-Nov-2016 14:07:43 America/New_York] PHP Warning:  mysqli::close(): Couldn't fetch mysqli in /dcs/local/home/mealscs/public_html/database/database.php on line 79
+[18-Nov-2016 14:11:59 America/New_York] PHP Warning:  mysqli::mysqli(): (HY000/2003): Can't connect to MySQL server on '141.219.196.115' (111) in /dcs/local/home/mealscs/public_html/database/database.php on line 22
+[18-Nov-2016 14:11:59 America/New_York] PHP Warning:  mysqli::close(): Couldn't fetch mysqli in /dcs/local/home/mealscs/public_html/database/database.php on line 79
+[29-Nov-2016 15:08:26 America/New_York] PHP Parse error:  syntax error, unexpected '$k' (T_VARIABLE), expecting ';' in /dcs/local/home/mealscs/public_html/database/getAdvSearchResults.php on line 37
+[29-Nov-2016 15:08:28 America/New_York] PHP Parse error:  syntax error, unexpected '$k' (T_VARIABLE), expecting ';' in /dcs/local/home/mealscs/public_html/database/getAdvSearchResults.php on line 37
+[29-Nov-2016 15:08:35 America/New_York] PHP Parse error:  syntax error, unexpected '$k' (T_VARIABLE), expecting ';' in /dcs/local/home/mealscs/public_html/database/getAdvSearchResults.php on line 37
+[29-Nov-2016 15:08:36 America/New_York] PHP Parse error:  syntax error, unexpected '$k' (T_VARIABLE), expecting ';' in /dcs/local/home/mealscs/public_html/database/getAdvSearchResults.php on line 37
+[29-Nov-2016 15:10:28 America/New_York] PHP Parse error:  syntax error, unexpected '$k' (T_VARIABLE), expecting ';' in /dcs/local/home/mealscs/public_html/database/getAdvSearchResults.php on line 38
+[29-Nov-2016 15:10:33 America/New_York] PHP Parse error:  syntax error, unexpected '$k' (T_VARIABLE), expecting ';' in /dcs/local/home/mealscs/public_html/database/getAdvSearchResults.php on line 38
+[29-Nov-2016 15:10:39 America/New_York] PHP Parse error:  syntax error, unexpected '$k' (T_VARIABLE), expecting ';' in /dcs/local/home/mealscs/public_html/database/getAdvSearchResults.php on line 38
+[29-Nov-2016 15:10:41 America/New_York] PHP Parse error:  syntax error, unexpected '$k' (T_VARIABLE), expecting ';' in /dcs/local/home/mealscs/public_html/database/getAdvSearchResults.php on line 38
+[29-Nov-2016 15:11:34 America/New_York] PHP Parse error:  syntax error, unexpected '$k' (T_VARIABLE), expecting ';' in /dcs/local/home/mealscs/public_html/database/getAdvSearchResults.php on line 37
+[29-Nov-2016 15:11:35 America/New_York] PHP Parse error:  syntax error, unexpected '$k' (T_VARIABLE), expecting ';' in /dcs/local/home/mealscs/public_html/database/getAdvSearchResults.php on line 37
+[29-Nov-2016 15:11:35 America/New_York] PHP Parse error:  syntax error, unexpected '$k' (T_VARIABLE), expecting ';' in /dcs/local/home/mealscs/public_html/database/getAdvSearchResults.php on line 37
+[29-Nov-2016 15:11:35 America/New_York] PHP Parse error:  syntax error, unexpected '$k' (T_VARIABLE), expecting ';' in /dcs/local/home/mealscs/public_html/database/getAdvSearchResults.php on line 37
+[29-Nov-2016 15:11:49 America/New_York] PHP Parse error:  syntax error, unexpected '$k' (T_VARIABLE), expecting ';' in /dcs/local/home/mealscs/public_html/database/getAdvSearchResults.php on line 37
+[29-Nov-2016 16:00:29 America/New_York] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /dcs/local/home/mealscs/public_html/database/database.php on line 57

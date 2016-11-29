@@ -24,7 +24,12 @@
 			}
 		}
 	}
-	$form_data['posted'] .= var_dump($ings);	
+	$allings = count($ings);
+	for($i = 0; $i < count($ings); $i++) {
+		$form_data['posted'] .= "<br>" . $ings[$i];
+	}
+	$form_data['posted'] .= "<br> Count of ingredients = $allings" ;
+	
 	/* Find occurance of ingredients */
 	for($j = 1; $j < count($ings); $j = $j + 2) {
 		/*for each ingredent compare to the tags */

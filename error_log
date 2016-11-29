@@ -1,0 +1,78 @@
+[18-Nov-2016 14:03:46 America/New_York] PHP Warning:  mysqli::mysqli(): (HY000/2003): Can't connect to MySQL server on '141.219.196.115' (111) in /dcs/local/home/mealscs/public_html/database/database.php on line 22
+[18-Nov-2016 14:03:46 America/New_York] PHP Warning:  mysqli::close(): Couldn't fetch mysqli in /dcs/local/home/mealscs/public_html/database/database.php on line 79
+[18-Nov-2016 14:03:54 America/New_York] PHP Warning:  mysqli::mysqli(): (HY000/2003): Can't connect to MySQL server on '141.219.196.115' (111) in /dcs/local/home/mealscs/public_html/database/database.php on line 22
+[18-Nov-2016 14:03:54 America/New_York] PHP Warning:  mysqli::close(): Couldn't fetch mysqli in /dcs/local/home/mealscs/public_html/database/database.php on line 79
+[18-Nov-2016 14:03:56 America/New_York] PHP Warning:  mysqli::mysqli(): (HY000/2003): Can't connect to MySQL server on '141.219.196.115' (111) in /dcs/local/home/mealscs/public_html/database/database.php on line 22
+[18-Nov-2016 14:03:56 America/New_York] PHP Warning:  mysqli::close(): Couldn't fetch mysqli in /dcs/local/home/mealscs/public_html/database/database.php on line 79
+[18-Nov-2016 14:03:58 America/New_York] PHP Warning:  mysqli::mysqli(): (HY000/2003): Can't connect to MySQL server on '141.219.196.115' (111) in /dcs/local/home/mealscs/public_html/database/database.php on line 22
+[18-Nov-2016 14:03:58 America/New_York] PHP Warning:  mysqli::close(): Couldn't fetch mysqli in /dcs/local/home/mealscs/public_html/database/database.php on line 79
+[18-Nov-2016 14:03:59 America/New_York] PHP Warning:  mysqli::mysqli(): (HY000/2003): Can't connect to MySQL server on '141.219.196.115' (111) in /dcs/local/home/mealscs/public_html/database/database.php on line 22
+[18-Nov-2016 14:03:59 America/New_York] PHP Warning:  mysqli::close(): Couldn't fetch mysqli in /dcs/local/home/mealscs/public_html/database/database.php on line 79
+[18-Nov-2016 14:04:00 America/New_York] PHP Warning:  mysqli::mysqli(): (HY000/2003): Can't connect to MySQL server on '141.219.196.115' (111) in /dcs/local/home/mealscs/public_html/database/database.php on line 22
+[18-Nov-2016 14:04:00 America/New_York] PHP Warning:  mysqli::close(): Couldn't fetch mysqli in /dcs/local/home/mealscs/public_html/database/database.php on line 79
+[18-Nov-2016 14:04:00 America/New_York] PHP Warning:  mysqli::mysqli(): (HY000/2003): Can't connect to MySQL server on '141.219.196.115' (111) in /dcs/local/home/mealscs/public_html/database/database.php on line 22
+[18-Nov-2016 14:04:00 America/New_York] PHP Warning:  mysqli::close(): Couldn't fetch mysqli in /dcs/local/home/mealscs/public_html/database/database.php on line 79
+[18-Nov-2016 14:04:00 America/New_York] PHP Warning:  mysqli::mysqli(): (HY000/2003): Can't connect to MySQL server on '141.219.196.115' (111) in /dcs/local/home/mealscs/public_html/database/database.php on line 22
+[18-Nov-2016 14:04:00 America/New_York] PHP Warning:  mysqli::close(): Couldn't fetch mysqli in /dcs/local/home/mealscs/public_html/database/database.php on line 79
+[18-Nov-2016 14:04:01 America/New_York] PHP Warning:  mysqli::mysqli(): (HY000/2003): Can't connect to MySQL server on '141.219.196.115' (111) in /dcs/local/home/mealscs/public_html/database/database.php on line 22
+[18-Nov-2016 14:04:01 America/New_York] PHP Warning:  mysqli::close(): Couldn't fetch mysqli in /dcs/local/home/mealscs/public_html/database/database.php on line 79
+[18-Nov-2016 14:04:02 America/New_York] PHP Warning:  mysqli::mysqli(): (HY000/2003): Can't connect to MySQL server on '141.219.196.115' (111) in /dcs/local/home/mealscs/public_html/database/database.php on line 22
+[18-Nov-2016 14:04:02 America/New_York] PHP Warning:  mysqli::close(): Couldn't fetch mysqli in /dcs/local/home/mealscs/public_html/database/database.php on line 79
+[18-Nov-2016 14:04:02 America/New_York] PHP Warning:  mysqli::mysqli(): (HY000/2003): Can't connect to MySQL server on '141.219.196.115' (111) in /dcs/local/home/mealscs/public_html/database/database.php on line 22
+[18-Nov-2016 14:04:02 America/New_York] PHP Warning:  mysqli::close(): Couldn't fetch mysqli in /dcs/local/home/mealscs/public_html/database/database.php on line 79
+[18-Nov-2016 14:04:03 America/New_York] PHP Warning:  mysqli::mysqli(): (HY000/2003): Can't connect to MySQL server on '141.219.196.115' (111) in /dcs/local/home/mealscs/public_html/database/database.php on line 22
+[18-Nov-2016 14:04:03 America/New_York] PHP Warning:  mysqli::close(): Couldn't fetch mysqli in /dcs/local/home/mealscs/public_html/database/database.php on line 79
+[18-Nov-2016 14:04:05 America/New_York] PHP Warning:  mysqli::mysqli(): (HY000/2003): Can't connect to MySQL server on '141.219.196.115' (111) in /dcs/local/home/mealscs/public_html/database/database.php on line 22
+[18-Nov-2016 14:04:05 America/New_York] PHP Warning:  mysqli::close(): Couldn't fetch mysqli in /dcs/local/home/mealscs/public_html/database/database.php on line 79
+[18-Nov-2016 14:04:08 America/New_York] PHP Warning:  mysqli::mysqli(): (HY000/2003): Can't connect to MySQL server on '141.219.196.115' (111) in /dcs/local/home/mealscs/public_html/database/database.php on line 22
+[18-Nov-2016 14:04:08 America/New_York] PHP Warning:  mysqli::close(): Couldn't fetch mysqli in /dcs/local/home/mealscs/public_html/database/database.php on line 79
+[18-Nov-2016 14:04:10 America/New_York] PHP Warning:  mysqli::mysqli(): (HY000/2003): Can't connect to MySQL server on '141.219.196.115' (111) in /dcs/local/home/mealscs/public_html/database/database.php on line 22
+[18-Nov-2016 14:04:10 America/New_York] PHP Warning:  mysqli::close(): Couldn't fetch mysqli in /dcs/local/home/mealscs/public_html/database/database.php on line 79
+[18-Nov-2016 14:04:11 America/New_York] PHP Warning:  mysqli::mysqli(): (HY000/2003): Can't connect to MySQL server on '141.219.196.115' (111) in /dcs/local/home/mealscs/public_html/database/database.php on line 22
+[18-Nov-2016 14:04:11 America/New_York] PHP Warning:  mysqli::close(): Couldn't fetch mysqli in /dcs/local/home/mealscs/public_html/database/database.php on line 79
+[18-Nov-2016 14:04:12 America/New_York] PHP Warning:  mysqli::mysqli(): (HY000/2003): Can't connect to MySQL server on '141.219.196.115' (111) in /dcs/local/home/mealscs/public_html/database/database.php on line 22
+[18-Nov-2016 14:04:12 America/New_York] PHP Warning:  mysqli::close(): Couldn't fetch mysqli in /dcs/local/home/mealscs/public_html/database/database.php on line 79
+[18-Nov-2016 14:04:17 America/New_York] PHP Warning:  mysqli::mysqli(): (HY000/2003): Can't connect to MySQL server on '141.219.196.115' (111) in /dcs/local/home/mealscs/public_html/database/database.php on line 22
+[18-Nov-2016 14:04:17 America/New_York] PHP Warning:  mysqli::close(): Couldn't fetch mysqli in /dcs/local/home/mealscs/public_html/database/database.php on line 79
+[18-Nov-2016 14:04:20 America/New_York] PHP Warning:  mysqli::mysqli(): (HY000/2003): Can't connect to MySQL server on '141.219.196.115' (111) in /dcs/local/home/mealscs/public_html/database/database.php on line 22
+[18-Nov-2016 14:04:20 America/New_York] PHP Warning:  mysqli::close(): Couldn't fetch mysqli in /dcs/local/home/mealscs/public_html/database/database.php on line 79
+[18-Nov-2016 14:04:22 America/New_York] PHP Warning:  mysqli::mysqli(): (HY000/2003): Can't connect to MySQL server on '141.219.196.115' (111) in /dcs/local/home/mealscs/public_html/database/database.php on line 22
+[18-Nov-2016 14:04:22 America/New_York] PHP Warning:  mysqli::close(): Couldn't fetch mysqli in /dcs/local/home/mealscs/public_html/database/database.php on line 79
+[18-Nov-2016 14:04:24 America/New_York] PHP Warning:  mysqli::mysqli(): (HY000/2003): Can't connect to MySQL server on '141.219.196.115' (111) in /dcs/local/home/mealscs/public_html/database/database.php on line 22
+[18-Nov-2016 14:04:24 America/New_York] PHP Warning:  mysqli::close(): Couldn't fetch mysqli in /dcs/local/home/mealscs/public_html/database/database.php on line 79
+[18-Nov-2016 14:04:25 America/New_York] PHP Warning:  mysqli::mysqli(): (HY000/2003): Can't connect to MySQL server on '141.219.196.115' (111) in /dcs/local/home/mealscs/public_html/database/database.php on line 22
+[18-Nov-2016 14:04:25 America/New_York] PHP Warning:  mysqli::close(): Couldn't fetch mysqli in /dcs/local/home/mealscs/public_html/database/database.php on line 79
+[18-Nov-2016 14:08:35 America/New_York] PHP Warning:  mysqli::mysqli(): (HY000/2003): Can't connect to MySQL server on '141.219.196.115' (111) in /dcs/local/home/mealscs/public_html/database/database.php on line 22
+[18-Nov-2016 14:08:35 America/New_York] PHP Warning:  mysqli::close(): Couldn't fetch mysqli in /dcs/local/home/mealscs/public_html/database/database.php on line 79
+[18-Nov-2016 14:12:19 America/New_York] PHP Warning:  mysqli::mysqli(): (HY000/2003): Can't connect to MySQL server on '141.219.196.115' (111) in /dcs/local/home/mealscs/public_html/database/database.php on line 22
+[18-Nov-2016 14:12:19 America/New_York] PHP Warning:  mysqli::close(): Couldn't fetch mysqli in /dcs/local/home/mealscs/public_html/database/database.php on line 79
+[18-Nov-2016 14:15:01 America/New_York] PHP Warning:  mysqli::mysqli(): (HY000/2003): Can't connect to MySQL server on '141.219.196.115' (111) in /dcs/local/home/mealscs/public_html/database/database.php on line 22
+[18-Nov-2016 14:15:01 America/New_York] PHP Warning:  mysqli::close(): Couldn't fetch mysqli in /dcs/local/home/mealscs/public_html/database/database.php on line 79
+[18-Nov-2016 14:15:02 America/New_York] PHP Warning:  mysqli::mysqli(): (HY000/2003): Can't connect to MySQL server on '141.219.196.115' (111) in /dcs/local/home/mealscs/public_html/database/database.php on line 22
+[18-Nov-2016 14:15:02 America/New_York] PHP Warning:  mysqli::close(): Couldn't fetch mysqli in /dcs/local/home/mealscs/public_html/database/database.php on line 79
+[18-Nov-2016 14:15:10 America/New_York] PHP Warning:  mysqli::mysqli(): (HY000/2003): Can't connect to MySQL server on '141.219.196.115' (111) in /dcs/local/home/mealscs/public_html/database/database.php on line 22
+[18-Nov-2016 14:15:10 America/New_York] PHP Warning:  mysqli::close(): Couldn't fetch mysqli in /dcs/local/home/mealscs/public_html/database/database.php on line 79
+[18-Nov-2016 14:15:13 America/New_York] PHP Warning:  mysqli::mysqli(): (HY000/2003): Can't connect to MySQL server on '141.219.196.115' (111) in /dcs/local/home/mealscs/public_html/database/database.php on line 22
+[18-Nov-2016 14:15:13 America/New_York] PHP Warning:  mysqli::close(): Couldn't fetch mysqli in /dcs/local/home/mealscs/public_html/database/database.php on line 79
+[18-Nov-2016 14:15:14 America/New_York] PHP Warning:  mysqli::mysqli(): (HY000/2003): Can't connect to MySQL server on '141.219.196.115' (111) in /dcs/local/home/mealscs/public_html/database/database.php on line 22
+[18-Nov-2016 14:15:14 America/New_York] PHP Warning:  mysqli::close(): Couldn't fetch mysqli in /dcs/local/home/mealscs/public_html/database/database.php on line 79
+[18-Nov-2016 14:15:15 America/New_York] PHP Warning:  mysqli::mysqli(): (HY000/2003): Can't connect to MySQL server on '141.219.196.115' (111) in /dcs/local/home/mealscs/public_html/database/database.php on line 22
+[18-Nov-2016 14:15:15 America/New_York] PHP Warning:  mysqli::close(): Couldn't fetch mysqli in /dcs/local/home/mealscs/public_html/database/database.php on line 79
+[18-Nov-2016 14:15:17 America/New_York] PHP Warning:  mysqli::mysqli(): (HY000/2003): Can't connect to MySQL server on '141.219.196.115' (111) in /dcs/local/home/mealscs/public_html/database/database.php on line 22
+[18-Nov-2016 14:15:17 America/New_York] PHP Warning:  mysqli::close(): Couldn't fetch mysqli in /dcs/local/home/mealscs/public_html/database/database.php on line 79
+[18-Nov-2016 14:15:38 America/New_York] PHP Warning:  mysqli::mysqli(): (HY000/2003): Can't connect to MySQL server on '141.219.196.115' (111) in /dcs/local/home/mealscs/public_html/database/database.php on line 22
+[18-Nov-2016 14:15:38 America/New_York] PHP Warning:  mysqli::close(): Couldn't fetch mysqli in /dcs/local/home/mealscs/public_html/database/database.php on line 79
+[18-Nov-2016 14:15:40 America/New_York] PHP Warning:  mysqli::mysqli(): (HY000/2003): Can't connect to MySQL server on '141.219.196.115' (111) in /dcs/local/home/mealscs/public_html/database/database.php on line 22
+[18-Nov-2016 14:15:40 America/New_York] PHP Warning:  mysqli::close(): Couldn't fetch mysqli in /dcs/local/home/mealscs/public_html/database/database.php on line 79
+[18-Nov-2016 14:15:56 America/New_York] PHP Warning:  mysqli::mysqli(): (HY000/2003): Can't connect to MySQL server on '141.219.196.115' (111) in /dcs/local/home/mealscs/public_html/database/database.php on line 22
+[18-Nov-2016 14:15:56 America/New_York] PHP Warning:  mysqli::close(): Couldn't fetch mysqli in /dcs/local/home/mealscs/public_html/database/database.php on line 79
+[18-Nov-2016 14:15:57 America/New_York] PHP Warning:  mysqli::mysqli(): (HY000/2003): Can't connect to MySQL server on '141.219.196.115' (111) in /dcs/local/home/mealscs/public_html/database/database.php on line 22
+[18-Nov-2016 14:15:57 America/New_York] PHP Warning:  mysqli::close(): Couldn't fetch mysqli in /dcs/local/home/mealscs/public_html/database/database.php on line 79
+[18-Nov-2016 14:15:58 America/New_York] PHP Warning:  mysqli::mysqli(): (HY000/2003): Can't connect to MySQL server on '141.219.196.115' (111) in /dcs/local/home/mealscs/public_html/database/database.php on line 22
+[18-Nov-2016 14:15:58 America/New_York] PHP Warning:  mysqli::close(): Couldn't fetch mysqli in /dcs/local/home/mealscs/public_html/database/database.php on line 79
+[18-Nov-2016 14:16:17 America/New_York] PHP Warning:  mysqli::mysqli(): (HY000/2003): Can't connect to MySQL server on '141.219.196.115' (111) in /dcs/local/home/mealscs/public_html/database/database.php on line 22
+[18-Nov-2016 14:16:17 America/New_York] PHP Warning:  mysqli::close(): Couldn't fetch mysqli in /dcs/local/home/mealscs/public_html/database/database.php on line 79
+[18-Nov-2016 14:16:18 America/New_York] PHP Warning:  mysqli::mysqli(): (HY000/2003): Can't connect to MySQL server on '141.219.196.115' (111) in /dcs/local/home/mealscs/public_html/database/database.php on line 22
+[18-Nov-2016 14:16:18 America/New_York] PHP Warning:  mysqli::close(): Couldn't fetch mysqli in /dcs/local/home/mealscs/public_html/database/database.php on line 79
+[18-Nov-2016 14:16:19 America/New_York] PHP Warning:  mysqli::mysqli(): (HY000/2003): Can't connect to MySQL server on '141.219.196.115' (111) in /dcs/local/home/mealscs/public_html/database/database.php on line 22
+[18-Nov-2016 14:16:19 America/New_York] PHP Warning:  mysqli::close(): Couldn't fetch mysqli in /dcs/local/home/mealscs/public_html/database/database.php on line 79

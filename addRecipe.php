@@ -19,7 +19,7 @@
 			*/
 			document.getElementById('ingredients').insertAdjacentHTML('beforeend',''
 				+'<div id="row' + ing + '"><div class="col-lg-2"><input type="text" name="measurement[' + (ing) + ']" class="form-control"></div>'
-				+'<div class="col-lg-8"><input type="text" name="ingredient[' + (ing) + ']" class="form-control"></div>'
+				+'<div class="col-lg-8"><input type="text" name="ingredient[' + (ing) + ']" class="form-control" required></div>'
 				+'<div class="col-lg-2"><button onclick="removeIng(this)" type="button" name="' + ing + '" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span></button></div><br /><br />');
 
 			$('#ingredient_count').val(ing);
@@ -44,7 +44,7 @@
 		function addIns(){
 			document.getElementById('instructions').insertAdjacentHTML('beforeend', ''
 				+ '<div id="insRow' + ins + '">'
-				+ '<div class="col-lg-10"><input type="text" name="instruction[' + ins + ']" id="instruction[' + ins + ']" class="form-control"></div>'
+				+ '<div class="col-lg-10"><input type="text" name="instruction[' + ins + ']" id="instruction[' + ins + ']" class="form-control" required></div>'
 				+ '<div class="col-lg-2"><button onclick="removeIns(this)" type="button" class="btn btn-default" name="' + ins + '"><span class="glyphicon glyphicon-remove"></span></button></div>'
 				+ '<br /><br /></div>');
 				
@@ -129,7 +129,7 @@
 									<input type="text" name="measurement[0]" class="form-control">
 								</div>
 								<div class="col-lg-8">
-									<input type="text" name="ingredient[0]" class="form-control">
+									<input type="text" name="ingredient[0]" class="form-control" required>
 								</div>
 								<div class="col-lg-2">
 									<button onclick="removeIng(this)" type="button" class="btn btn-default" name="0">
@@ -152,7 +152,7 @@
 						<div id="instructions">
 							<div id="insRow0"> 
 								<div class="col-lg-10">
-									<input type="text" id="instruction[0]" name="instruction[0]" class="form-control">
+									<input type="text" id="instruction[0]" name="instruction[0]" class="form-control" required>
 								</div>
 								<div class="col-lg-2">
 									<button onclick="removeIns(this)" type="button" class="btn btn-default" name="0">

@@ -26,7 +26,7 @@
 	}
 	
 	/* Find occurance of ingredients */
-	for($j = 1; $j < count($ings); $j = $j + 2) {
+	/*for($j = 1; $j < count($ings); $j = $j + 2) {
 		for($i = 0; $i < count($t); $i++) {
 			$ing = strtolower($ings[$j]);
 			$inp = strtolower($t[$i]);
@@ -42,7 +42,7 @@
 				}
 			}
 		}
-	}
+	}*/
 	
 	/*Sort Recipes based on Priority */
 	for($i = 0; $i < count($recipes); $i++) {

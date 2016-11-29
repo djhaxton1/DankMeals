@@ -39,3 +39,15 @@
 [29-Nov-2016 15:11:35 America/New_York] PHP Parse error:  syntax error, unexpected '$k' (T_VARIABLE), expecting ';' in /dcs/local/home/mealscs/public_html/database/getAdvSearchResults.php on line 37
 [29-Nov-2016 15:11:49 America/New_York] PHP Parse error:  syntax error, unexpected '$k' (T_VARIABLE), expecting ';' in /dcs/local/home/mealscs/public_html/database/getAdvSearchResults.php on line 37
 [29-Nov-2016 16:00:29 America/New_York] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /dcs/local/home/mealscs/public_html/database/database.php on line 57
+[29-Nov-2016 16:11:04 America/New_York] PHP Fatal error:  Cannot use object of type mysqli_result as array in /dcs/local/home/mealscs/public_html/database/getAdvSearchResults.php on line 29
+[29-Nov-2016 16:12:17 America/New_York] PHP Fatal error:  Call to private method dbInterface::getTitle() from context '' in /dcs/local/home/mealscs/public_html/database/getAdvSearchResults.php on line 42
+[29-Nov-2016 16:12:21 America/New_York] PHP Fatal error:  Call to private method dbInterface::getTitle() from context '' in /dcs/local/home/mealscs/public_html/database/getAdvSearchResults.php on line 42
+[29-Nov-2016 16:14:55 America/New_York] PHP Fatal error:  Call to private method dbInterface::getTitle() from context '' in /dcs/local/home/mealscs/public_html/database/getAdvSearchResults.php on line 42
+[29-Nov-2016 16:15:12 America/New_York] PHP Fatal error:  Call to private method dbInterface::getTitle() from context '' in /dcs/local/home/mealscs/public_html/database/getAdvSearchResults.php on line 42
+[29-Nov-2016 16:15:19 America/New_York] PHP Fatal error:  Call to private method dbInterface::getTitle() from context '' in /dcs/local/home/mealscs/public_html/database/getAdvSearchResults.php on line 42
+[29-Nov-2016 16:15:26 America/New_York] PHP Fatal error:  Call to private method dbInterface::getTitle() from context '' in /dcs/local/home/mealscs/public_html/database/getAdvSearchResults.php on line 42
+[29-Nov-2016 16:31:47 America/New_York] PHP Fatal error:  Call to private method dbInterface::getTitle() from context '' in /dcs/local/home/mealscs/public_html/database/getAdvSearchResults.php on line 42
+[29-Nov-2016 16:31:59 America/New_York] PHP Fatal error:  Call to private method dbInterface::getTitle() from context '' in /dcs/local/home/mealscs/public_html/database/getAdvSearchResults.php on line 42
+[29-Nov-2016 16:32:11 America/New_York] PHP Fatal error:  Call to private method dbInterface::getTitle() from context '' in /dcs/local/home/mealscs/public_html/database/getAdvSearchResults.php on line 42
+[29-Nov-2016 16:36:25 America/New_York] PHP Parse error:  syntax error, unexpected ';' in /dcs/local/home/mealscs/public_html/database/getAdvSearchResults.php on line 42
+[29-Nov-2016 16:36:30 America/New_York] PHP Parse error:  syntax error, unexpected ';' in /dcs/local/home/mealscs/public_html/database/getAdvSearchResults.php on line 42

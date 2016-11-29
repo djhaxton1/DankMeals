@@ -215,7 +215,7 @@ class dbInterface{
      * @param $id   the id of the recipe requested
      * @return mixed    the title of that recipe
      */
-    private function getTitle($id){
+    public function getTitle($id){
         $query = "SELECT * FROM recipes WHERE id=" . $id;
         $relevant = array("title");
         $result = $this->db->sendCommandParse($query, $relevant); //retrieve title
@@ -254,9 +254,9 @@ class dbInterface{
      * @return array array containing all ingredients
      */
     public function getAllIngredients() {
-	$query    = "SELECT * FROM ingredients;";
+	$query    = "SELECT rec_id, name FROM ingredients";
 	$relevant = array("rec_id", "name");
-	$result   = $this->db->sendCommandParse($query, $relevent);
+	$result   = $this->db->sendCommandParse($query, $relevant);
 	
 	return $result;
     }

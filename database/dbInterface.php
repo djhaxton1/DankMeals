@@ -254,7 +254,7 @@ class dbInterface{
      * @return array array containing all ingredients
      */
     public function getAllIngredients() {
-	$query = "SELECT * FROM ingredients";
+	$query = "SELECT * FROM ingredients;`";
 	$relevant = array("rec_id", "name");
 	$result = $this->db->sendCommandParse($query, $relevent);
 	return $result;

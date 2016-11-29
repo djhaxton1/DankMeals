@@ -38,3 +38,4 @@
 [29-Nov-2016 15:11:35 America/New_York] PHP Parse error:  syntax error, unexpected '$k' (T_VARIABLE), expecting ';' in /dcs/local/home/mealscs/public_html/database/getAdvSearchResults.php on line 37
 [29-Nov-2016 15:11:35 America/New_York] PHP Parse error:  syntax error, unexpected '$k' (T_VARIABLE), expecting ';' in /dcs/local/home/mealscs/public_html/database/getAdvSearchResults.php on line 37
 [29-Nov-2016 15:11:49 America/New_York] PHP Parse error:  syntax error, unexpected '$k' (T_VARIABLE), expecting ';' in /dcs/local/home/mealscs/public_html/database/getAdvSearchResults.php on line 37
+[29-Nov-2016 16:00:29 America/New_York] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /dcs/local/home/mealscs/public_html/database/database.php on line 57

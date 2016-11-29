@@ -4,7 +4,7 @@
 	$db        = new dbInterface();
 	$recipes   = $db->getTitles();
 	$ids	   = $db->getIDs();
-	//$ings	   = $db->getAllIngredients();
+	$ings	   = $db->getAllIngredients();
 	$occurance = array_fill(0, count($recipes), 0);
 
 	$t = $_POST["ings"];
@@ -24,7 +24,12 @@
 			}
 		}
 	}
-	$form_data['posted'] .= var_dump($ings);	
+	$allings = count($ings);
+	for($i = 0; $i < count($ings); $i++) {
+		$form_data['posted'] .= "<br>" . $ings[$i];
+	}
+	$form_data['posted'] .= "<br> Count of ingredients = $allings" ;
+	
 	/* Find occurance of ingredients */
 	for($j = 1; $j < count($ings); $j = $j + 2) {
 		/*for each ingredent compare to the tags */

@@ -19,7 +19,7 @@
 			*/
 			document.getElementById('ingredients').insertAdjacentHTML('beforeend',''
 				+'<div id="row' + ing + '"><div class="col-lg-2"><input type="text" name="measurement[' + (ing) + ']" class="form-control"></div>'
-				+'<div class="col-lg-8"><input type="text" name="ingredient[' + (ing) + ']" class="form-control"></div>'
+				+'<div class="col-lg-8"><input type="text" name="ingredient[' + (ing) + ']" class="form-control" required></div>'
 				+'<div class="col-lg-2"><button onclick="removeIng(this)" type="button" name="' + ing + '" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span></button></div><br /><br />');
 
 			$('#ingredient_count').val(ing);
@@ -44,7 +44,7 @@
 		function addIns(){
 			document.getElementById('instructions').insertAdjacentHTML('beforeend', ''
 				+ '<div id="insRow' + ins + '">'
-				+ '<div class="col-lg-10"><input type="text" name="instruction[' + ins + ']" id="instruction[' + ins + ']" class="form-control"></div>'
+				+ '<div class="col-lg-10"><input type="text" name="instruction[' + ins + ']" id="instruction[' + ins + ']" class="form-control" required></div>'
 				+ '<div class="col-lg-2"><button onclick="removeIns(this)" type="button" class="btn btn-default" name="' + ins + '"><span class="glyphicon glyphicon-remove"></span></button></div>'
 				+ '<br /><br /></div>');
 				
@@ -67,10 +67,15 @@
 		<script>
 		function removeIns(elem){
 			var num = elem.name;
-			var id = "insRow" + num;
-			
-			document.getElementById(id).remove();
-			ins = ins - 1;
+				
+			if(ins > 1) {
+				var id = "insRow" + num;
+				document.getElementById(id).remove();
+				ins = ins - 1;
+			} else {
+				id = "instruction[" + num + "]";
+				document.getElementById(id).value = "";
+			}
 		}
 		</script>
 		
@@ -116,13 +121,6 @@
 					</div>
 					
 					<div class="form-group">
-						<!--
-						<label for="ing">Ingredients</label>
-						<input type="hidden" name="ingredient_count" id="ingredient_count" value='0'>
-						<input type="text" name="ingredient[0]" class="form-control">
-						<div id="ingredients"></div>
-						-->
-						
 						<label for="ing">Ingredients</label><br />
 						<i><span class="col-lg-2">Example: [1 pinch]</span> <span class="col-lg-8">[salt]<span></i><br />
 						<div id="ingredients">
@@ -131,7 +129,7 @@
 									<input type="text" name="measurement[0]" class="form-control">
 								</div>
 								<div class="col-lg-8">
-									<input type="text" name="ingredient[0]" class="form-control">
+									<input type="text" name="ingredient[0]" class="form-control" required>
 								</div>
 								<div class="col-lg-2">
 									<button onclick="removeIng(this)" type="button" class="btn btn-default" name="0">
@@ -141,10 +139,8 @@
 								<br /><br />
 							</div>
 						</div>
-						
-						
+												
 						<!-- Plus button for Ingredients-->
-						<!-- TODO: change z-index for items to make sure the + glyphicon does not appear on top of the select box for the autocomplete function-->
 						<button onclick="addIng()" type="button" class="btn btn-default" aria-label="Left Align" style="z-index: -6">
 							<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 						</button>
@@ -154,9 +150,11 @@
 						<label for="ins">Instructions</label>
 						<input type="hidden" name="instruction_count" id="instruction_count" value="1">
 						<div id="instructions">
-							<div id="insRow0">
+
+							<div id="insRow0"> 
+
 								<div class="col-lg-10">
-									<input type="text" id="instruction[0]" name="instruction[0]" class="form-control">
+									<input type="text" id="instruction[0]" name="instruction[0]" class="form-control" required>
 								</div>
 								<div class="col-lg-2">
 									<button onclick="removeIns(this)" type="button" class="btn btn-default" name="0">

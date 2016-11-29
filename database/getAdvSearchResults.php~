@@ -65,7 +65,7 @@
 	/* Create a table of possible results */
 	$form_data['posted'] .= "<h1 style='text-align:center'>Search Results:</h1>";
 	$posts = 0; // number of recipes that will be displayed
-	for($i = 0; $i < count($recipes); $i++) {
+	for($i = 0; $i < $count; $i++) {
 		if($occurance[$i] != 0) {
 			$post++;
 			$rec = $db->getRecipe($ids[$i]);

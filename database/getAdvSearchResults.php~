@@ -43,7 +43,8 @@
 			}
 		}
 	}
-
+	
+	/*Sort Recipes based on Priority */
 	for($i = 0; $i < count($recipes); $i++) {
 		for($j = $i + 1; $j < count($recipes); $j++) {
 			if($occurance[$i] < $occurance[$j]) {
@@ -65,7 +66,7 @@
 	/* Create a table of possible results */
 	$form_data['posted'] .= "<h1 style='text-align:center'>Search Results:</h1>";
 	$posts = 0; // number of recipes that will be displayed
-	for($i = 0; $i < $count; $i++) {
+	for($i = 0; $i < count($recipes); $i++) {
 		if($occurance[$i] != 0) {
 			$post++;
 			$rec = $db->getRecipe($ids[$i]);

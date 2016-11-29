@@ -47,7 +47,7 @@
 						data      : postForm,      //Forms name
 						dataType  : 'json',
 						success   : function(data) {
-                        	$('#searchresults').append('<label for="sel2">' + data.posted + ' dude suh</label>');
+                        	$('#searchresults').append('<label for="sel2">' + data.posted + '</label>');
 						}
 					});
 					event.preventDefault(); //Prevent the default submit

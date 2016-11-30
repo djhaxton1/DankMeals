@@ -78,8 +78,7 @@
 		}
 	}
 
-	$form_data['posted'] .= "<br>Are we lacking Dankness???" . 
-		"Submit a Recipe!<br>";
+	//$form_data['posted'] .= "<br>Are we lacking Dankness??? Submit a Recipe!<br>";
 	//$form_data['posted'] .= "</ul>";
 	echo json_encode($form_data);
 ?>

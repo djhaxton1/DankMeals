@@ -116,6 +116,7 @@
 		<!-- Search Results -->
 		<div id="searchresults" class="container">
 			<label for="sel2"></label>
+			<b><p style="text-align:center;"><br>Are we lacking Dankness??? <a href="http://meals.cs.mtu.edu/addRecipe.php">Submit a recipe!!!</a><br></p></b>
 		</div> 
 	
 		<!-- Footer -->

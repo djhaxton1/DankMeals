@@ -117,7 +117,7 @@
 				<form action="database/submitRecipe.php" method="POST" enctype=multipart/form-data>
 					<div class="form-group">
 					  <label for="rec_name">Recipe Name</label>
-					  <input type="text" name="title" class="form-control">
+					  <input type="text" name="title" class="form-control" required>
 					</div>
 					
 					<div class="form-group">

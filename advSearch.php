@@ -114,7 +114,7 @@
 
 			<!-- Search Results -->
 			<div id="searchresults" class="container">
-				<label for="sel2">The Dankness is lacking...</label>
+				<label for="sel2"><br>Dankness will appear here</label>
 			</div> 
 		
 			<!-- Footer -->

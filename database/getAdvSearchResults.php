@@ -27,19 +27,21 @@
 
 	/* Find occurance of ingredients */
 	for($j = 1; $j < count($ings); $j = $j + 2) {
-		/*for each ingredent compare to the tags */
+		$title = $db->getTitle($ings[$j-1]); 	// associated recipe
+		$ing = strtolower($ings[$j]);		// ingredient
+
+		/* for each ingredent compare to the tags */
 		for($i = 0; $i < count($t); $i++) {
-			$ing = strtolower($ings[$j]);
 			$inp = strtolower($t[$i]);
 			$found = strpos($ing, $inp);
 
 			if($found !== false) {
-				$title = $db->getTitle($ings[$j-1]);
 				/* Locate the recipe in the recipes arra */
 				for($k = 0; $k < count($recipes); $k++) {
-					if(strcmp($title, $recipes[$k]) !== false) {
+					if(strcmp($title, $recipes[$k]) == 0) {
+						
 						$occurance[$k]++;
-						break;
+						break 1; // breaks out of 1 loop
 					}
 				}
 			}
@@ -67,10 +69,8 @@
 
 	/* Create a table of possible results */
 	$form_data['posted'] .= "<h1 style='text-align:center'>Search Results:</h1>";
-	$posts = 0; // number of recipes that will be displayed
 	for($i = 0; $i < count($recipes); $i++) {
 		if($occurance[$i] != 0) {
-			$post++;
 			$rec = $db->getRecipe($ids[$i]);
 			if($rec["picture"] == null)
 				$rec["picture"] = "/imageError.png";
@@ -78,9 +78,8 @@
 		}
 	}
 
-	if($posts == 0) {
-		$form_data['posted'] .= "The Dankness is lacking ...<br>";
-	}
-	$form_data['posted'] .= "</ul>";
+	$form_data['posted'] .= "<br>Are we lacking Dankness???" . 
+		"Submit a Recipe!<br>";
+	//$form_data['posted'] .= "</ul>";
 	echo json_encode($form_data);
 ?>

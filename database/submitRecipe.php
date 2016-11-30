@@ -15,7 +15,26 @@
 	include 'dbInterface.php';
 	$db = new dbInterface();
 	$recipe = array();
-	
+
+	//validate image if submitted
+	if(isset($_FILES['image'])) {
+		$errors = array();
+		$file_name = $_FILES['image']['name'];
+		$file_size = $_FILES['image']['size'];
+		$file_tmp = $_FILES['image']['tmp_name'];
+		$file_type = $_FILES['image']['type'];
+
+		if($file_size > 5242880) {
+			$errors[] = 'File size must be less than 5 MB';
+			die("File larger than 5MB");
+		}
+
+		if ($file_type != "image/jpeg" && $file_type != "image/png"){
+			$errors[] = 'File must be a jpg or png';
+			die("File not of type jpeg or png");
+		}
+	}
+
 	/* Populate Arrays with information */
 	$title = $_POST['title'];
 	$ing_name   = $_POST['ingredient'];
@@ -41,17 +60,9 @@
 	}
 	$id = $db->insertRecipe($recipe);
 	$db = null; // Close the database
-	
-	if(isset($_FILES['image'])) {
-		$errors    = array();
-		$file_name = $_FILES['image']['name'];
-		$file_size = $_FILES['image']['size'];
-		$file_tmp  = $_FILES['image']['tmp_name'];
-		$file_type = $_FILES['image']['type'];
 
-		if($file_size > 5242880) {
-			 $errors[] = 'File size must be less than 2 MB';
-		}
+	//upload image
+	if(isset($_FILES['image'])) {
 
 		if(empty($errors) == true) {
 

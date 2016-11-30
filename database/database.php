@@ -14,10 +14,10 @@ class database {
 	 * Instantiates an new connection to the database
 	 */
 	function __construct() {
-		$server   = "localhost";
-		$username =             "mealscs_tsp";
-		$password =            "OceanBacon42";
-		$db       =           "mealscs_tsp";
+		$server   = "141.219.196.115";
+		$username = "root";
+		$password = "null";
+		$db       = "tspdb";
 		// Create a Connection
 		$this->conn    = new mysqli($server, $username, $password, $db);
 		$this->last_id = NULL;

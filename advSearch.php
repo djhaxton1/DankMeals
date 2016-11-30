@@ -111,20 +111,20 @@
 					<br />
 					<input type="submit" class="btn btn-mybtn" style="align-items:center" value="Search Ingredients"/>				
 				</form>
-
-			<!-- Search Results -->
-			<div id="searchresults" class="container">
-				<label for="sel2"><br>Dankness will appear here</label>
-			</div> 
+		</div>
 		
-			<!-- Footer -->
-			<div id="footer" class="container">
-				<script>
-					$.get("assets/foot.html", function(data) {
-						$("#footer").replaceWith(data);
-					});
-				</script>
-			</div>
+		<!-- Search Results -->
+		<div id="searchresults" class="container">
+			<label for="sel2"></label>
+		</div> 
+	
+		<!-- Footer -->
+		<div id="footer" class="container">
+			<script>
+				$.get("assets/foot.html", function(data) {
+					$("#footer").replaceWith(data);
+				});
+			</script>
 		</div>
     </body>
 </html>

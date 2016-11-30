@@ -18,8 +18,8 @@
 			ing = ing + 1;
 			*/
 			document.getElementById('ingredients').insertAdjacentHTML('beforeend',''
-				+'<div id="row' + ing + '"><div class="col-lg-2"><input type="text" name="measurement[' + (ing) + ']" class="form-control"></div>'
-				+'<div class="col-lg-8"><input type="text" name="ingredient[' + (ing) + ']" class="form-control" required></div>'
+				+'<div id="row' + ing + '"><div class="col-lg-2"><input type="text" id="measurement[' + (ing) + ']" name="measurement[' + (ing) + ']" class="form-control"></div>'
+				+'<div class="col-lg-8"><input type="text" id="ingredient[' + (ing) + ']" name="ingredient[' + (ing) + ']" class="form-control" required></div>'
 				+'<div class="col-lg-2"><button onclick="removeIng(this)" type="button" name="' + ing + '" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span></button></div><br /><br />');
 
 			$('#ingredient_count').val(ing);
@@ -57,10 +57,18 @@
 		<script>
 		function removeIng(elem){
 			var num = elem.name;
-			var id = "row" + num;
 			
+			if (ing > 1) {
+			var id = "row" + num;
 			document.getElementById(id).remove();
 			ing = ing - 1;
+			} else {
+				id = "ingredient[" + num + "]";
+				document.getElementById(id).value = "";
+				
+				id = "measurement[" + num + "]";
+				document.getElementById(id).value = "";
+			}
 		}
 		</script>
 		
@@ -126,10 +134,10 @@
 						<div id="ingredients">
 							<div id="row0">
 								<div class="col-lg-2">
-									<input type="text" name="measurement[0]" class="form-control">
+									<input type="text" id="measurement[0]" name="measurement[0]" class="form-control">
 								</div>
 								<div class="col-lg-8">
-									<input type="text" name="ingredient[0]" class="form-control" required>
+									<input type="text" id="ingredient[0]" name="ingredient[0]" class="form-control" required>
 								</div>
 								<div class="col-lg-2">
 									<button onclick="removeIng(this)" type="button" class="btn btn-default" name="0">
@@ -161,8 +169,9 @@
 										<span class="glyphicon glyphicon-remove"></span>
 									</button>
 								</div>
+								<br /><br />
 							</div>
-							<br /><br />
+							
 						</div>
 						
 						<!-- Plus button for Instructions-->
